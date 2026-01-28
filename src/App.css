@@ -1,0 +1,77 @@
+.contenedor {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #fceabb, #f8b500);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #300;
+}
+
+.fecha {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.latido ¨{ 
+  margin-bottom: 2rem;
+}
+
+textarea {
+  width: 80%;
+  height: 150px;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  resize: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} 
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1 rem;
+  font-size: 1rem;
+  background-color: #f8b500;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e09e00;
+}
+
+.historial {
+  margin-top: 3rem;
+  text-align: left;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  max-height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.historial ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.historial li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+} 
+
+.borrar {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+}
+
+.borrar:hover {
+  color: #e74c3c;
+}
+
