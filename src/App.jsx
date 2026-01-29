@@ -1,30 +1,45 @@
-import { useState } from "react";
+// ...existing code...
+import { useState, useEffect } from "react";
+import FallingHearts from "./FallingHearts";
 import './App.css'
 
 function App() {
-  const fecha = new Date() .toLocaleDateString('es-VE' , { 
+  const fecha = new Date().toLocaleDateString('es-VE', { 
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric'
-  })
+  });
 
-  const [emocion, setEmocion] = useState('')
-  const [historial, setHistorial] = useState([])
+  const [emocion, setEmocion] = useState('');
+  const [historial, setHistorial] = useState([]);
+
+  useEffect(() => {
+    const datosGuardados = localStorage.getItem('historial');
+    if (datosGuardados) {
+      setHistorial(JSON.parse(datosGuardados));
+    }
+  }, []);
 
   const guardarEmocion = () => {
-    if (emocion.trim() === '') return
-    const nuevoLatido = { texto: emocion, fecha }
-    setHistorial([nuevoLatido, ...historial])
-    setEmocion('')
-    const borrarEmocion = (indice) => {
-      const nuevoHistorial = historial.filter((_, i) => i !== indice)
-      setHistorial(nuevoHistorial)
-  }
+    if (emocion.trim() === '') return;
+    const nuevoLatido = { texto: emocion, fecha };
+    const nuevoHistorial = [nuevoLatido, ...historial];
+    setHistorial(nuevoHistorial);
+    setEmocion('');
+    localStorage.setItem('historial', JSON.stringify(nuevoHistorial));
   }
 
+  const borrarEmocion = (indice) => {
+    const nuevoHistorial = historial.filter((_, i) => i !== indice);
+    setHistorial(nuevoHistorial);
+    localStorage.setItem('historial', JSON.stringify(nuevoHistorial));
+  };
+  
   return (
     <div className="contenedor">
+      <FallingHearts />
+      
       <h1>180 Latidos</h1>
       <p className="fecha">{fecha}</p>
 
@@ -44,13 +59,14 @@ function App() {
           {historial.map((item, index) => (
             <li key={index}>
               <strong>{item.fecha}</strong>: {item.texto}
-              <buttom className="borrar" onClick={() => borrarEmocion(index)}>🗑️</buttom>
+              <button className="borrar" onClick={() => borrarEmocion(index)}>🗑️</button>
             </li>
           ))}
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
-export default App  
+export default App;
+// ...existing code...
