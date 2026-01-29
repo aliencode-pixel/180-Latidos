@@ -1,0 +1,64 @@
+.bienvenida {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FFD6E8, #EADCF8, #DFF6FF, #FFE8D6);
+  background-size: 600% 600%;
+  animation: latidoIntro 20s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+@keyframes latidoIntro {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.contenido {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contenido h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #FF6B81;
+  margin-bottom: 1rem;
+}
+
+.contenido h1 span {
+  color: #4A4A4A;
+}
+
+.contenido p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: #4A4A4A;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contenido button {
+  background-color: #FFE8D6;
+  color: #4A4A4A;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contenido button:hover {
+  background-color: #FFD6E8;
+}
