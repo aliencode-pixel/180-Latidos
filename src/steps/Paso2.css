@@ -1,0 +1,128 @@
+/* ============================================================
+   FONDO ESPECIAL DEL DÍA 1 (PASO2–PASO3–PASO4)
+   Pastel animado distinto al global
+============================================================ */
+.paso-dia1-fondo {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    140deg,
+    #fff0f5,
+    #e8f3ff,
+    #f3ffe8,
+    #fff9e6
+  );
+  background-size: 500% 500%;
+  animation: dia1Flow 22s ease infinite;
+
+  backdrop-filter: blur(10px);
+}
+
+@keyframes dia1Flow {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 50%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+.paso2 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   TARJETA (ENCAPSULADA)
+============================================================ */
+.paso2 .tarjeta {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 2.2rem 2rem;
+  border-radius: 1.6rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  animation: floatCard 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes floatCard {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* ============================================================
+   TEXTOS
+============================================================ */
+.paso2 .frase-inicio {
+  font-size: 1.15rem;
+  color: #333;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+  font-family: "Nunito", sans-serif;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.paso2 .frase-suave {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  font-family: "Nunito", sans-serif;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   BOTÓN FLECHA
+============================================================ */
+.paso2 .flecha {
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* efecto táctil para móvil */
+.paso2 .flecha:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}

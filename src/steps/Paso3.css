@@ -1,0 +1,151 @@
+/* ============================================================
+   FONDO ESPECIAL DEL DÍA 1 (PASO2–PASO3–PASO4)
+   Pastel animado distinto al global
+============================================================ */
+.paso-dia1-fondo {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    140deg,
+    #fff0f5,
+    #e8f3ff,
+    #f3ffe8,
+    #fff9e6
+  );
+  background-size: 500% 500%;
+  animation: dia1Flow 22s ease infinite;
+
+  backdrop-filter: blur(10px);
+}
+
+@keyframes dia1Flow {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 50%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+.paso3 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   TARJETA
+============================================================ */
+.paso3 .tarjeta {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 2.2rem 2rem;
+  border-radius: 1.6rem;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  animation: floatCard 6s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes floatCard {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* ============================================================
+   TÍTULO
+============================================================ */
+.paso3 .titulo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+  color: #fb0370;
+}
+
+/* ============================================================
+   CONTENIDO Y LÍNEAS
+============================================================ */
+.paso3 .contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paso3 .linea {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-family: "Nunito", sans-serif;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.paso3 .linea1 { animation-delay: 0.2s; }
+.paso3 .linea2 { animation-delay: 0.4s; }
+.paso3 .linea3 { animation-delay: 0.6s; }
+.paso3 .linea4 { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   FLECHAS ENTRE LÍNEAS
+============================================================ */
+.paso3 .flecha {
+  font-size: 1.4rem;
+  color: #666;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.1s;
+}
+
+/* ============================================================
+   BOTÓN FINAL
+============================================================ */
+.paso3 .paso3-btn {
+  margin-top: 1.8rem;
+  padding: 0.9rem 1.6rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  color: #333;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* efecto táctil móvil */
+.paso3 .paso3-btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}

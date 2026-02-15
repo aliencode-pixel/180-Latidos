@@ -1,0 +1,178 @@
+/* ============================================================
+   BASE — FONDO ANIMADO LOCAL (NO GLOBAL)
+============================================================ */
+.paso-cancion {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 9999;
+
+  /* ⭐ Fondo animado local */
+  background-size: 900% 900%;
+  animation: fadeInScreen 0.8s ease forwards, mixGradient 20s ease-in-out infinite;
+}
+
+@keyframes fadeInScreen {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   TARJETA DE LA CANCIÓN
+============================================================ */
+.tarjeta-cancion {
+  background: rgba(240, 222, 222, 0.293);
+  padding: 2rem;
+  border-radius: 1.4rem;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  max-width: 360px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.titulo-cancion {
+  font-family: "Playfair Display", serif;
+  font-size: 1.55rem;
+  margin-bottom: 1.2rem;
+  color: #fb0370;
+}
+
+.portada-cancion {
+  width: 210px;
+  height: 210px;
+  border-radius: 1.1rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.nombre {
+  font-size: 1.2rem;
+  color: #e25e5e;
+  font-weight: 600;
+}
+
+.artista {
+  font-size: 0.95rem;
+  color: #e25e5e;
+  margin-bottom: 1.4rem;
+}
+
+/* ============================================================
+   BOTONES
+============================================================ */
+.btn-link {
+  display: inline-block;
+  background: #1db954;
+  color: white;
+  padding: 0.65rem 1.3rem;
+  border-radius: 0.9rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-link:hover {
+  transform: translateY(-2px);
+  background: #1ed760;
+}
+
+.btn-continuar {
+  background: rgba(255, 255, 255, 0.65);
+  color: #222;
+  border: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: 0.9rem;
+  font-size: 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-continuar:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================================
+   ANIMACIÓN DE LA PORTADA
+============================================================ */
+.anim-portada {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* ============================================================
+   PALETAS SOFT
+============================================================ */
+.tema-pastel-bloom,
+.tema-blue-serenity,
+.tema-aurora-bloom,
+.tema-heartwave,
+.tema-dreamlight {
+  background: linear-gradient(
+    120deg,
+    #f7eaff,
+    #e8e6ff,
+    #dff1ff,
+    #d6f9f2,
+    #e8ffe8,
+    #fff4e6,
+    #ffeef7
+  );
+}
+
+/* ============================================================
+   PALETAS POP
+============================================================ */
+.tema-golden-drift,
+.tema-stardust-pop,
+.tema-neon-pastel {
+  background: linear-gradient(
+    120deg,
+    #ffe8ff,
+    #f3e0ff,
+    #dff1ff,
+    #c8f7f0,
+    #fff0d6,
+    #ffd9b8,
+    #ffc8a8
+  );
+}
+
+/* ============================================================
+   PALETAS DARK
+============================================================ */
+.tema-midnight-glow,
+.tema-violet-pulse {
+  background: linear-gradient(
+    120deg,
+    #1a1a3d,
+    #2d1a4d,
+    #3a0ca3,
+    #5a1fb7,
+    #3a0ca3,
+    #1f1a3d,
+    #0f0f2b
+  );
+}

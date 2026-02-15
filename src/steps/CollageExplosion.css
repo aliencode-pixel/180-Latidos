@@ -1,0 +1,87 @@
+.collage-wrapper {
+  position: fixed;
+  inset: 0;
+  background: black;
+  overflow: hidden;
+  z-index: 999999;
+}
+
+/* Fase 1: fotos flotando */
+.covers-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.cover-img {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: 0;
+  animation: floatIn 1s forwards ease-out;
+}
+
+/* Posiciones aleatorias */
+.cover-img {
+  top: calc(10% + (80% * var(--randY)));
+  left: calc(10% + (80% * var(--randX)));
+}
+
+/* Fase 2: explosión */
+.explode .cover-img {
+  animation: explodeToCenter 1.5s forwards ease-in;
+}
+
+@keyframes floatIn {
+  from {
+    transform: scale(0.5) rotate(10deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes explodeToCenter {
+  to {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+}
+
+/* Fase 3: fade a negro */
+.fade-black {
+  position: absolute;
+  inset: 0;
+  background: black;
+  animation: fadeInBlack 2s forwards;
+}
+
+@keyframes fadeInBlack {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fase 4: créditos */
+.credits {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.4rem;
+  text-align: center;
+  animation: fadeInCredits 2s forwards;
+  z-index: 9999999;
+}
+
+@keyframes fadeInCredits {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

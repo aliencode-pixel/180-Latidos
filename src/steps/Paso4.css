@@ -1,0 +1,137 @@
+/* ============================================================
+   FONDO ESPECIAL DEL DÍA 1 (PASO2–PASO3–PASO4)
+   Pastel animado distinto al global
+============================================================ */
+.paso-dia1-fondo {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  background: linear-gradient(
+    140deg,
+    #fff0f5,
+    #e8f3ff,
+    #f3ffe8,
+    #fff9e6
+  );
+  background-size: 500% 500%;
+  animation: dia1Flow 22s ease infinite;
+
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+@keyframes dia1Flow {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 50%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+.paso4 {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   TÍTULO Y SUBTÍTULO
+============================================================ */
+.paso4 .titulo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.7rem;
+  margin-bottom: 0.8rem;
+  color: #fb0370;
+}
+
+.paso4 .sub {
+  font-size: 1rem;
+  color: #cf6464;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+  font-family: "Nunito", sans-serif;
+}
+
+/* ============================================================
+   CONTENEDOR DE TEMAS
+============================================================ */
+.contenedor-temas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+/* ============================================================
+   TARJETAS DE TEMA
+============================================================ */
+.tema-card {
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 1.2rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.tema-card p {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: #333;
+  font-family: "Nunito", sans-serif;
+}
+
+/* efecto táctil móvil */
+.tema-card:active {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   PREVIEWS DE COLOR (los mismos tonos que definimos en Paso4 original)
+============================================================ */
+.preview {
+  width: 100%;
+  height: 60px;
+  border-radius: 0.8rem;
+}
+
+/* ⭐ Horizonte Estelar */
+.preview.tema-horizonte {
+  background: linear-gradient(135deg, #6f87ff, #b8c6ff);
+}
+
+/* ⭐ Fuego del Ocaso */
+.preview.tema-ocaso {
+  background: linear-gradient(135deg, #ff8a4f, #ffd1b3);
+}
+
+/* ⭐ Alba Serena */
+.preview.tema-alba {
+  background: linear-gradient(135deg, #ffd47a, #ffeab3);
+}
+
+/* ⭐ Cielo Acuarela */
+.preview.tema-acuarela {
+  background: linear-gradient(135deg, #6bc9e0, #b7ecff);
+}
+
+/* ⭐ Etéreo Lumínico */
+.preview.tema-etereo {
+  background: linear-gradient(135deg, #8f6bff, #d3c2ff);
+}

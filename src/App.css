@@ -1,142 +1,118 @@
-.contenedor-app {
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  font-family: 'Nunito', sans-serif;
-}
-
-.mensaje-bienvenida {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255,255,255,0.7);
-  padding: 2rem 3rem;
-  border-radius: 20px;
-  text-align: center;
-  z-index: 9;
-  animation: aparecer 0.5s ease, desvanecer 1s ease 2s forwards;
-}
-
-.mensaje-bienvenida h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #FF6B81;
-}
-
-.mensaje-bienvenida span {
-  color: #4A4A4A;
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translate(-50%, -60%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
-}
-
-@keyframes desvanecer {
-  to { opacity: 0; }
-}
-
-.contenido-principal {
-  padding: 2rem;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.contenido-principal h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #FF6B81;
-}
-
-.fecha {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 2rem;
-}
-
-.latido {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 2rem;
-  border-radius: 20px;
-  width: 80%;
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.latido h2 {
-  font-family: 'Playfair Display', serif;
-  color: #4A4A4A;
-  margin-bottom: 1rem;
-}
-
-.latido textarea {
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 1rem;
-  font-size: 1rem;
-  resize: none;
-  outline: none;
-  background: rgba(255,255,255,0.8);
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.latido button {
-  margin-top: 1rem;
-  background-color: #FFE8D6;
-  color: #4A4A4A;
-  border: none;
-  padding: 0.8rem 1.6rem;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.latido button:hover {
-  background-color: #FFD6E8;
-}
-
-.historial {
-  width: 80%;
-  max-width: 600px;
-  margin: 0 auto 4rem auto;
-  text-align: left;
-}
-
-.historial h3 {
-  font-family: 'Playfair Display', serif;
-  color: #4A4A4A;
-  margin-bottom: 1rem;
-}
-
-.historial ul {
-  list-style: none;
+/* ============================================================
+   RESET BÁSICO
+============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
 }
 
-.historial li {
-  background: rgba(255,255,255,0.6);
-  padding: 1rem;
-  border-radius: 10px;
-  margin-bottom: 0.8rem;
+/* ============================================================
+   CONTENEDOR GENERAL DE LA APP — OPTIMIZADO
+============================================================ */
+.app-contenedor {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+
+  /* ⭐ GPU acceleration */
+  will-change: opacity, transform;
 }
 
-.borrar {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: #FF6B81;
-  transition: transform 0.2s ease;
+/* ============================================================
+   FADE ENTRE PANTALLAS
+============================================================ */
+.fade-container {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.35s ease;
+
+  /* ⭐ Suaviza transiciones */
+  will-change: opacity;
 }
 
-.borrar:hover {
-  transform: scale(1.2);
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* ============================================================
+   TEMAS — OPTIMIZADOS
+============================================================ */
+
+/* ⭐ Animación única para todos los temas */
+@keyframes temaFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🌅 Horizonte */
+.tema-horizonte {
+  background: linear-gradient(135deg, #ffe8d6, #ffd4e2, #e8e0ff);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+/* 🌇 Ocaso */
+.tema-ocaso {
+  background: linear-gradient(135deg, #ffb3a0, #ff8fb8, #c7a4ff);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+/* 🌊 Acuarela */
+.tema-acuarela {
+  background: linear-gradient(135deg, #d4f1ff, #e8d9ff, #ffe8f2);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+/* ⭐ Si quieres, puedo agregar aquí:
+   .tema-alba
+   .tema-etereo
+   para centralizar todo */
+
+/* ============================================================
+   BOTÓN SECRETO DE REINICIO
+============================================================ */
+.reset-secret {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+}
+
+/* ============================================================
+   AJUSTES GENERALES PARA PASOS INTERNOS
+============================================================ */
+.inicio-dia-wrapper {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ⭐ Evita saltos visuales */
+  will-change: opacity, transform;
+}
+
+/* Evita que los temas afecten la Bienvenida */
+.bienvenida-isolada {
+  width: 100%;
+  min-height: 100vh;
 }

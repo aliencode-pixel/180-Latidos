@@ -1,64 +1,132 @@
-.bienvenida {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #FFD6E8, #EADCF8, #DFF6FF, #FFE8D6);
-  background-size: 600% 600%;
-  animation: latidoIntro 20s ease infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+/* ============================================================
+   AISLAMIENTO SEGURO (NO ROMPE TUS ESTILOS)
+============================================================ */
+
+/* Evita que los temas afecten la bienvenida */
+.bienvenida-isolada * {
+  all: revert-layer;
 }
 
-@keyframes latidoIntro {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* ============================================================
+   FONDO ESPECIAL DE LA BIENVENIDA — PASTEL CINEMATOGRÁFICO
+============================================================ */
+.bienvenida {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    135deg,
+    #ffe6f2,
+    #f3e8ff,
+    #e8f4ff,
+    #fff4e1
+  );
+  background-size: 350% 350%;
+  animation: bienvenidaFlow 18s ease-in-out infinite, fadeIn 1s ease forwards;
+}
+
+@keyframes bienvenidaFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.contenido {
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 3rem;
-  border-radius: 20px;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   TARJETA CENTRAL — GLASSMORPHISM PASTEL
+============================================================ */
+.bienvenida .contenedor {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 2.4rem 2rem;
+  border-radius: 1.6rem;
+  max-width: 480px;
+  width: 100%;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  border: 2px solid rgba(255,255,255,0.4);
 }
 
-.contenido h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #FF6B81;
-  margin-bottom: 1rem;
+/* ============================================================
+   TÍTULO — ROSA FUERTE (TU COLOR)
+============================================================ */
+.bienvenida .titulo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: #fb0670;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.contenido h1 span {
-  color: #4A4A4A;
+/* ============================================================
+   VERSOS — APARICIÓN SUAVE
+============================================================ */
+.bienvenida .versos p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: versoIn 1.4s ease forwards;
+  font-size: 1rem;
+  color: #444;
+  margin: 0.8rem 0;
+  line-height: 1.45;
 }
 
-.contenido p {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  color: #4A4A4A;
-  margin-bottom: 2rem;
-  line-height: 1.6;
+@keyframes versoIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
-.contenido button {
-  background-color: #FFE8D6;
-  color: #4A4A4A;
+/* ============================================================
+   BOTÓN COMENZAR — GRADIENTE PASTEL + GLOW
+============================================================ */
+.bienvenida .boton-comenzar {
+  margin-top: 2rem;
+  padding: 0.9rem 1.6rem;
   border: none;
-  padding: 0.8rem 1.6rem;
-  border-radius: 10px;
-  font-weight: 600;
-  font-family: 'Nunito', sans-serif;
+  border-radius: 1rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+
+  background: linear-gradient(135deg, #ffffff, #f7f2ff);
+  color: #333;
+
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: translateY(10px);
+
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.contenido button:hover {
-  background-color: #FFD6E8;
+.bienvenida .boton-comenzar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bienvenida .boton-comenzar:hover {
+  box-shadow: 0 6px 18px rgba(150,120,255,0.35);
+  transform: translateY(-2px);
+}
+
+.bienvenida .boton-comenzar:active {
+  transform: scale(0.96);
+  opacity: 0.85;
 }

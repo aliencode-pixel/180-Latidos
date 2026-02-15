@@ -1,0 +1,95 @@
+/* ============================================================
+   CONTENEDOR PRINCIPAL — OPTIMIZADO
+============================================================ */
+.ultimo-cine-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 30%, #1a1a3a, #0a0a1a, #000);
+  position: relative;
+  overflow: hidden;
+
+  /* ⭐ GPU acceleration */
+  will-change: opacity, transform;
+}
+
+/* Entrada cinematográfica */
+.cinematic-enter {
+  opacity: 0;
+  animation: cineFade 2.5s ease forwards;
+}
+
+@keyframes cineFade {
+  from { opacity: 0; filter: blur(12px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+/* ============================================================
+   VERSOS — OPTIMIZADOS
+============================================================ */
+.ultimo-cine-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.ultimo-cine-line {
+  opacity: 0;
+  font-size: 2.4rem;
+  color: #d8cfff;
+  font-family: "Playfair Display", serif;
+  text-shadow: 0 0 18px rgba(150, 120, 255, 0.6);
+
+  animation: fadeUp 2.2s ease forwards;
+
+  /* ⭐ GPU */
+  will-change: opacity, transform;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate3d(0, 25px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ============================================================
+   ESTRELLAS — OPTIMIZADAS
+============================================================ */
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.22;
+
+  animation: starFloat 22s linear infinite;
+
+  /* ⭐ GPU */
+  will-change: transform;
+}
+
+@keyframes starFloat {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -300px, 0); }
+}
+
+/* ============================================================
+   NEBULOSAS — OPTIMIZADAS
+============================================================ */
+.nebula {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 40%, rgba(120, 80, 255, 0.35), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255, 120, 200, 0.25), transparent 60%);
+  filter: blur(70px);
+
+  animation: nebulaMove 20s ease-in-out infinite alternate;
+
+  /* ⭐ GPU */
+  will-change: transform;
+}
+
+@keyframes nebulaMove {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-30px, 30px, 0); }
+}

@@ -1,0 +1,25 @@
+.fade-to-wrapped {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 70%, black 100%);
+  animation: fadeToWrappedAnim 3s ease forwards;
+  z-index: 9999;
+}
+
+@keyframes fadeToWrappedAnim {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  40% {
+    opacity: 0.6;
+    transform: scale(1.03);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: blur(8px);
+  }
+}

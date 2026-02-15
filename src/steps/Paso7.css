@@ -1,0 +1,173 @@
+/* ============================================================
+   WRAPPER GENERAL
+============================================================ */
+.paso7-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  /* Fondo pastel coherente con el resto de la app */
+  background: linear-gradient(
+    135deg,
+    #ffe6f2,
+    #f3e8ff,
+    #e8f4ff,
+    #fff4e1
+  );
+  background-size: 350% 350%;
+  animation: paso7Flow 18s ease-in-out infinite;
+}
+
+@keyframes paso7Flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   TARJETA CENTRAL
+============================================================ */
+.paso7 {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 2.4rem 2rem;
+  border-radius: 1.6rem;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  border: 2px solid rgba(255,255,255,0.4);
+
+  animation: fadeInPaso7 0.8s ease forwards;
+}
+
+@keyframes fadeInPaso7 {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   TÍTULO
+============================================================ */
+.titulo-historial {
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  margin-bottom: 1.6rem;
+  color: #fb0370;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ============================================================
+   CONTENIDO DEL HISTORIAL
+============================================================ */
+.contenido-historial {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scroll elegante */
+.contenido-historial::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contenido-historial::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+.contenido-historial::-webkit-scrollbar-thumb {
+  background: rgba(150,120,255,0.35);
+  border-radius: 10px;
+}
+
+.contenido-historial::-webkit-scrollbar-thumb:hover {
+  background: rgba(150,120,255,0.55);
+}
+
+/* ============================================================
+   BOTÓN VOLVER
+============================================================ */
+.volver-btn {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.6rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+
+  background: linear-gradient(135deg, #ffffff, #f7f2ff);
+  color: #333;
+
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.volver-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(150,120,255,0.35);
+}
+
+.volver-btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   ITEMS DEL HISTORIAL
+============================================================ */
+.latido-item {
+  margin-bottom: 1.4rem;
+  text-align: left;
+  padding: 0.8rem 0.4rem;
+}
+
+.latido-fecha {
+  font-size: 0.9rem;
+  color: #b84a66;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.latido-texto {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.6rem;
+  line-height: 1.45;
+}
+
+.latido-cancion {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.6rem;
+}
+
+.latido-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+  margin-top: 0.8rem;
+}
+.borrar-latido-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+.borrar-latido-btn:hover {
+  background: #ff4a4a;
+}

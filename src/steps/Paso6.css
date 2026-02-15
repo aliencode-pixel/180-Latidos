@@ -1,0 +1,132 @@
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+.paso6 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  animation: fadeIn 0.8s ease forwards;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   TARJETA EMOCIÓN (ENCAPSULADA)
+============================================================ */
+.paso6 .tarjeta-emocion {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 2.4rem 2rem;
+  border-radius: 1.6rem;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  transform: none;
+}
+
+/* ============================================================
+   TÍTULO Y FECHA
+============================================================ */
+.paso6 .titulo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  color: #fb0670;
+  margin-bottom: 0.4rem;
+}
+
+.paso6 .fecha {
+  font-size: 1rem;
+  color: #b84a66;
+  margin-bottom: 1.6rem;
+}
+
+/* ============================================================
+   TEXTAREA (ENCAPSULADA)
+============================================================ */
+.paso6 .textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #828282;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  outline: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paso6 .textarea:focus {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* ============================================================
+   BOTÓN GUARDAR — CAMBIO AUTOMÁTICO SEGÚN TEMA
+============================================================ */
+
+/* Calma */
+.tema-calma .paso6 .btn-guardar {
+  background: #dbe8ff !important;
+  color: #3a4a7a !important;
+}
+
+/* Energía */
+.tema-energia .paso6 .btn-guardar {
+  background: #ffd6e5 !important;
+  color: #fb0670 !important;
+}
+
+/* Nostalgia */
+.tema-nostalgia .paso6 .btn-guardar {
+  background: #ffe3c6 !important;
+  color: #b85a2a !important;
+}
+
+/* Estilo base */
+.paso6 .btn-guardar {
+  margin-top: 1.8rem;
+  padding: 0.9rem 1.6rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.paso6 .btn-guardar:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   FLECHA HISTORIAL (ENCAPSULADA)
+============================================================ */
+.paso6 .flecha-historial {
+  margin-top: 1.4rem;
+  font-size: 1rem;
+  color: #fb0670;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.paso6 .flecha-historial:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}

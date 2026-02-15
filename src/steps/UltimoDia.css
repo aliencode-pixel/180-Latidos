@@ -1,0 +1,121 @@
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+.ultimo-dia-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+
+  background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460, #53354a);
+  background-size: 400% 400%;
+  animation: ultimoDiaFlow 25s ease-in-out infinite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity 1.5s ease;
+}
+
+@keyframes ultimoDiaFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ⭐ Fade-out suave */
+.ultimo-dia-fadeout {
+  opacity: 0;
+}
+
+/* ============================================================
+   CONTENIDO
+============================================================ */
+.ultimo-dia {
+  text-align: center;
+  color: #ffeef7;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* ============================================================
+   VERSOS
+============================================================ */
+.versos-finales {
+  margin-bottom: 2rem;
+}
+
+.verso {
+  opacity: 0;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  font-family: "Playfair Display", serif;
+
+  /* ⭐ Color corregido: ahora brilla */
+  color: #f8eaff;
+  text-shadow: 0 0 18px rgba(255, 200, 255, 0.7);
+
+  animation: versoFade 1.6s ease forwards;
+}
+
+@keyframes versoFade {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   CANCIÓN FINAL
+============================================================ */
+.cancion-final {
+  margin-top: 2rem;
+}
+
+.portada-final {
+  width: 220px;
+  height: 220px;
+  border-radius: 1rem;
+  box-shadow: 0 0 24px rgba(255, 200, 255, 0.6);
+  margin-bottom: 1rem;
+}
+
+.nombre-cancion {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #fb0370;
+}
+
+/* ============================================================
+   BOTÓN WRAPPED FINAL
+============================================================ */
+.wrapped-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  background: #f5d7a1;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-family: "Playfair Display", serif;
+  transition: 0.3s ease;
+}
+
+.wrapped-btn:hover {
+  background: #ffe7c4;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 480px) {
+  .verso {
+    font-size: 1.3rem;
+  }
+
+  .portada-final {
+    width: 180px;
+    height: 180px;
+  }
+}
