@@ -1,6 +1,10 @@
 import React, { useState, useMemo } from "react";
 import FallingHearts from "../components/FallingHearts";
 
+// Credenciales de tu base de datos Supabase
+const SUPABASE_REST_URL = "https://tzzqeokktvtvknsidiev.supabase.co/rest/v1/latidos";
+const SUPABASE_ANON_KEY = "sb_publishable_jo4UDshpx-apmFm__j83nA_0GFt1iNL";
+
 export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
   const [emocion, setEmocion] = useState("");
 
@@ -36,9 +40,10 @@ export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
     return "tema-calma";
   }, [emocion]);
 
-  const handleGuardar = () => {
+  const handleGuardar = async () => {
     if (!emocion.trim()) return; // evitar guardar vacío
 
+    // 1. Estructura y guardado local original
     const latido = {
       texto: emocion,
       fecha,
@@ -54,6 +59,26 @@ export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
       localStorage.setItem("ultimoLatidoDia", diaActual);
     }
 
+    // 2. Respaldo silencioso en tu base de datos Supabase
+    try {
+      await fetch(SUPABASE_REST_URL, {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+          dia: diaActual ? Number(diaActual) : null,
+          texto: emocion
+        })
+      });
+    } catch (error) {
+      console.log("Error al conectar con Supabase, guardado solo en el teléfono.");
+    }
+
+    // 3. Continuar el flujo de la app
     onSave();
   };
 
