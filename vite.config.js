@@ -1,10 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 5173, // puedes cambiar el puerto si lo necesitas
+  base: './',
+  resolve: {
+    alias: {
+      // Evita que Rollup intente rastrear fsevents o módulos de Node
+      fsevents: 'identity-obj-proxy'
+    }
+  },
+  build: {
+    rollupOptions: {
+      external: ['fsevents'],
+      output: {
+        format: 'es', // Fuerza el formato de módulos de JavaScript modernos
+      },
+    },
+  },
+  optimizeDeps: {
+    exclude: ['fsevents']
   }
 })

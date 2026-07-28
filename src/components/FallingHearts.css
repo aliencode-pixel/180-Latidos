@@ -1,5 +1,5 @@
 /* ============================================================
-   CONTENEDOR PRINCIPAL (ÚNICO Y CORRECTO)
+   CONTENEDOR PRINCIPAL
 ============================================================ */
 .falling-hearts-container {
   position: absolute;
@@ -8,117 +8,46 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  z-index: 2;
+  z-index: 1 !important; 
 }
 
-/* ============================================================
-   ELEMENTOS (CORAZONES + PÉTALOS)
-============================================================ */
 .falling-hearts-container .item {
   position: absolute;
   top: -40px;
   opacity: 0.85;
-
-  animation:
-    caer 12s linear infinite,
-    rotar 6s ease-in-out infinite,
-    flotar-lateral 5s ease-in-out infinite;
-
+  animation: caer-completo 12s linear infinite;
   transition: color 0.4s ease, filter 0.4s ease;
+  
+  /* COLOR DE EMERGENCIA: Si no detecta tema, serán rosaditos, nunca negros */
+  color: #ffb7c5; 
+}
 
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+@keyframes caer-completo {
+  0% { transform: translateY(0) rotate(0deg) translateX(0px); opacity: 0.9; }
+  50% { transform: translateY(55vh) rotate(20deg) translateX(18px); opacity: 0.85; }
+  100% { transform: translateY(110vh) rotate(0deg) translateX(0px); opacity: 0; }
 }
 
 /* ============================================================
-   ANIMACIONES
+   DETECCIÓN AUTOMÁTICA DE TEMAS (Los de la Bienvenida)
+   Esto funciona sin que tú sepas cuál eligió.
 ============================================================ */
-@keyframes caer {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translateY(55vh) rotate(15deg);
-    opacity: 0.85;
-  }
-  100% {
-    transform: translateY(110vh) rotate(0deg);
-    opacity: 0;
-  }
-}
-
-@keyframes rotar {
-  0%   { transform: rotate(0deg); }
-  50%  { transform: rotate(20deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes flotar-lateral {
-  0%   { margin-left: 0px; }
-  50%  { margin-left: 18px; }
-  100% { margin-left: 0px; }
-}
+[class*="tema-horizonte"] .item { color: #7fa6ff !important; filter: drop-shadow(0 0 6px rgba(120, 150, 255, 0.5)); }
+[class*="tema-ocaso"] .item     { color: #ff8a5c !important; filter: drop-shadow(0 0 6px rgba(255, 140, 90, 0.5)); }
+[class*="tema-alba"] .item      { color: #ffd27f !important; filter: drop-shadow(0 0 6px rgba(255, 200, 120, 0.5)); }
+[class*="tema-acuarela"] .item  { color: #7fd8ff !important; filter: drop-shadow(0 0 6px rgba(120, 220, 255, 0.5)); }
+[class*="tema-etereo"] .item    { color: #c9b8ff !important; filter: drop-shadow(0 0 6px rgba(200, 200, 255, 0.5)); }
 
 /* ============================================================
-   AJUSTES SEGÚN TEMA (solo movimiento)
+   DETECCIÓN AUTOMÁTICA DE EMOCIONES (Paso 6)
+   Estos tienen prioridad cuando ella escribe algo.
 ============================================================ */
-.tema-horizonte .falling-hearts-container .item {
-  animation-duration: 14s, 7s, 6s;
-}
+.tema-energia .item   { color: #fb0670 !important; filter: drop-shadow(0 0 5px rgba(251, 6, 112, 0.4)); }
+.tema-calma .item     { color: #7fa6ff !important; filter: drop-shadow(0 0 5px rgba(127, 166, 255, 0.4)); }
+.tema-nostalgia .item { color: #ff8a5c !important; filter: drop-shadow(0 0 5px rgba(255, 138, 92, 0.4)); }
 
-.tema-ocaso .falling-hearts-container .item {
-  animation-duration: 13s, 6.5s, 5.5s;
-}
-
-.tema-alba .falling-hearts-container .item {
-  animation-duration: 12.5s, 6s, 5s;
-}
-
-.tema-acuarela .falling-hearts-container .item {
-  animation-duration: 15s, 7s, 6.5s;
-}
-
-.tema-etereo .falling-hearts-container .item {
-  animation-duration: 16s, 7.5s, 7s;
-}
-
-/* ============================================================
-   COLORES TEMÁTICOS (corazones + pétalos)
-============================================================ */
-.tema-horizonte .falling-hearts-container .item {
-  color: #7fa6ff;
-  filter: drop-shadow(0 0 6px rgba(120, 150, 255, 0.5));
-}
-
-.tema-ocaso .falling-hearts-container .item {
-  color: #ff8a5c;
-  filter: drop-shadow(0 0 6px rgba(255, 140, 90, 0.5));
-}
-
-.tema-alba .falling-hearts-container .item {
-  color: #ffd27f;
-  filter: drop-shadow(0 0 6px rgba(255, 200, 120, 0.5));
-}
-
-.tema-acuarela .falling-hearts-container .item {
-  color: #7fd8ff;
-  filter: drop-shadow(0 0 6px rgba(120, 220, 255, 0.5));
-}
-
-.tema-etereo .falling-hearts-container .item {
-  color: #c9b8ff;
-  filter: drop-shadow(0 0 6px rgba(200, 200, 255, 0.5));
-}
-
-.falling-hearts-container {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.paso2,
-.paso3 {
-  position: relative;
-  z-index: 5;
+/* CUMPLEAÑOS */
+.fase-cumple .item {
+  color: #ffb7c5 !important; 
+  filter: drop-shadow(0 0 8px rgba(255, 183, 197, 0.6)) !important;
 }

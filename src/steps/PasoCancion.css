@@ -1,5 +1,5 @@
 /* ============================================================
-   BASE — FONDO ANIMADO LOCAL (NO GLOBAL)
+   BASE — FONDO ANIMADO LOCAL
 ============================================================ */
 .paso-cancion {
   width: 100%;
@@ -12,9 +12,9 @@
   position: relative;
   z-index: 9999;
 
-  /* ⭐ Fondo animado local */
-  background-size: 900% 900%;
-  animation: fadeInScreen 0.8s ease forwards, mixGradient 20s ease-in-out infinite;
+  /* Fondo animado */
+  background-size: 400% 400%; /* Ajustado para que la animación se note */
+  animation: fadeInScreen 0.8s ease forwards;
 }
 
 @keyframes fadeInScreen {
@@ -22,8 +22,15 @@
   to { opacity: 1; }
 }
 
+/* ⭐ La animación que faltaba para que los gradientes se muevan */
+@keyframes mixGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* ============================================================
-   TARJETA DE LA CANCIÓN
+   TARJETA DE LA CANCIÓN (Tus estilos originales)
 ============================================================ */
 .tarjeta-cancion {
   background: rgba(240, 222, 222, 0.293);
@@ -48,7 +55,7 @@
   font-family: "Playfair Display", serif;
   font-size: 1.55rem;
   margin-bottom: 1.2rem;
-  color: #fb0370;
+  color: #fb0670; /* Tu color original */
 }
 
 .portada-cancion {
@@ -62,22 +69,22 @@
 
 .nombre {
   font-size: 1.2rem;
-  color: #e25e5e;
+  color: #e25e5e; /* Tu color original */
   font-weight: 600;
 }
 
 .artista {
   font-size: 0.95rem;
-  color: #e25e5e;
+  color: #fc8484; /* Tu color original */
   margin-bottom: 1.4rem;
 }
 
 /* ============================================================
-   BOTONES
+   BOTONES (Tus estilos originales)
 ============================================================ */
 .btn-link {
   display: inline-block;
-  background: #1db954;
+  background: #1a9746;
   color: white;
   padding: 0.65rem 1.3rem;
   border-radius: 0.9rem;
@@ -109,9 +116,6 @@
   background: rgba(255, 255, 255, 0.85);
 }
 
-/* ============================================================
-   ANIMACIÓN DE LA PORTADA
-============================================================ */
 .anim-portada {
   animation: float 3s ease-in-out infinite;
 }
@@ -123,56 +127,31 @@
 }
 
 /* ============================================================
-   PALETAS SOFT
+   PALETAS DINÁMICAS (Arregladas para que se muevan)
 ============================================================ */
-.tema-pastel-bloom,
-.tema-blue-serenity,
-.tema-aurora-bloom,
-.tema-heartwave,
-.tema-dreamlight {
-  background: linear-gradient(
-    120deg,
-    #f7eaff,
-    #e8e6ff,
-    #dff1ff,
-    #d6f9f2,
-    #e8ffe8,
-    #fff4e6,
-    #ffeef7
-  );
+
+.tema-pastel-bloom, .tema-blue-serenity, .tema-aurora-bloom, .tema-heartwave, .tema-dreamlight {
+  background: linear-gradient(-45deg, #f7eaff, #e8e6ff, #dff1ff, #d6f9f2, #e8ffe8, #fff4e6, #ffeef7) !important;
+  background-size: 400% 400% !important;
+  animation: mixGradient 15s ease infinite !important;
 }
 
-/* ============================================================
-   PALETAS POP
-============================================================ */
-.tema-golden-drift,
-.tema-stardust-pop,
-.tema-neon-pastel {
-  background: linear-gradient(
-    120deg,
-    #ffe8ff,
-    #f3e0ff,
-    #dff1ff,
-    #c8f7f0,
-    #fff0d6,
-    #ffd9b8,
-    #ffc8a8
-  );
+.tema-golden-drift, .tema-stardust-pop, .tema-neon-pastel {
+  background: linear-gradient(-45deg, #ffe8ff, #f3e0ff, #dff1ff, #c8f7f0, #fff0d6, #ffd9b8, #ffc8a8) !important;
+  background-size: 400% 400% !important;
+  animation: mixGradient 10s ease infinite !important;
 }
 
-/* ============================================================
-   PALETAS DARK
-============================================================ */
-.tema-midnight-glow,
-.tema-violet-pulse {
-  background: linear-gradient(
-    120deg,
-    #1a1a3d,
-    #2d1a4d,
-    #3a0ca3,
-    #5a1fb7,
-    #3a0ca3,
-    #1f1a3d,
-    #0f0f2b
-  );
+.tema-midnight-glow, .tema-violet-pulse {
+  /* Fondo "Cyber-Night": Azules profundos y púrpuras eléctricos */
+  background: linear-gradient(-45deg, 
+    #0a0118, /* Negro azulado profundo (Base de noche) */
+    #1b0035, /* Violeta muy oscuro */
+    #2d00f7, /* Azul eléctrico (Contraste frío para el rosa) */
+    #6a00f4, /* Púrpura neón */
+    #21004a  /* Uva oscuro */
+  ) !important;
+  
+  background-size: 400% 400% !important;
+  animation: mixGradient 8s ease infinite !important;
 }

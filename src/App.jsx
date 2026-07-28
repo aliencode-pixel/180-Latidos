@@ -17,6 +17,10 @@ import UltimoDiaCine from "./steps/UltimoDiaCine";
 import WrappedFinal from "./steps/WrappedFinal";
 import FallingHearts from "./components/FallingHearts";
 
+// ⭐ COMPONENTE DE CUMPLEAÑOS
+import BirthdaySurprise from "./components/BirthdaySurprise";
+import { TRACKS } from "./data/tracks";
+
 /* ============================================================
    CSS
 ============================================================ */
@@ -46,10 +50,24 @@ export default function App() {
   const [mostrarIntroUltimoDia, setMostrarIntroUltimoDia] = useState(true);
   const [transicionAWrapped, setTransicionAWrapped] = useState(false);
 
+  /* ⭐ ESTADOS PARA CUMPLEAÑOS */
+  const [mostrarCumple, setMostrarCumple] = useState(false);
+  const [cumpleFinalizado, setCumpleFinalizado] = useState(false);
+
   const instrumentalUltimoDiaRef = useRef(null);
 
   /* ============================================================
-     1. Cargar tema
+     ⭐ TÍTULO DINÁMICO (VOL. II)
+  ============================================================ */
+  const tituloPagina = diaActual >= 180 ? "180 latidos: Vol. II" : "180 latidos";
+
+  // Cambia el título de la pestaña del navegador automáticamente
+  useEffect(() => {
+    document.title = tituloPagina;
+  }, [tituloPagina]);
+
+  /* ============================================================
+     1. Cargar tema inicial
   ============================================================ */
   useEffect(() => {
     const tema = localStorage.getItem("temaElegido");
@@ -57,12 +75,33 @@ export default function App() {
   }, []);
 
   /* ============================================================
-     2. Lógica diaria — AHORA PERFECTA
+     2. INTERCEPTOR DE CUMPLEAÑOS (Prioridad Máxima)
+  ============================================================ */
+  useEffect(() => {
+    const chequearCumple = () => {
+      const hoy = new Date();
+      // getMonth() es 0-indexed (3 es Abril)
+      const es18Abril = hoy.getMonth() === 3 && hoy.getDate() === 18; 
+      const yaVioCumple = localStorage.getItem("cumple2026Visto") === "true";
+
+      console.log("Birthday Check:", { es18Abril, yaVioCumple, cumpleFinalizado });
+
+      if (es18Abril && !yaVioCumple && !cumpleFinalizado) { 
+        setMostrarCumple(true);
+      }
+    };
+
+    chequearCumple();
+    const timer = setInterval(chequearCumple, 60000);
+    return () => clearInterval(timer);
+  }, [cumpleFinalizado]);
+
+  /* ============================================================
+     3. Lógica diaria normal
   ============================================================ */
   useEffect(() => {
     const calcularDia = () => {
-      /* ⭐ Cálculo estable sin errores de zona horaria */
-      const fechaInicio = new Date("2026-02-14T00:00:00");
+      const fechaInicio = new Date("2026-02-16T00:00:00");
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
 
@@ -72,26 +111,18 @@ export default function App() {
 
       setDiaActual(dia);
 
-      /* ⭐ Reset diario automático */
       const ultimaCancion = Number(localStorage.getItem("ultimaCancionDia"));
       const ultimoLatido = Number(localStorage.getItem("ultimoLatidoDia"));
 
+      // Limpieza de datos si cambió el día
       if (ultimaCancion !== dia) localStorage.removeItem("ultimaCancionDia");
       if (ultimoLatido !== dia) localStorage.removeItem("ultimoLatidoDia");
 
       const yaEscucho = ultimaCancion === dia;
       const yaEscribio = ultimoLatido === dia;
 
-      /* ⭐ BLOQUEO TOTAL durante flujo diario */
-      if (
-        pantallaDia === "wrapped-final" ||
-        paso === 5 ||
-        paso === 5.5 ||
-        paso === 6 ||
-        paso === 7
-      ) return;
+      if (["wrapped-final", "final"].includes(pantallaDia) || paso >= 5) return;
 
-      /* ⭐ Día 1 → flujo completo */
       if (dia === 1) {
         if (paso < 7) {
           setPantallaDia(null);
@@ -99,18 +130,19 @@ export default function App() {
         }
       }
 
-      /* ⭐ Día 2 en adelante → NO mostrar Paso2,3,4 */
       if (dia > 1 && paso < 5) {
         setPaso(5);
       }
 
-      /* ⭐ Día 180 */
+      /* ⚠️ NOTA: Como ahora la app continúa en "Vol. II", 
+         desactivamos el corte automático del día 180 para que no la envíe a la pantalla final. */
+      /*
       if (dia >= 180) {
         setPantallaDia("final");
         return;
       }
+      */
 
-      /* ⭐ Regla B aplicada */
       if (!yaEscucho) {
         setPantallaDia("inicio-dia");
       } else if (yaEscucho && !yaEscribio) {
@@ -121,26 +153,8 @@ export default function App() {
     };
 
     calcularDia();
-    const interval = setInterval(calcularDia, 60000);
-    return () => clearInterval(interval);
   }, [paso, pantallaDia]);
 
-  /* ============================================================
-     3. Intro del último día
-  ============================================================ */
-  useEffect(() => {
-    const yaVioIntro = localStorage.getItem("introUltimoDiaVisto");
-    if (yaVioIntro) setMostrarIntroUltimoDia(false);
-  }, []);
-
-  const handleFinishIntro = () => {
-    localStorage.setItem("introUltimoDiaVisto", "true");
-    setMostrarIntroUltimoDia(false);
-  };
-
-  /* ============================================================
-     4. Navegación
-  ============================================================ */
   const avanzar = () => {
     setTransicionando(true);
     setTimeout(() => {
@@ -157,13 +171,37 @@ export default function App() {
     }, 350);
   };
 
-  const esUltimoDia = diaActual === 180;
+  const esUltimoDia = false; // Se activará cuando llegue el nuevo día de la propuesta
 
   /* ============================================================
-     5. Render
+     4. Renderizado Condicional
   ============================================================ */
 
-  /* ⭐ Bienvenida SOLO si es Día 1 */
+  if (mostrarCumple) {
+    return (
+      <BirthdaySurprise
+        onFinish={() => {
+          const cancionHoy = {
+            nombre: "ONE IN A MILLION",
+            artista: "TWICE",
+            portada: "https://i.scdn.co/image/ab67616d0000b2739dae955bf89905477e113971",
+            link: "https://open.spotify.com/intl-es/track/6MzuFfdG0zpPOrTXtmtLhF?si=a1dd2abbd7344629",
+            vibe: "soft"
+          };
+
+          setCancionSeleccionada(cancionHoy);
+          setPantallaDia(null);
+          setPaso(5.5);
+          setMostrarCumple(false);
+          setCumpleFinalizado(true);
+          
+          localStorage.setItem("cumple2026Visto", "true");
+          localStorage.setItem("ultimaCancionDia", diaActual);
+        }}
+      />
+    );
+  }
+
   if (diaActual === 1 && paso === 1) {
     return <Bienvenida onComenzar={() => setPaso(2)} />;
   }
@@ -174,17 +212,14 @@ export default function App() {
 
         {(paso === 2 || paso === 3) && diaActual === 1 && <FallingHearts />}
 
-        {/* Intro cinematográfica SOLO en día 180 */}
         {esUltimoDia && mostrarIntroUltimoDia && (
-          <UltimoDiaCine onFinish={handleFinishIntro} />
+          <UltimoDiaCine onFinish={() => setMostrarIntroUltimoDia(false)} />
         )}
 
-        {/* Wrapped Final */}
         {pantallaDia === "wrapped-final" && (
           <WrappedFinal onVolver={() => setPantallaDia("final")} />
         )}
 
-        {/* Último Día */}
         {pantallaDia === "final" && !mostrarIntroUltimoDia && (
           <UltimoDia
             ultimaCancion={{
@@ -200,17 +235,17 @@ export default function App() {
           />
         )}
 
-        {/* Inicio del día */}
         {["inicio-dia", "escribir-latido", "completado"].includes(pantallaDia) && (
           <div className={`inicio-dia-wrapper tema-${temaElegido}`}>
             <InicioDia
               diaActual={diaActual}
               pantallaDia={pantallaDia}
+              titulo={tituloPagina} // Le pasamos el título a la cabecera
               onIrRuleta={() => {
                 const ultimaCancion = Number(localStorage.getItem("ultimaCancionDia"));
                 if (ultimaCancion === diaActual) {
                   setPantallaDia(null);
-                  setPaso(6); // ⭐ Regla B
+                  setPaso(6);
                 } else {
                   setPantallaDia(null);
                   setPaso(5);
@@ -228,12 +263,10 @@ export default function App() {
           </div>
         )}
 
-        {/* Día 1 */}
         {diaActual === 1 && paso === 2 && <Paso2 onNext={avanzar} />}
         {diaActual === 1 && paso === 3 && <Paso3 onNext={avanzar} />}
         {diaActual === 1 && paso === 4 && <Paso4 onNext={avanzar} />}
 
-        {/* Ruleta */}
         {paso === 5 && (
           <Paso5
             diaActual={diaActual}
@@ -245,7 +278,6 @@ export default function App() {
           />
         )}
 
-        {/* Canción seleccionada */}
         {paso === 5.5 && (
           <Paso5_5
             cancion={cancionSeleccionada}
@@ -253,7 +285,6 @@ export default function App() {
           />
         )}
 
-        {/* Latido */}
         {paso === 6 && (
           <Paso6
             cancion={cancionSeleccionada}
@@ -266,7 +297,6 @@ export default function App() {
           />
         )}
 
-        {/* Historial */}
         {paso === 7 && (
           <Paso7
             onVolver={() => setPaso(6)}

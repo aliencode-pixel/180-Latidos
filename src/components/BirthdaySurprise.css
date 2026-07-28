@@ -1,0 +1,685 @@
+/* ============================================================
+
+   CONTENEDOR PRINCIPAL (MANTENIDO)
+
+============================================================ */
+
+.birthday-container {
+
+  background-color: #000000;
+
+  height: 100vh;
+
+  width: 100vw;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: white;
+
+  font-family: 'Courier New', Courier, monospace;
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  z-index: 9999;
+
+  overflow: hidden;
+
+  transition: background-color 4s ease-in-out;
+
+}
+
+.birthday-container.acuarela-sunset {
+
+  background-color: #fffdfa !important;
+
+  background: radial-gradient(
+
+    circle at center,
+
+    rgba(255, 255, 255, 1) 0%,
+
+    rgba(255, 250, 240, 1) 40%,
+
+    rgba(255, 240, 220, 0.995) 75%,
+
+    rgba(255, 230, 210, 0.903) 100%
+
+  );
+
+}
+
+/* ============================================================
+
+   FASE 4: SOBRE Y SELLO DE LACRE (NUEVO)
+
+============================================================ */
+
+.v-centrar {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 60;
+
+}
+
+.envelope-wrapper {
+
+  position: relative;
+
+  width: 280px;
+
+  height: 180px;
+
+  perspective: 1000px;
+
+}
+
+.envelope {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: #e5c9a5; /* Color crema vintage */
+
+  border-radius: 4px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+}
+
+.envelope-flap {
+
+  position: absolute;
+
+  top: 0;
+
+  width: 0;
+
+  height: 0;
+
+  border-left: 140px solid transparent;
+
+  border-right: 140px solid transparent;
+
+  border-top: 100px solid #d4b38a;
+
+  z-index: 3;
+
+  transform-origin: top;
+
+  transition: transform 0.8s ease;
+
+}
+
+.envelope-wrapper.open .envelope-flap {
+
+  transform: rotateX(180deg);
+
+  z-index: 1;
+
+}
+
+.wax-seal {
+
+  position: absolute;
+
+  top: 80px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 50px;
+
+  height: 50px;
+
+  background: #a52a2a; /* Rojo lacre */
+
+  border-radius: 50%;
+
+  z-index: 4;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+  transition: transform 0.3s;
+
+}
+
+.wax-seal:hover {
+
+  transform: translateX(-50%) scale(1.1);
+
+}
+
+.wax-seal .heart-icon {
+
+  color: #fff;
+
+  font-size: 24px;
+
+}
+
+.hint-container {
+
+  margin-top: 30px;
+
+  text-align: center;
+
+  color: #a56a5b;
+
+}
+
+.swipe-hint {
+
+  font-family: 'Georgia', serif;
+
+  font-style: italic;
+
+  font-size: 1.1rem;
+
+}
+
+.arrow-up-anim {
+
+  display: inline-block;
+
+  animation: bounceUp 1.5s infinite;
+
+  font-size: 1.5rem;
+
+}
+
+@keyframes bounceUp {
+
+  0%, 100% { transform: translateY(0); }
+
+  50% { transform: translateY(-10px); }
+
+}
+
+/* ============================================================
+   PERGAMINO Y PÁRRAFOS
+============================================================ */
+.papel-pergamino {
+  background: #fdf5e6;
+  width: 85%;
+  max-width: 500px;
+  min-height: 450px;
+  padding: 40px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.1), 0 20px 40px rgba(0,0,0,0.2);
+  border: 1px solid #d2b48c;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  z-index: 50 !important;
+}
+
+.contenido-pergamino { font-family: 'Georgia', serif; color: #4a3728; line-height: 1.8; text-align: center; }
+.contenido-pergamino h2 { font-size: 1.8rem; color: #8b4513; margin-bottom: 20px; }
+
+.parrafo-animado {
+  min-height: 120px;
+  animation: fadeInText 0.8s ease-out forwards;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FLECHA DE NAVEGACIÓN */
+.flecha-lectura {
+  margin-top: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #8b4513;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.arrow-right {
+  font-size: 1.5rem;
+  /* Cambiamos el nombre de la animación para que sea más claro */
+  animation: bounceSide 1.5s infinite; 
+  display: inline-block; /* Asegura que la transformación funcione correctamente */
+}
+
+@keyframes bounceSide {
+  0%, 100% { 
+    transform: translateX(0); 
+  }
+  50% { 
+    /* El valor positivo lo mueve hacia la derecha */
+    transform: translateX(8px); 
+  }
+}
+.btn-continuar-app {
+  margin-top: 20px; padding: 10px 25px; border: 2px solid #8b4513;
+  background: rgba(139, 69, 19, 0.1); color: #8b4513; cursor: pointer;
+  font-weight: bold; border-radius: 20px; transition: 0.3s;
+}
+
+/* ============================================================
+
+   ESTILOS EXISTENTES (NO MODIFICADOS)
+
+============================================================ */
+
+.mensaje-entrada { text-align: center; padding: 20px; z-index: 100; }
+
+.texto-poetico { font-size: 1.2rem; opacity: 0; animation: fadeIn 2s forwards; }
+
+.delay-1 { animation-delay: 2s; }
+
+.btn-comenzar {
+
+  margin-top: 40px;
+
+  background: transparent;
+
+  border: 1px solid white;
+
+  color: white;
+
+  padding: 10px 30px;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  animation: fadeIn 1s forwards 4s;
+
+  letter-spacing: 2px;
+
+  transition: 0.3s ease;
+
+}
+
+.matrix-canvas {
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  transition: opacity 3s ease;
+
+}
+
+.ui-overlay {
+
+  position: relative;
+
+  z-index: 10;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  height: 100%;
+
+}
+
+.tulip-bouquet-silhouette {
+
+  width: 320px;
+
+  height: 320px;
+
+  margin-bottom: 20px;
+
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+
+  opacity: 0;
+
+  transition: opacity 2s ease-in;
+
+}
+
+.tulip-bouquet-silhouette.visible {
+
+  opacity: 1;
+
+}
+
+/* Animación de los trazos (Efecto dibujo) */
+
+.tulip-bouquet-silhouette path {
+
+  stroke-dasharray: 1000;
+
+  stroke-dashoffset: 1000;
+
+  transition: stroke-dashoffset 5s ease-in-out, opacity 3s ease-in;
+
+}
+
+/* 1. Aparecen primero los tallos */
+
+.tulip-bouquet-silhouette.visible .base-structure path {
+
+  stroke-dashoffset: 0;
+
+  opacity: 0.6;
+
+  transition-delay: 0.5s; /* Empieza casi de inmediato */
+
+}
+
+/* 2. Luego las hojas */
+
+.tulip-bouquet-silhouette.visible .leaves-structure path {
+
+  stroke-dashoffset: 0;
+
+  opacity: 0.5;
+
+  transition-delay: 2.5s; /* Espera a los tallos */
+
+}
+
+/* 3. Finalmente los pétalos de los tulipanes */
+
+.tulip-bouquet-silhouette.visible .flowers-cluster path {
+
+  stroke-dashoffset: 0;
+
+  opacity: 0.7;
+
+  transition-delay: 4.5s; /* Aparecen al final */
+
+}
+
+/* 4. Los puntos brillantes aparecen por último con un suave fundido */
+
+.tulip-bouquet-silhouette.visible .flowers-cluster circle {
+
+  opacity: 0.9;
+
+  transition: opacity 2s ease-in;
+
+  transition-delay: 6s;
+
+}
+
+/* Estilo del botón de revelar para que no opaque el dibujo */
+
+.btn-revelar {
+
+  /* ... tus estilos anteriores ... */
+
+  animation: fadeIn 1.5s forwards 8.5s; /* Aparece después de que todo el ramo se dibujó */
+
+}
+
+.btn-revelar {
+
+  position: relative;
+
+  z-index: 20;
+
+  background: white;
+
+  color: black;
+
+  border: none;
+
+  padding: 15px 40px;
+
+  font-weight: bold;
+
+  font-family: monospace;
+
+  letter-spacing: 3px;
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+}
+
+.bouquet-color-container.fade-in-acuarela {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: 30;
+
+  animation: revealAcuarela 4.5s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+
+}
+
+.bouquet-color-svg {
+
+  width: 90%;
+
+  max-width: 550px;
+
+  height: auto;
+
+  animation: float 6s ease-in-out infinite;
+
+}
+
+.carta-container {
+
+  position: relative;
+
+  z-index: 50;
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+/* Animaciones compartidas */
+
+@keyframes fadeIn {
+
+  from { opacity: 0; transform: translateY(10px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+@keyframes revealAcuarela {
+
+  0% { opacity: 0; filter: blur(20px); transform: scale(0.9); }
+
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+
+}
+
+.btn-skip {
+
+  position: absolute;
+
+  bottom: 15px;
+
+  right: 15px;
+
+  opacity: 0.3;
+
+  background: none;
+
+  border: none;
+
+  color: inherit;
+
+  font-size: 0.7rem;
+
+  z-index: 1000;
+
+}
+
+/* Asegura que cuando aparezca la carta, nada más la tape */
+
+.carta-container {
+
+    position: fixed !important; /* Cambiado de relative a fixed para que tome toda la pantalla */
+
+    inset: 0;
+
+    z-index: 9999 !important; /* Por encima de todo lo demás */
+
+    background: inherit;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+
+/* Los corazones NO deben interceptar clics */
+
+.falling-hearts-container {
+
+    pointer-events: none !important;
+
+    z-index: 10 !important; /* Capa inferior al pergamino */
+
+}
+
+
+
+/* El pergamino y su contenido SÍ deben recibir clics */
+
+.papel-pergamino,
+
+.contenido-pergamino,
+
+.btn-continuar-app {
+
+    pointer-events: auto !important;
+
+}
+
+
+
+.btn-continuar-app {
+
+    cursor: pointer;
+
+    touch-action: manipulation; /* Mejora la respuesta en móviles */
+
+}
+
+/* ============================================================
+   📱 MEDIA QUERIES (AJUSTES PARA TELÉFONO)
+============================================================ */
+@media screen and (max-width: 600px) {
+  /* Hacemos el pergamino más ancho pero con menos relleno interior */
+  .papel-pergamino {
+    width: 92%;
+    padding: 25px 20px;
+    min-height: 380px;
+  }
+
+  /* Reducimos el tamaño de la letra para que no se desborde */
+  .contenido-pergamino h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .parrafo-animado {
+    font-size: 0.95rem; /* Letra perfecta para lectura en móvil */
+    line-height: 1.5;
+    min-height: 120px;
+  }
+
+  /* Ajustes en los controles de abajo */
+  .flecha-lectura-horizontal {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  .arrow-right {
+    font-size: 1.2rem;
+  }
+
+  .btn-continuar-app {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* Escalamos un poquito el sobre para que no pegue con los bordes de pantallas muy finas */
+  .envelope-wrapper {
+    transform: scale(0.9);
+  }
+
+  /* Reducimos la silueta de los tulipanes en matrix para que no ocupe toda la pantalla */
+  .tulip-bouquet-silhouette {
+    width: 220px;
+  }
+
+  .texto-poetico {
+    font-size: 1.1rem;
+  }
+}

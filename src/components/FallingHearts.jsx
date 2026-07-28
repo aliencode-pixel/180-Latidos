@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./FallingHearts.css";
 
-export default function FallingHearts() {
+export default function FallingHearts({ isBirthday = false }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const shapes = ["❤️", "💗", "💖", "🌸", "💮", "🌺", "🌼"];
+      const shapes = ["❤", "♥", "✿", "❀"];
 
       const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
@@ -28,7 +28,7 @@ export default function FallingHearts() {
   }, []);
 
   return (
-    <div className="falling-hearts-container">
+    <div className={`falling-hearts-container ${isBirthday ? "fase-cumple" : ""}`}>
       {items.map((item) => (
         <span
           key={item.id}

@@ -1,3 +1,4 @@
+
 export const TRACKS = [
   {
     nombre: "Adventure of a Lifetime",
@@ -14,7 +15,7 @@ export const TRACKS = [
     vibe: "pop"
   },
   {
-    nombre: "Dancing Like Butterflies wings",
+    nombre: "Dancing Like Butterfly Wings",
     artista: "ATEEZ",
     portada: "https://i.scdn.co/image/ab67616d0000b2735912b66c73eb9048258a2b2e",
     link: "https://open.spotify.com/intl-es/track/0zmhcNbELrLdNyFEQMkC67?si=50fcd6da07634247",
@@ -395,31 +396,10 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "Cosmo",
-  artista: "The Rose",
-  portada: "https://i.scdn.co/image/ab67616d0000b2732867cbe54320d1068145b213",
-  link: "https://open.spotify.com/intl-es/track/2YtrpGJ2B0wI52vH1jVSqB?si=11a3f5befe494b98",
-  vibe: "soft"
-},
-{
   nombre: "Your Light",
   artista: "TXT",
   portada: "https://i.scdn.co/image/ab67616d0000b27321b731572efa788b8114b510",
   link: "https://open.spotify.com/intl-es/track/2u65DpcqPoABQOW2HQboYE?si=67d79a0568f144c6",
-  vibe: "soft"
-},
-{
-  nombre: "Feeling Good",
-  artista: "Day6",
-  portada: "https://i.scdn.co/image/ab67616d0000b2738ceb4baa1b4ed070cb4498ba",
-  link: "https://open.spotify.com/intl-es/track/6QE3sH7vcSQBo4eFAGoqsj?si=faa1e7fe3d0a491b",
-  vibe: "soft"
-},
-{
-  nombre: "Be Alright",
-  artista: "ATEEZ",
-  portada: "https://img.youtube.com/vi/UceOc93YEXA/maxresdefault.jpg",
-  link: "https://youtu.be/UceOc93YEXA",
   vibe: "soft"
 },
 {
@@ -430,10 +410,31 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "Hydrangea Love",
-  artista: "TXT",
-  portada:"https://i.scdn.co/image/ab67616d0000b273cc6bd8d95024f24c0b646ed1",
-  link: "https://open.spotify.com/intl-es/track/31PF8eu76bgCLNzNm0ZmBX?si=99e66d53c6c841bf",
+  nombre: "Be Alright",
+  artista: "ATEEZ",
+  portada: "https://img.youtube.com/vi/UceOc93YEXA/maxresdefault.jpg",
+  link: "https://youtu.be/UceOc93YEXA",
+  vibe: "soft"
+},
+{
+  nombre: "Cosmo",
+  artista: "The Rose",
+  portada: "https://i.scdn.co/image/ab67616d0000b2732867cbe54320d1068145b213",
+  link: "https://open.spotify.com/intl-es/track/2YtrpGJ2B0wI52vH1jVSqB?si=11a3f5befe494b98",
+  vibe: "soft"
+},
+{
+  nombre: "Feeling Good",
+  artista: "Day6",
+  portada: "https://i.scdn.co/image/ab67616d0000b2738ceb4baa1b4ed070cb4498ba",
+  link: "https://open.spotify.com/intl-es/track/6QE3sH7vcSQBo4eFAGoqsj?si=faa1e7fe3d0a491b",
+  vibe: "soft"
+},
+{
+  nombre: "ONE IN A MILLION",
+  artista: "TWICE",
+  portada:"https://i.scdn.co/image/ab67616d0000b2739dae955bf89905477e113971",
+  link: "https://open.spotify.com/intl-es/track/6MzuFfdG0zpPOrTXtmtLhF?si=a1dd2abbd7344629",
   vibe: "soft"
 },
 {
@@ -562,26 +563,11 @@ export const TRACKS = [
   link: "https://open.spotify.com/intl-es/track/1oIhaSskG6qqjtQUOru4hi?si=e123a27789244c55",
   vibe: "soft"
 },
-
 {
-  nombre: "when it's time",
-  artista: "Green Day",
-  portada: "https://i.scdn.co/image/ab67616d0000b2737e547333cf087b8cfc535444",
-  link: "https://open.spotify.com/intl-es/track/5nGCVIpxp0u4AYpVpK0pv4?si=3e5be6205bac40fb",
-  vibe: "soft"
-},
-{
-  nombre: "All About You",
-  artista: "ATEEZ",
-  portada: "https://i.scdn.co/image/ab67616d0000b273ae27bfe1983213e78b043243",
-  link: "https://open.spotify.com/intl-es/track/4bamfTJc0GuUDYnc3fj6zH?si=fbf028847607432f",
-  vibe: "pop"
-},
-{
-  nombre: "Song 2 U",
-  artista: "Victorious",
-  portada: "https://i.scdn.co/image/ab67616d0000b273ce89c13a028679fbbff3efd2",
-  link: "https://open.spotify.com/intl-es/track/5o3JbTRMCdrMI7xxt35KyQ?si=66a51dc40e984180",
+  nombre: "Solar",
+  artista: "rei brown",
+  portada: "https://i.scdn.co/image/ab67616d0000e1a3904c9ee5edd434cd9b1784bf",
+  link: "https://open.spotify.com/intl-es/track/17jM44uJmNpCD5B54Yup1C?si=44617ba41ba44818",
   vibe: "soft"
 },
 {
@@ -590,6 +576,13 @@ export const TRACKS = [
   portada: "https://i.scdn.co/image/ab67616d0000b273210933bff4e6e68dc23472b0",
   link: "https://open.spotify.com/intl-es/track/5ehUXOmfG5u6V3LgNZ3pL6?si=5c0f61a5a542427c",
   vibe: "soft"
+},
+{
+  nombre: "All About You",
+  artista: "ATEEZ",
+  portada: "https://i.scdn.co/image/ab67616d0000b273ae27bfe1983213e78b043243",
+  link: "https://open.spotify.com/intl-es/track/4bamfTJc0GuUDYnc3fj6zH?si=fbf028847607432f",
+  vibe: "pop"
 },
 {
   nombre: "Hi Hello",
@@ -603,13 +596,6 @@ export const TRACKS = [
   artista: "TXT",
   portada: "https://i.scdn.co/image/ab67616d0000b273e5f0516ccbd4a59341a7ddd3",
   link: "https://open.spotify.com/intl-es/track/0Fb1M7rbOnydw6SrXXSlHr?si=a33e3fd815884bcb",
-  vibe: "soft"
-},
-{
-  nombre: "Afterglow",
-  artista: "Ed Sheeran",
-  portada: "https://i.scdn.co/image/ab67616d0000b27388e170d5ced543d191593fc8",
-  link: "https://open.spotify.com/intl-es/track/0E4Y1XIbs8GrAT1YqVy6dq?si=29706026caab4a7d",
   vibe: "soft"
 },
 {
@@ -634,13 +620,6 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "Miracle",
-  artista: "TXT",
-  portada: "https://i.scdn.co/image/ab67616d0000b27303c996028737858321d2ffe0",
-  link: "https://open.spotify.com/intl-es/track/3FAmnX3nUGsue2TcNEnq0t?si=1cf91a4b43b547f8",
-  vibe: "pop"
-},
-{
   nombre: "Best Part",
   artista: "Day6",
   portada: "https://i.scdn.co/image/ab67616d0000b2738d5ebc3ff7acf1319a218a77",
@@ -662,11 +641,11 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "Blue Hour",
-  artista: "TXT",
-  portada: "https://i.scdn.co/image/ab67616d0000b273528303153e46f8e94e91820e",
-  link: "https://open.spotify.com/intl-es/track/0JQHGu03YJikcND4SENdiW?si=b8a36fd96b4a41db",
-  vibe: "pop"
+  nombre: "Butterflies",
+  artista: "Stray Kids",
+  portada: "https://i.scdn.co/image/ab67616d0000b2730d6b95a64ce874af6083d654",
+  link: "https://open.spotify.com/intl-es/track/3Oi8I8awZsuJtSEOGHuOXf?si=fd4ebdc7f0734d49",
+  vibe: "soft"
 },
 {
   nombre: "Steal the Show",
@@ -690,6 +669,20 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
+  nombre: "Afterglow",
+  artista: "Ed Sheeran",
+  portada: "https://i.scdn.co/image/ab67616d0000b27388e170d5ced543d191593fc8",
+  link: "https://open.spotify.com/intl-es/track/0E4Y1XIbs8GrAT1YqVy6dq?si=29706026caab4a7d",
+  vibe: "soft"
+},
+{
+  nombre: "Miracle",
+  artista: "TXT",
+  portada: "https://i.scdn.co/image/ab67616d0000b27303c996028737858321d2ffe0",
+  link: "https://open.spotify.com/intl-es/track/3FAmnX3nUGsue2TcNEnq0t?si=1cf91a4b43b547f8",
+  vibe: "pop"
+},
+{
   nombre: "Live Forever",
   artista: "Oasis",
   portada: "https://i.scdn.co/image/ab67616d0000b2737c46409e5671b5b433761623",
@@ -702,13 +695,6 @@ export const TRACKS = [
   portada: "https://i.scdn.co/image/ab67616d0000b2736fbf4bb780a9cbc34b3f35da",
   link: "https://open.spotify.com/intl-es/track/7cQjIIjLOhbRVCXyIepF2U?si=b752d8484ae4480b",
   vibe: "soft"
-},
-{
-  nombre: "Loser Lover",
-  artista: "TXT",
-  portada: "https://i.scdn.co/image/ab67616d0000b2735137378ed49327e5dec7406f",
-  link: "https://open.spotify.com/intl-es/track/21aOLk12MksET8AsbU0SI6?si=8e937dfe065e4977",
-  vibe: "pop"
 },
 {
   nombre: "The Power of Love",
@@ -809,17 +795,17 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "in the stars",
-  artista: "One Ok Rock",
-  portada: "https://i.scdn.co/image/ab67616d0000e1a35e427590ddf78e316dccdc14",
-  link: "https://open.spotify.com/intl-es/track/1rWuPuNDrT982hO8xPl9Ep?si=d720a642ce0c4da1",
-  vibe: "soft"
+  nombre: "Blue Hour",
+  artista: "TXT",
+  portada: "https://i.scdn.co/image/ab67616d0000b273528303153e46f8e94e91820e",
+  link: "https://open.spotify.com/intl-es/track/0JQHGu03YJikcND4SENdiW?si=b8a36fd96b4a41db",
+  vibe: "pop"
 },
 {
-  nombre: "Butterflies",
-  artista: "Stray Kids",
-  portada: "https://i.scdn.co/image/ab67616d0000b2730d6b95a64ce874af6083d654",
-  link: "https://open.spotify.com/intl-es/track/3Oi8I8awZsuJtSEOGHuOXf?si=fd4ebdc7f0734d49",
+  nombre: "Could I Be Somebody",
+  artista: "rei brown",
+  portada: "https://i.scdn.co/image/ab67616d00001e02904c9ee5edd434cd9b1784bf",
+  link: "https://open.spotify.com/intl-es/track/4UGK34WLZ2h1uepkBBLoc5?si=944710d037444df6",
   vibe: "soft"
 },
 {
@@ -843,12 +829,11 @@ export const TRACKS = [
   link: "https://open.spotify.com/intl-es/track/4lMtnEPuxqMWQg4XuDlK0b?si=d83b3baa45cd4bf5",
   vibe: "soft"
 },
-
 {
-  nombre: "strawberry moon",
-  artista: "IU",
-  portada: "https://i.scdn.co/image/ab67616d0000b273c4d4ade422fa74b8512fd85e",
-  link: "https://open.spotify.com/intl-es/track/2g0LdZQce9xlcHb1mBJyuz?si=04c4117cd7f44105",
+  nombre: "Hydrangea Love",
+  artista: "TXT",
+  portada: "https://i.scdn.co/image/ab67616d0000b27394b9645bc6a7f821ce834abd",
+  link: "https://open.spotify.com/intl-es/track/5afpl2cZ88bvEfeBmpwX6m?si=1bbfb31a1c674fa7",
   vibe: "soft"
 },
 {
@@ -856,6 +841,13 @@ export const TRACKS = [
   artista: "Shawn Mendes",
   portada: "https://i.scdn.co/image/ab67616d0000b273269423eb6467e308c0fbce24",
   link: "https://open.spotify.com/intl-es/track/5wxurz8J6YlyQRNnGN8zXS?si=4233d559e1a7480a",
+  vibe: "soft"
+},
+{
+  nombre: "Prettiest Thing I've Ever Seen",
+  artista: "LANY",
+  portada: "https://i.scdn.co/image/ab67616d0000b273bfa8a400e5931042691af196",
+  link: "https://open.spotify.com/intl-es/track/5f9Nt75lq1MLzf5F2xJwTI?si=4b38582b28924410",
   vibe: "soft"
 },
 {
@@ -880,11 +872,11 @@ export const TRACKS = [
   vibe: "dark"
 },
 {
-  nombre: "Blackbird",
-  artista: "The Beatles",
-  portada: "https://i.scdn.co/image/ab67616d0000b2734ce8b4e42588bf18182a1ad2",
-  link: "https://open.spotify.com/intl-es/track/5jgFfDIR6FR0gvlA56Nakr?si=0afe81e466d04ee1",
-  vibe: "soft"
+  nombre: "Mixtape: OH",
+  artista: "Stray Kids",
+  portada: "https://i.scdn.co/image/ab67616d0000b2735c59b4214590e91eb283d86d",
+  link: "https://open.spotify.com/intl-es/track/1keLmLnlRaQbn4mLKp68Nl?si=db7240f59d5f49d8",
+  vibe: "pop"
 },
 {
   nombre: "Just like heaven",
@@ -894,18 +886,25 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "Is this love",
-  artista: "Whitesnake",
-  portada: "https://i.scdn.co/image/ab67616d0000b27349113b5921d7a53f49b64bfd",
-  link: "https://open.spotify.com/intl-es/track/6QyWVCLASvvtpKD0KJZs5e?si=d668644ee6ca4024",
+  nombre: "Blackbird",
+  artista: "The Beatles",
+  portada: "https://i.scdn.co/image/ab67616d0000b2734ce8b4e42588bf18182a1ad2",
+  link: "https://open.spotify.com/intl-es/track/5jgFfDIR6FR0gvlA56Nakr?si=0afe81e466d04ee1",
   vibe: "soft"
 },
 {
-  nombre: "Fallin’ All in You",
-  artista: "Shawn Mendes",
-  portada: "https://i.scdn.co/image/ab67616d0000b273269423eb6467e308c0fbce24",
-  link: "https://open.spotify.com/intl-es/track/5EYBryPOgIEPB7r5QIy6eG?si=33b84e43f1204d8b",
-  vibe: "soft"
+  nombre: "Promise",
+  artista: "Ben Howard",
+  portada: "https://i.scdn.co/image/ab67616d0000b27325d10f813fd1114b2bb9e39a",
+  link: "https://open.spotify.com/intl-es/track/4qyfir5Yr7nfo05g6cyFMT?si=8c26276d782640dd",
+  vibe: "pop"
+},
+{
+  nombre: "Hold Me",
+  artista: "rei brown",
+  portada: "https://i.scdn.co/image/ab67616d0000b273a1799dc9f80644232bef5c7f",
+  link: "https://open.spotify.com/intl-es/track/58Q8OcKcP6e5jvfHeIRA3o?si=b014809ee0e9423b",
+  vibe: "pop"
 },
 {
   nombre: "Hysteria",
@@ -913,6 +912,13 @@ export const TRACKS = [
   portada: "https://i.scdn.co/image/ab67616d0000b27343511b8c20112757edddc7ba",
   link: "https://open.spotify.com/intl-es/track/2PFIZFcGry0po3ZfRZkzKc?si=5314c6af3be44ec2",
   vibe: "pop"
+},
+{
+  nombre: "Fallin’ All in You",
+  artista: "Shawn Mendes",
+  portada: "https://i.scdn.co/image/ab67616d0000b273269423eb6467e308c0fbce24",
+  link: "https://open.spotify.com/intl-es/track/5EYBryPOgIEPB7r5QIy6eG?si=33b84e43f1204d8b",
+  vibe: "soft"
 },
 {
   nombre: "Weird Fishes/Arpeggi",
@@ -943,13 +949,6 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "You!",
-  artista: "LANY",
-  portada: "https://i.scdn.co/image/ab67616d0000b2738f870c0a0f3908c1ed46bb83",
-  link: "https://open.spotify.com/intl-es/track/2VMhO32IsyhshnUoKhjCBE?si=23d0f1ccc3794f95",
-  vibe: "soft"
-},
-{
   nombre: "It’s All Good",
   artista: "BTOB",
   portada: "https://i.scdn.co/image/ab67616d0000b2735d048c37aafeb32d3eb865ce",
@@ -957,11 +956,11 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "I Know I Love You",
-  artista: "TXT",
-  portada: "https://i.scdn.co/image/ab67616d0000b273253a9c74941281b0407ce940",
-  link: "https://open.spotify.com/intl-es/track/1Z8TPHiKeCUyClxV6WTTIf?si=1e7ba42514b54e87",
-  vibe: "pop"
+  nombre: "Ready to Run",
+  artista: "One Direction",
+  portada:"https://i.scdn.co/image/ab67616d0000b27334a29f220057810cce98e1b4",
+  link: "https://open.spotify.com/intl-es/track/7GtGeeChOx4NS77bqK8SUx?si=14bab890641a4114",
+  vibe: "soft"
 },
 {
   nombre: "Accidentally in Love",
@@ -971,10 +970,10 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "Hook",
-  artista: "Gemini Norawit",
-  portada: "https://i.scdn.co/image/ab67616d0000b273880b3bffd1444e89160cfa61",
-  link: "https://open.spotify.com/intl-es/track/4zDKmCG4qokd3kpD3sNBpV?si=b86d463b1bcf4003",
+  nombre: "You!",
+  artista: "LANY",
+  portada: "https://i.scdn.co/image/ab67616d0000b2738f870c0a0f3908c1ed46bb83",
+  link: "https://open.spotify.com/intl-es/track/2VMhO32IsyhshnUoKhjCBE?si=23d0f1ccc3794f95",
   vibe: "soft"
 },
 {
@@ -982,6 +981,20 @@ export const TRACKS = [
   artista: "BTOB",
   portada: "https://i.scdn.co/image/ab67616d0000b27380d72d8b6d187fe7d27d4515",
   link: "https://open.spotify.com/intl-es/track/0Zbzqjf4xmd4ou80fRB5by?si=e8fd6a04b14a441f",
+  vibe: "soft"
+},
+{
+  nombre: "(Saturday Night)3:22 A.M.",
+  artista: "LANY",
+  portada: "https://i.scdn.co/image/ab67616d0000b2737074846d85b6ff52e66dcc0c",
+  link: "https://open.spotify.com/intl-es/track/0XcXsJwhuvBA70zL1OgkCx?si=4c95490fba114b14",
+  vibe: "soft"
+},
+{
+  nombre: "Is this love",
+  artista: "Whitesnake",
+  portada: "https://i.scdn.co/image/ab67616d0000b27349113b5921d7a53f49b64bfd",
+  link: "https://open.spotify.com/intl-es/track/6QyWVCLASvvtpKD0KJZs5e?si=852343062682424e",
   vibe: "soft"
 },
 {
@@ -1006,6 +1019,13 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
+  nombre: "Real Love",
+  artista: "rei brown",
+  portada: "https://i.scdn.co/image/ab67616d0000b2731e46e468f480a58e968cd180",
+  link: "https://open.spotify.com/intl-es/track/1GHgWqIypcP85otOzU9Y0Y?si=b7ce547e91d64686",
+  vibe: "soft"
+},
+{
   nombre: "Stupid in Love",
   artista: "MAX",
   portada: "https://open.spotify.com/intl-es/track/60JZB9waHUPWJTGbYO6kDB?si=5f5c69269cc84a3f",
@@ -1013,25 +1033,11 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "Mixtape: OH",
-  artista: "Stray Kids",
-  portada: "https://i.scdn.co/image/ab67616d0000b2735c59b4214590e91eb283d86d",
-  link: "https://open.spotify.com/intl-es/track/1keLmLnlRaQbn4mLKp68Nl?si=db7240f59d5f49d8",
-  vibe: "pop"
-},
-{
   nombre: "For Me",
   artista: "Day6",
   portada: "https://i.scdn.co/image/ab67616d0000b2738d5ebc3ff7acf1319a218a77",
   link: "https://open.spotify.com/intl-es/track/2RaNwN6o3HZTkTDYIv1UNX?si=87e456b27ed1452f",
   vibe: "soft"
-},
-{
-  nombre: "If I Can’t Have You",
-  artista: "Shawn Mendes",
-  portada: "https://i.scdn.co/image/ab67616d0000b273625acd26e0e455312667565f",
-  link: "https://open.spotify.com/intl-es/track/6LsAAHotRLMOHfCsSfYCsz?si=e60a2a5a66e84baf",
-  vibe: "pop"
 },
 {
   nombre: "One Love",
@@ -1076,13 +1082,6 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "No",
-  artista: "LANY",
-  portada: "https://i.scdn.co/image/ab67616d0000b2738d013d6d163279f56f54c7b5",
-  link: "https://open.spotify.com/intl-es/track/1MKib55mu3Ueu5oFiwDsvr?si=b8a37dbd970d4b0f",
-  vibe: "soft"
-},
-{
   nombre: "Will Be Here",
   artista: "BTOB",
   portada: "https://i.scdn.co/image/ab67616d0000b273d986b6b836a8d169741961c8",
@@ -1099,16 +1098,9 @@ export const TRACKS = [
 {
   nombre: "Notes'n'Words",
   artista: "One Ok Rock",
-  portada: "https://img.youtube.com/vi/firQ0JIIwhI/maxresdefault.jpg",
+  portada: "https://i.scdn.co/image/ab67616d0000b27316a06fd7db82ead8dee01ee5",
   link: "https://youtu.be/firQ0JIIwhI",
   vibe: "soft"
-},
-{
-  nombre: "Electric Love",
-  artista: "BØRNS",
-  portada: "https://open.spotify.com/intl-es/track/2GiJYvgVaD2HtM8GqD9EgQ?si=b2503a70a896480e",
-  link: "https://open.spotify.com/intl-es/track/2GiJYvgVaD2HtM8GqD9EgQ?si=b2503a70a896480e",
-  vibe: "pop"
 },
 {
   nombre: "Found Love",
@@ -1118,13 +1110,12 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "Te quiero",
-  artista: "Hombres G",
-  portada: "https://open.spotify.com/intl-es/track/6tu2FHuKL9C8pwNrityweQ?si=bb6797ba637f429b",
-  link: "https://open.spotify.com/intl-es/track/6tu2FHuKL9C8pwNrityweQ?si=bb6797ba637f429b",
+  nombre: "get away",
+  artista: "LANY",
+  portada: "https://i.scdn.co/image/ab67616d0000b2732d9e8e3e016cf68d53536c64",
+  link: "https://open.spotify.com/intl-es/track/3UIVWPIIwSO65jl2qfIl7q?si=0ade901a8acb472b",
   vibe: "soft"
 },
-
 {
   nombre: "Yellow",
   artista: "Coldplay",
@@ -1137,6 +1128,20 @@ export const TRACKS = [
   artista: "Wave to Earth",
   portada: "https://i.scdn.co/image/ab67616d0000b27324f8c3ad20b7c6cfecb5832e",
   link: "https://open.spotify.com/intl-es/track/5mtTAScDytxMMqZj14NmlN?si=a8024d6d4164438c",
+  vibe: "soft"
+},
+{
+  nombre: "strawberry moon",
+  artista: "IU",
+  portada: "https://i.scdn.co/image/ab67616d0000b273c4d4ade422fa74b8512fd85e",
+  link: "https://open.spotify.com/intl-es/track/2g0LdZQce9xlcHb1mBJyuz?si=0d43b22d2f9a437f",
+  vibe: "soft"
+},
+{
+  nombre: "Forever",
+  artista: "rei brown",
+  portada: "https://i.scdn.co/image/ab67616d0000b273ef6c1966ad8f24acd2bb8ea2",
+  link: "https://open.spotify.com/intl-es/track/7gBNnIZDc3HXLKWAvpZBV6?si=640561d778bb41a6",
   vibe: "soft"
 },
 {
@@ -1154,17 +1159,25 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
+  nombre: "when it's time",
+  artista: "Green Day",
+  portada: "https://i.scdn.co/image/ab67616d0000b2737e547333cf087b8cfc535444",
+  link: "https://open.spotify.com/intl-es/track/5nGCVIpxp0u4AYpVpK0pv4?si=3e5be6205bac40fb",
+  vibe: "soft"
+},
+{
   nombre: "Beautiful Feeling",
   artista: "Day6",
   portada: "https://i.scdn.co/image/ab67616d0000b27396da280c4170ab42775d614b",
   link: "https://open.spotify.com/intl-es/track/2hVdTfoa7BiJd4AfRgQYix?si=ce5799bcaf9e4fc8",
   vibe: "soft"
 },
+
 {
-  nombre: "I.L.Y",
-  artista: "The Rose",
-  portada: "https://i.scdn.co/image/ab67616d0000b273912d15ce91fb9ea3b268fce0",
-  link: "https://open.spotify.com/intl-es/track/7H5v1caDKSCL8GxsXlzryU?si=209b0ff94abe47c3",
+  nombre: "Let Me Love You",
+  artista: "Day6",
+  portada: "https://i.scdn.co/image/ab67616d0000b2731e20be5a6bdfd2780516320a",
+  link: "https://open.spotify.com/intl-es/track/43ILn2F6PEK1MOZ2WDUGJE?si=cd9a2875b21442a4",
   vibe: "soft"
 },
 {
@@ -1189,10 +1202,10 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "Let Me Love You",
-  artista: "Day6",
-  portada: "https://i.scdn.co/image/ab67616d0000b2731e20be5a6bdfd2780516320a",
-  link: "https://open.spotify.com/intl-es/track/43ILn2F6PEK1MOZ2WDUGJE?si=cd9a2875b21442a4",
+  nombre: "I.L.Y",
+  artista: "The Rose",
+  portada: "https://i.scdn.co/image/ab67616d0000b273912d15ce91fb9ea3b268fce0",
+  link: "https://open.spotify.com/intl-es/track/7H5v1caDKSCL8GxsXlzryU?si=209b0ff94abe47c3",
   vibe: "soft"
 },
 {
@@ -1203,17 +1216,10 @@ export const TRACKS = [
   vibe: "soft"
 },
 {
-  nombre: "Every Breath You Take",
-  artista: "The Police",
-  portada: "https://i.scdn.co/image/ab67616d0000b273cf390065f5a3336f12143e16",
-  link: "https://open.spotify.com/intl-es/track/4U3Ggqyv2XgnS1u82HOGQX?si=fa66483090f8491f",
-  vibe: "soft"
-},
-{
-  nombre: "I Think They Call This Love",
-  artista: "Elliot James Reay",
-  portada: "https://i.scdn.co/image/ab67616d0000b273a24a9c872775ae61137e23f3",
-  link: "https://open.spotify.com/intl-es/track/4oHQ8n9OKQ3599e8noCrDX?si=b2c11d8767d54b1b",
+  nombre: "No",
+  artista: "LANY",
+  portada: "https://i.scdn.co/image/ab67616d0000b2738d013d6d163279f56f54c7b5",
+  link: "https://open.spotify.com/intl-es/track/1MKib55mu3Ueu5oFiwDsvr?si=b8a37dbd970d4b0f",
   vibe: "soft"
 },
 {

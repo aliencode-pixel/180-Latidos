@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react"; // 1. Importamos useMemo
 
 export default function Paso5_5({ cancion, onContinuar }) {
   if (!cancion) return null;
@@ -24,16 +24,16 @@ export default function Paso5_5({ cancion, onContinuar }) {
     "tema-violet-pulse"
   ];
 
-  const elegirTema = () => {
+  // 2. Usamos useMemo para que el tema sea estable y no cambie en cada render
+  const tema = useMemo(() => {
     if (vibe === "soft") return softThemes[Math.floor(Math.random() * softThemes.length)];
     if (vibe === "pop") return popThemes[Math.floor(Math.random() * popThemes.length)];
     if (vibe === "dark") return darkThemes[Math.floor(Math.random() * darkThemes.length)];
     return "tema-pastel-bloom";
-  };
-
-  const tema = elegirTema();
+  }, [vibe]); // Solo se vuelve a calcular si la 'vibe' de la canción cambia
 
   return (
+    // 3. Aplicamos el tema en el contenedor principal
     <div className={`paso-cancion ${tema}`}>
       <div className="tarjeta-cancion anim-entrada">
 
