@@ -7,6 +7,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_jo4UDshpx-apmFm__j83nA_0GFt1iNL";
 
 export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
   const [emocion, setEmocion] = useState("");
+  const [enviando, setEnviando] = useState(false); // 👈 Bloqueo de seguridad
 
   const fecha = new Date().toLocaleDateString("es-VE", {
     weekday: "long",
@@ -41,7 +42,10 @@ export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
   }, [emocion]);
 
   const handleGuardar = async () => {
-    if (!emocion.trim()) return; // evitar guardar vacío
+    // Si ya se está procesando o el campo está vacío, se ignora cualquier clic extra
+    if (enviando || !emocion.trim()) return;
+
+    setEnviando(true); // 👈 Se bloquea el proceso en el primer toque
 
     // 1. Estructura y guardado local original
     const latido = {
@@ -98,7 +102,11 @@ export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
           placeholder="Escribe aquí lo que estás sintiendo..."
         />
 
-        <button className="btn-guardar" onClick={handleGuardar}>
+        <button 
+          className="btn-guardar" 
+          onClick={handleGuardar}
+          disabled={enviando || !emocion.trim()} // 👈 Deshabilita el botón si 'enviando' es true
+        >
           Guardar mi latido
         </button>
 

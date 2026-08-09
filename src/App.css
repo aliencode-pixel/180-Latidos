@@ -79,10 +79,20 @@
   will-change: background-position;
 }
 
-/* ⭐ Si quieres, puedo agregar aquí:
-   .tema-alba
-   .tema-etereo
-   para centralizar todo */
+/* ⭐ Temas Extra (si los tienes, centralizados aquí) */
+.tema-alba {
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+.tema-etereo {
+  background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
 
 /* ============================================================
    BOTÓN SECRETO DE REINICIO
@@ -104,8 +114,10 @@
   min-height: 100vh;
 
   display: flex;
+  flex-direction: column; /* 👈 Agregado: Evita que el puzzle y el menú se pongan lado a lado */
   justify-content: center;
   align-items: center;
+  gap: 20px; /* Separación entre el Puzzle y las opciones del día */
 
   /* ⭐ Evita saltos visuales */
   will-change: opacity, transform;
@@ -115,4 +127,42 @@
 .bienvenida-isolada {
   width: 100%;
   min-height: 100vh;
+}
+
+/* ============================================================
+   BOTÓN FLOTANTE DEL MURAL (VOL. II)
+============================================================ */
+.mural-trigger-zone {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-abrir-mural {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.btn-abrir-mural:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-abrir-mural:active {
+  transform: translateY(1px);
+  background: rgba(255, 255, 255, 0.1);
 }

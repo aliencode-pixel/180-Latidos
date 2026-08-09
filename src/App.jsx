@@ -21,6 +21,15 @@ import FallingHearts from "./components/FallingHearts";
 import BirthdaySurprise from "./components/BirthdaySurprise";
 import { TRACKS } from "./data/tracks";
 
+// 🧩 COMPONENTE DE PUZZLE (VOL. II)
+import PuzzleSemanas from "./components/PuzzleSemanas";
+
+/* ============================================================
+   CONFIGURACIÓN VOL. II (PUZZLE)
+============================================================ */
+const TOTAL_SEMANAS_PUZZLE = 8; 
+const MODO_PRUEBA_PUZZLE = true; 
+
 /* ============================================================
    CSS
 ============================================================ */
@@ -50,61 +59,42 @@ export default function App() {
   const [mostrarIntroUltimoDia, setMostrarIntroUltimoDia] = useState(true);
   const [transicionAWrapped, setTransicionAWrapped] = useState(false);
 
-  /* ⭐ ESTADOS PARA CUMPLEAÑOS */
   const [mostrarCumple, setMostrarCumple] = useState(false);
   const [cumpleFinalizado, setCumpleFinalizado] = useState(false);
-
+  const [menuAbierto, setMenuAbierto] = useState(false);
   const instrumentalUltimoDiaRef = useRef(null);
 
-  /* ============================================================
-     ⭐ TÍTULO DINÁMICO (VOL. II)
-  ============================================================ */
-  const tituloPagina = diaActual >= 180 ? "180 latidos: Vol. II" : "180 latidos";
+  const tituloPagina = (MODO_PRUEBA_PUZZLE || diaActual >= 180) ? "180 latidos: Vol. II" : "180 latidos";
 
-  // Cambia el título de la pestaña del navegador automáticamente
   useEffect(() => {
     document.title = tituloPagina;
   }, [tituloPagina]);
 
-  /* ============================================================
-     1. Cargar tema inicial
-  ============================================================ */
   useEffect(() => {
     const tema = localStorage.getItem("temaElegido");
     if (tema) setTemaElegido(tema);
   }, []);
 
-  /* ============================================================
-     2. INTERCEPTOR DE CUMPLEAÑOS (Prioridad Máxima)
-  ============================================================ */
   useEffect(() => {
     const chequearCumple = () => {
       const hoy = new Date();
-      // getMonth() es 0-indexed (3 es Abril)
       const es18Abril = hoy.getMonth() === 3 && hoy.getDate() === 18; 
       const yaVioCumple = localStorage.getItem("cumple2026Visto") === "true";
-
-      console.log("Birthday Check:", { es18Abril, yaVioCumple, cumpleFinalizado });
 
       if (es18Abril && !yaVioCumple && !cumpleFinalizado) { 
         setMostrarCumple(true);
       }
     };
-
     chequearCumple();
     const timer = setInterval(chequearCumple, 60000);
     return () => clearInterval(timer);
   }, [cumpleFinalizado]);
 
-  /* ============================================================
-     3. Lógica diaria normal
-  ============================================================ */
   useEffect(() => {
     const calcularDia = () => {
       const fechaInicio = new Date("2026-02-16T00:00:00");
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
-
       const msPorDia = 1000 * 60 * 60 * 24;
       const diferencia = Math.floor((hoy - fechaInicio) / msPorDia);
       const dia = diferencia + 1;
@@ -114,7 +104,6 @@ export default function App() {
       const ultimaCancion = Number(localStorage.getItem("ultimaCancionDia"));
       const ultimoLatido = Number(localStorage.getItem("ultimoLatidoDia"));
 
-      // Limpieza de datos si cambió el día
       if (ultimaCancion !== dia) localStorage.removeItem("ultimaCancionDia");
       if (ultimoLatido !== dia) localStorage.removeItem("ultimoLatidoDia");
 
@@ -134,15 +123,6 @@ export default function App() {
         setPaso(5);
       }
 
-      /* ⚠️ NOTA: Como ahora la app continúa en "Vol. II", 
-         desactivamos el corte automático del día 180 para que no la envíe a la pantalla final. */
-      /*
-      if (dia >= 180) {
-        setPantallaDia("final");
-        return;
-      }
-      */
-
       if (!yaEscucho) {
         setPantallaDia("inicio-dia");
       } else if (yaEscucho && !yaEscribio) {
@@ -151,7 +131,6 @@ export default function App() {
         setPantallaDia("completado");
       }
     };
-
     calcularDia();
   }, [paso, pantallaDia]);
 
@@ -171,11 +150,28 @@ export default function App() {
     }, 350);
   };
 
-  const esUltimoDia = false; // Se activará cuando llegue el nuevo día de la propuesta
+  const esUltimoDia = false; 
 
-  /* ============================================================
-     4. Renderizado Condicional
-  ============================================================ */
+  const handleMenuBienvenida = () => {
+    setMenuAbierto(false);
+    setTransicionando(true);
+    setTimeout(() => {
+      setDiaActual(1);
+      setPaso(1);
+      setPantallaDia(null);
+      setTransicionando(false);
+    }, 350);
+  };
+
+  const handleMenuHistorial = () => {
+    setMenuAbierto(false);
+    irHistorial();
+  };
+
+  const handleMenuCumple = () => {
+    setMenuAbierto(false);
+    setMostrarCumple(true);
+  };
 
   if (mostrarCumple) {
     return (
@@ -188,13 +184,11 @@ export default function App() {
             link: "https://open.spotify.com/intl-es/track/6MzuFfdG0zpPOrTXtmtLhF?si=a1dd2abbd7344629",
             vibe: "soft"
           };
-
           setCancionSeleccionada(cancionHoy);
           setPantallaDia(null);
           setPaso(5.5);
           setMostrarCumple(false);
           setCumpleFinalizado(true);
-          
           localStorage.setItem("cumple2026Visto", "true");
           localStorage.setItem("ultimaCancionDia", diaActual);
         }}
@@ -206,9 +200,77 @@ export default function App() {
     return <Bienvenida onComenzar={() => setPaso(2)} />;
   }
 
+  const diaEnVol2 = diaActual ? Math.max(1, diaActual - 179) : 1;
+
   return (
-    <div className={`app-contenedor ${temaElegido ? `tema-${temaElegido}` : ""}`}>
-      <div className={`fade-container ${transicionando ? "fade-out" : "fade-in"}`}>
+    <div className={`app-contenedor min-h-screen bg-background font-body-md text-on-surface relative overflow-x-hidden ${temaElegido ? `tema-${temaElegido}` : ""}`}>
+      
+      {!mostrarIntroUltimoDia && pantallaDia !== "wrapped-final" && (
+        <>
+          {/* HEADER CON ESTILO NOCTURNE CRIMSON */}
+          <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-8 pointer-events-none">
+            <div className="pointer-events-auto w-full max-w-[1200px] flex items-center justify-between">
+              
+              {/* Etiqueta 180 Latidos */}
+              <div className="bg-[#5c163b] text-primary px-5 py-2 rounded-full text-xs font-label-md font-bold tracking-widest shadow-[0_0_15px_rgba(226,24,101,0.3)]">
+                {tituloPagina}
+              </div>
+
+              {/* Links Centrales Decorativos */}
+              <div className="hidden md:flex gap-8 text-primary font-label-md text-xs font-bold tracking-widest uppercase">
+                <span className="hover:text-white cursor-pointer transition-colors">Experience</span>
+                <span className="hover:text-white cursor-pointer transition-colors">Manifesto</span>
+                <span className="hover:text-white cursor-pointer transition-colors">Vault</span>
+              </div>
+
+              {/* Iconos de la derecha */}
+              <div className="flex items-center gap-6">
+                <span className="material-symbols-outlined text-primary text-xl cursor-pointer hover:text-white transition-colors">search</span>
+                <button 
+                  onClick={() => setMenuAbierto(!menuAbierto)}
+                  className="bg-[#5c163b] text-primary w-9 h-9 rounded-full flex items-center justify-center hover:bg-secondary hover:text-white transition-colors z-50 relative shadow-[0_0_10px_rgba(226,24,101,0.2)]"
+                >
+                  <span className="material-symbols-outlined text-lg">
+                    {menuAbierto ? 'close' : 'person'}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* MENÚ LATERAL DESPLEGABLE */}
+          <div className={`fixed inset-y-0 right-0 w-80 bg-surface-container border-l border-outline-variant shadow-2xl transform transition-transform duration-500 z-50 ${menuAbierto ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className="p-8 pt-32 flex flex-col gap-4 h-full overflow-y-auto">
+              <h3 className="font-headline-lg text-2xl text-primary mb-4 border-b border-outline-variant pb-4">Memorias</h3>
+              
+              <button onClick={handleMenuBienvenida} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">auto_awesome</span>
+                Pantalla de Bienvenida
+              </button>
+              
+              <button onClick={handleMenuHistorial} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">queue_music</span>
+                Historial de Canciones
+              </button>
+              
+              <button onClick={handleMenuCumple} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">cake</span>
+                Especial de Cumpleaños
+              </button>
+            </div>
+          </div>
+          
+          {menuAbierto && (
+            <div 
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+              onClick={() => setMenuAbierto(false)}
+            />
+          )}
+        </>
+      )}
+
+      {/* ================= CUERPO PRINCIPAL ================= */}
+      <main className={`relative z-10 pt-32 flex flex-col items-center pb-20 fade-container w-full ${transicionando ? "fade-out" : "fade-in"}`}>
 
         {(paso === 2 || paso === 3) && diaActual === 1 && <FallingHearts />}
 
@@ -235,12 +297,14 @@ export default function App() {
           />
         )}
 
+        {/* CONTENEDOR PRINCIPAL DIARIO Y PUZZLE */}
         {["inicio-dia", "escribir-latido", "completado"].includes(pantallaDia) && (
-          <div className={`inicio-dia-wrapper tema-${temaElegido}`}>
+          <div className="inicio-dia-wrapper w-full max-w-[1200px] px-5 flex flex-col gap-12">
+            
             <InicioDia
               diaActual={diaActual}
               pantallaDia={pantallaDia}
-              titulo={tituloPagina} // Le pasamos el título a la cabecera
+              titulo={tituloPagina}
               onIrRuleta={() => {
                 const ultimaCancion = Number(localStorage.getItem("ultimaCancionDia"));
                 if (ultimaCancion === diaActual) {
@@ -260,6 +324,15 @@ export default function App() {
                 setPaso(7);
               }}
             />
+
+            {(MODO_PRUEBA_PUZZLE || diaActual >= 180) && (
+              <PuzzleSemanas
+                diaActual={MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2}
+                totalSemanas={TOTAL_SEMANAS_PUZZLE}
+                imagenFinal="https://picsum.photos/600/400"
+              />
+            )}
+
           </div>
         )}
 
@@ -302,7 +375,7 @@ export default function App() {
             onVolver={() => setPaso(6)}
           />
         )}
-      </div>
+      </main>
     </div>
   );
 }

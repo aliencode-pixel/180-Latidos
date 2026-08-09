@@ -1,0 +1,80 @@
+.zombie-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(18, 18, 18, 0.88);
+  border: 3px solid #3c3c3c;
+  box-shadow: inset -3px -3px 0px #1a1a1a, inset 3px 3px 0px #555555;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 15px auto;
+  max-width: 400px;
+  font-family: monospace, sans-serif;
+}
+
+.zombie-avatar-wrapper {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.zombie-sprite {
+  width: 42px;
+  height: auto;
+  image-rendering: pixelated;
+  animation: reboteZombie 0.5s infinite alternate ease-in-out;
+}
+
+.pico-mc {
+  position: absolute;
+  right: -2px;
+  top: 6px;
+  font-size: 1.1rem;
+  transform-origin: bottom left;
+  animation: minarPico 0.4s infinite alternate ease-in-out;
+}
+
+.bloque-mc {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: #8b5a2b;
+  border: 2px solid #5c3a1e;
+}
+
+.zombie-dialogo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.zombie-tag {
+  font-size: 0.68rem;
+  color: #55ff55;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.zombie-pista {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+@keyframes reboteZombie {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-3px) rotate(-2deg); }
+}
+
+@keyframes minarPico {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-40deg); }
+}
