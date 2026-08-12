@@ -18,17 +18,19 @@
 }
 
 /* ============================================================
-   TARJETA (ENCAPSULADA)
+   TARJETA DE CRISTAL
 ============================================================ */
 .paso5 .tarjeta {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2.4rem 2rem;
   border-radius: 1.6rem;
   max-width: 480px;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
   transform: none;
 }
 
@@ -36,20 +38,22 @@
    TÍTULO Y SUBTÍTULO
 ============================================================ */
 .paso5 .titulo {
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.9rem;
-  color: #fb0670;
+  font-weight: 700;
+  color: #ffb4a2;
   margin-bottom: 0.6rem;
 }
 
 .paso5 .sub {
   font-size: 1.05rem;
-  color: #e25e5e;
+  color: #e3beb6;
   margin-bottom: 1.8rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 /* ============================================================
-   SLOT MACHINE (ENCAPSULADO)
+   SLOT MACHINE
 ============================================================ */
 .paso5 .slot-machine {
   display: flex;
@@ -65,9 +69,10 @@
   height: 70px;
   overflow: hidden;
   border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(170, 137, 130, 0.2);
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .paso5 .reel-item {
@@ -96,22 +101,24 @@
 }
 
 /* ============================================================
-   BOTÓN GIRAR (ENCAPSULADO)
+   BOTÓN GIRAR (GRADIENTE NOCTURNE CRIMSON)
 ============================================================ */
 .paso5 .btn-spin {
   padding: 0.9rem 1.6rem;
   border: none;
   border-radius: 1rem;
   font-size: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  background: #ffd6e5;
-  color: #fb0670;
-  backdrop-filter: blur(6px);
-  transition: background 0.3s ease, transform 0.3s ease;
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.35);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .paso5 .btn-spin:hover:not(:disabled) {
-  background: #ffcade;
+  filter: brightness(1.08);
   transform: translateY(-2px);
 }
 
@@ -121,7 +128,7 @@
 }
 
 /* ============================================================
-   FADE OUT LOCAL (ENCAPSULADO)
+   FADE OUT LOCAL
 ============================================================ */
 .paso5 .fade-out {
   opacity: 0;

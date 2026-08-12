@@ -12,8 +12,7 @@
   position: relative;
   z-index: 9999;
 
-  /* Fondo animado */
-  background-size: 400% 400%; /* Ajustado para que la animación se note */
+  background-size: 400% 400%;
   animation: fadeInScreen 0.8s ease forwards;
 }
 
@@ -22,7 +21,6 @@
   to { opacity: 1; }
 }
 
-/* ⭐ La animación que faltaba para que los gradientes se muevan */
 @keyframes mixGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -30,18 +28,19 @@
 }
 
 /* ============================================================
-   TARJETA DE LA CANCIÓN (Tus estilos originales)
+   TARJETA DE LA CANCIÓN (CRISTAL NOCTURNE CRIMSON)
 ============================================================ */
 .tarjeta-cancion {
-  background: rgba(240, 222, 222, 0.293);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2rem;
   border-radius: 1.4rem;
   text-align: center;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
   max-width: 360px;
   width: 100%;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
   animation: floatCard 6s ease-in-out infinite;
 }
 
@@ -52,35 +51,40 @@
 }
 
 .titulo-cancion {
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.55rem;
+  font-weight: 700;
   margin-bottom: 1.2rem;
-  color: #fb0670; /* Tu color original */
+  color: #ffb4a2;
 }
 
 .portada-cancion {
-  width: 210px;
-  height: 210px;
-  border-radius: 1.1rem;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+  backdrop-filter: blur(10px);
   object-fit: cover;
-  margin-bottom: 1rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .nombre {
   font-size: 1.2rem;
-  color: #e25e5e; /* Tu color original */
+  color: #f4d9ff;
   font-weight: 600;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .artista {
   font-size: 0.95rem;
-  color: #fc8484; /* Tu color original */
+  color: #e3beb6;
   margin-bottom: 1.4rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 /* ============================================================
-   BOTONES (Tus estilos originales)
+   BOTONES
 ============================================================ */
 .btn-link {
   display: inline-block;
@@ -90,6 +94,7 @@
   border-radius: 0.9rem;
   text-decoration: none;
   font-size: 0.95rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
   margin-bottom: 1.2rem;
   transition: transform 0.2s ease, background 0.3s ease;
 }
@@ -100,20 +105,22 @@
 }
 
 .btn-continuar {
-  background: rgba(255, 255, 255, 0.65);
-  color: #222;
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
   border: none;
   padding: 0.75rem 1.4rem;
   border-radius: 0.9rem;
   font-size: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease, background 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn-continuar:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.85);
+  filter: brightness(1.08);
 }
 
 .anim-portada {
@@ -127,31 +134,30 @@
 }
 
 /* ============================================================
-   PALETAS DINÁMICAS (Arregladas para que se muevan)
+   PALETAS DINÁMICAS SEGÚN VIBE — RECOLOREADAS A NOCTURNE CRIMSON
 ============================================================ */
 
 .tema-pastel-bloom, .tema-blue-serenity, .tema-aurora-bloom, .tema-heartwave, .tema-dreamlight {
-  background: linear-gradient(-45deg, #f7eaff, #e8e6ff, #dff1ff, #d6f9f2, #e8ffe8, #fff4e6, #ffeef7) !important;
+  background: linear-gradient(-45deg, #2f1241, #3a1d4c, #4b2d5c, #2b0d3c, #220434, #462858, #2f1241) !important;
   background-size: 400% 400% !important;
   animation: mixGradient 15s ease infinite !important;
 }
 
 .tema-golden-drift, .tema-stardust-pop, .tema-neon-pastel {
-  background: linear-gradient(-45deg, #ffe8ff, #f3e0ff, #dff1ff, #c8f7f0, #fff0d6, #ffd9b8, #ffc8a8) !important;
+  background: linear-gradient(-45deg, #5b1000, #ff5e36, #d81b60, #660028, #3a1d4c, #ff5e36, #5b1000) !important;
   background-size: 400% 400% !important;
   animation: mixGradient 10s ease infinite !important;
 }
 
 .tema-midnight-glow, .tema-violet-pulse {
-  /* Fondo "Cyber-Night": Azules profundos y púrpuras eléctricos */
-  background: linear-gradient(-45deg, 
-    #0a0118, /* Negro azulado profundo (Base de noche) */
-    #1b0035, /* Violeta muy oscuro */
-    #2d00f7, /* Azul eléctrico (Contraste frío para el rosa) */
-    #6a00f4, /* Púrpura neón */
-    #21004a  /* Uva oscuro */
+  background: linear-gradient(-45deg,
+    #1c002e,
+    #220434,
+    #412453,
+    #660028,
+    #21004a
   ) !important;
-  
+
   background-size: 400% 400% !important;
   animation: mixGradient 8s ease infinite !important;
 }

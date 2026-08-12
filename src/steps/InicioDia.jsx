@@ -10,20 +10,15 @@ export default function InicioDia({
   onIrWrappedFinal
 }) {
   return (
-    <div className={`inicio-dia`}>
-
-      {/* TÍTULO */}
-      <h2 className="inicio-dia-titulo">
-        Día {diaActual}
-      </h2>
+    <div className="inicio-dia">
 
       {/* CONTENIDO SEGÚN ESTADO */}
       {pantallaDia === "inicio-dia" && (
         <div className="inicio-dia-tarjeta">
-          <h3>Tu canción de hoy</h3>
-          <p>Hoy tienes una nueva canción esperándote.</p>
+          <h2 className="inicio-dia-titulo">Vol. II</h2>
+          <p className="inicio-dia-subtexto">descubre la canción del día</p>
 
-          <button className="inicio-dia-btn" onClick={onIrRuleta}>
+          <button className="inicio-dia-btn inicio-dia-btn-gradiente" onClick={onIrRuleta}>
             Ir a la ruleta
           </button>
         </div>
@@ -34,7 +29,7 @@ export default function InicioDia({
           <h3>Tu latido de hoy</h3>
           <p>Ya escuchaste tu canción. Ahora escribe tu latido.</p>
 
-          <button className="inicio-dia-btn" onClick={onIrLatido}>
+          <button className="inicio-dia-btn inicio-dia-btn-gradiente" onClick={onIrLatido}>
             Escribir mi latido
           </button>
         </div>
@@ -49,7 +44,7 @@ export default function InicioDia({
             Ver historial
           </button>
 
-          <button className="inicio-dia-btn" onClick={onIrLatido}>
+          <button className="inicio-dia-btn inicio-dia-btn-gradiente" onClick={onIrLatido}>
             Escribir otro latido
           </button>
 

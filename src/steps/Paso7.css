@@ -10,13 +10,12 @@
   align-items: center;
   box-sizing: border-box;
 
-  /* Fondo pastel coherente con el resto de la app */
   background: linear-gradient(
     135deg,
-    #ffe6f2,
-    #f3e8ff,
-    #e8f4ff,
-    #fff4e1
+    #220434,
+    #2f1241,
+    #1c002e,
+    #3a1d4c
   );
   background-size: 350% 350%;
   animation: paso7Flow 18s ease-in-out infinite;
@@ -29,18 +28,19 @@
 }
 
 /* ============================================================
-   TARJETA CENTRAL
+   TARJETA CENTRAL (CRISTAL NOCTURNE CRIMSON)
 ============================================================ */
 .paso7 {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2.4rem 2rem;
   border-radius: 1.6rem;
   max-width: 520px;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-  border: 2px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(170, 137, 130, 0.25);
 
   animation: fadeInPaso7 0.8s ease forwards;
 }
@@ -54,11 +54,12 @@
    TÍTULO
 ============================================================ */
 .titulo-historial {
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.9rem;
+  font-weight: 700;
   margin-bottom: 1.6rem;
-  color: #fb0370;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  color: #ffb4a2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================================
@@ -72,27 +73,26 @@
   padding-right: 6px;
 }
 
-/* Scroll elegante */
 .contenido-historial::-webkit-scrollbar {
   width: 6px;
 }
 
 .contenido-historial::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 10px;
 }
 
 .contenido-historial::-webkit-scrollbar-thumb {
-  background: rgba(150,120,255,0.35);
+  background: rgba(255, 180, 162, 0.35);
   border-radius: 10px;
 }
 
 .contenido-historial::-webkit-scrollbar-thumb:hover {
-  background: rgba(150,120,255,0.55);
+  background: rgba(255, 180, 162, 0.55);
 }
 
 /* ============================================================
-   BOTÓN VOLVER
+   BOTÓN VOLVER (GRADIENTE NOCTURNE CRIMSON)
 ============================================================ */
 .volver-btn {
   margin-top: 1.5rem;
@@ -100,20 +100,21 @@
   border: none;
   border-radius: 1rem;
   font-size: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
 
-  background: linear-gradient(135deg, #ffffff, #f7f2ff);
-  color: #333;
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
 
   cursor: pointer;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.35);
 
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease, filter 0.3s ease;
 }
 
 .volver-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(150,120,255,0.35);
+  filter: brightness(1.08);
 }
 
 .volver-btn:active {
@@ -132,42 +133,47 @@
 
 .latido-fecha {
   font-size: 0.9rem;
-  color: #b84a66;
+  color: #ffb4a2;
   margin-bottom: 0.4rem;
   font-weight: 600;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .latido-texto {
   font-size: 1rem;
-  color: #444;
+  color: #f4d9ff;
   margin-bottom: 0.6rem;
   line-height: 1.45;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .latido-cancion {
   font-size: 0.9rem;
-  color: #555;
+  color: #e3beb6;
   margin-bottom: 0.6rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .latido-divider {
   width: 100%;
   height: 1px;
-  background: rgba(0,0,0,0.1);
+  background: rgba(170, 137, 130, 0.2);
   margin-top: 0.8rem;
 }
+
 .borrar-latido-btn {
-  background: #ff6b6b;
-  color: white;
-  border: none;
+  background: rgba(255, 178, 191, 0.15);
+  color: #ffb2bf;
+  border: 1px solid rgba(255, 178, 191, 0.35);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   margin-top: 0.5rem;
   cursor: pointer;
   font-size: 0.9rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
   transition: 0.2s ease;
 }
 
 .borrar-latido-btn:hover {
-  background: #ff4a4a;
+  background: rgba(255, 178, 191, 0.28);
 }

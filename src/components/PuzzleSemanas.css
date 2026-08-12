@@ -5,128 +5,84 @@
   align-items: center;
   gap: 15px;
   width: 100%;
-  max-width: 400px;
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /* =======================================================
-   1. ESTILOS DEL PANEL OSCURO
+   1. PANEL DEL ZOMBIE
 ======================================================= */
 .zombie-panel {
-  background-color: #2b2b2b;
-  border-radius: 12px;
-  padding: 15px;
+  padding: 18px;
   display: flex;
-  flex-direction: column; /* Lo ponemos en columna para que el escenario quede arriba de los textos */
+  flex-direction: column;
   align-items: center;
   gap: 10px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  cursor: pointer;
-  border: 2px solid #3d3d3d;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-  overflow: hidden; /* Para que el zombie no se salga de la caja */
-}
-
-.zombie-panel:hover {
-  border-color: #5a5a5a;
-  transform: translateY(-2px);
 }
 
 /* =======================================================
-   2. EL ESCENARIO DE CONSTRUCCIÓN
+   2. ESCENARIO + BARRA DE PROGRESO VERDE
 ======================================================= */
 .zombie-stage {
   position: relative;
   width: 100%;
-  height: 65px; /* Altura del suelo al techo del escenario */
-  border-bottom: 2px solid #4ade80; /* Una línea verde simulando el pasto/suelo */
-  margin-bottom: 5px;
+  height: 60px;
+  margin-bottom: 4px;
 }
 
-/* EL ZOMBIE QUE CAMINA (De izquierda a derecha y voltea) */
-.zombie-walker {
+.zombie-barra-track {
   position: absolute;
   bottom: 0;
-  width: 45px;
-  height: 45px;
-  z-index: 2;
-  /* Animación de patrullaje: dura 5 segundos y se repite infinito */
-  animation: patrullar 5s infinite linear;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
-/* EL BLOQUE QUE LLEVA CARGANDO EN LAS MANOS */
-.carried-block {
+.zombie-barra-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #16a34a, #4ade80);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+  transition: width 0.6s ease;
+}
+
+/* EL ZOMBIE SOBRE LA GALLINA, AVANZANDO SOBRE LA BARRA */
+.zombie-walker-progreso {
   position: absolute;
-  top: -5px;
-  right: -10px; /* Lo lleva en la parte frontal */
-  width: 16px;
-  height: 16px;
-  background-size: 400% 200%;
-  border-radius: 2px;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  /* Aparece cuando va a la derecha, desaparece cuando regresa */
-  animation: cargar-y-soltar 5s infinite linear;
+  bottom: 6px;
+  width: 44px;
+  height: 44px;
+  z-index: 2;
+  transition: left 0.6s ease;
 }
 
-/* LA IMAGEN DEL POLLO QUE DA SALTOS */
 .zombie-animado {
   width: 100%;
   height: auto;
   transform-origin: bottom center;
-  /* Saltitos del pollo, totalmente independientes de si camina o no */
   animation: chicken-bounce 0.35s infinite alternate cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-/* EL BLOQUE EN EL PISO (Lo que está construyendo) */
-.building-block {
-  position: absolute;
-  bottom: 0;
-  right: 15px; /* Está colocado a la derecha del escenario */
-  width: 25px;
-  height: 25px;
-  background-size: 400% 200%;
-  border-radius: 4px;
-  border: 2px solid rgba(255,255,255,0.2);
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-}
-
-/* =======================================================
-   3. LAS ANIMACIONES CLAVE (KEYFRAMES)
-======================================================= */
-
-/* Camina hacia la derecha, suelta, se voltea, regresa a la izquierda, se voltea */
-@keyframes patrullar {
-  0%   { left: 10px; transform: scaleX(1); } /* Inicia a la izquierda, mira a la derecha */
-  45%  { left: calc(100% - 60px); transform: scaleX(1); } /* Llega a la derecha */
-  50%  { left: calc(100% - 60px); transform: scaleX(-1); } /* Se da la media vuelta */
-  95%  { left: 10px; transform: scaleX(-1); } /* Llega a la izquierda */
-  100% { left: 10px; transform: scaleX(1); } /* Se vuelve a voltear a la derecha */
-}
-
-/* Hace que el bloque que carga sea visible solo de ida, y lo oculte de regreso */
-@keyframes cargar-y-soltar {
-  0%, 45% { opacity: 1; } /* Lo lleva en las manos */
-  46%, 100% { opacity: 0; } /* Ya lo soltó (se oculta) */
-}
-
-/* Los saltitos del Chicken Jockey */
 @keyframes chicken-bounce {
   0% { transform: translateY(0) rotate(-2deg); }
   100% { transform: translateY(-5px) rotate(2deg); }
 }
 
 /* =======================================================
-   4. TEXTOS E INFO (Centrados ahora)
+   3. TEXTOS E INFO
 ======================================================= */
 .zombie-info {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centramos el texto para que cuadre con el escenario */
+  align-items: center;
   text-align: center;
-  gap: 5px;
+  gap: 6px;
 }
 
 .zombie-semana-texto {
@@ -137,35 +93,48 @@
 }
 
 .zombie-mensaje {
-  color: #e2e8f0;
+  color: #e3beb6;
   font-size: 0.85rem;
   line-height: 1.3;
   margin: 0;
-  font-family: monospace;
 }
 
 .zombie-btn-toggle {
   background: transparent;
   border: none;
-  color: #a78bfa;
-  font-size: 0.75rem;
+  color: #ffb4a2;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  text-decoration: underline;
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
+.zombie-btn-dossier {
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  box-shadow: 0 6px 18px rgba(255, 94, 54, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.zombie-btn-dossier:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
 
 /* =======================================================
-   2. ESTILOS DE LA TARJETA BLANCA DEL GRID
+   4. TARJETA DE LA GRILLA 3x3
 ======================================================= */
 .puzzle-grid-card {
-  background-color: white;
-  border-radius: 20px;
-  padding: 20px;
+  padding: 18px;
   width: 100%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  animation: slideDownFade 0.4s ease-out; /* Animación al abrir */
+  animation: slideDownFade 0.4s ease-out;
 }
 
 @keyframes slideDownFade {
@@ -174,38 +143,144 @@
 }
 
 .puzzle-icon-top {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.puzzle-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .puzzle-piece {
   aspect-ratio: 1;
-  border-radius: 8px;
   overflow: hidden;
   position: relative;
-  background-color: #d1d5db; /* Gris de fondo para los bloqueados */
+}
+
+.puzzle-piece.unlocked {
+  box-shadow: 0 0 14px rgba(255, 180, 162, 0.45);
+  border: 1px solid rgba(255, 180, 162, 0.4);
 }
 
 .piece-image {
   width: 100%;
   height: 100%;
-  background-size: 400% 200%; /* Porque es un grid 4x2 */
+  background-size: 400% 200%;
 }
 
 .piece-locked-content {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #6b7280;
-  font-size: 0.65rem;
-  font-weight: bold;
+  color: #e3beb6;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+/* =======================================================
+   5. LECTOR DE DOSSIER — "ARCHIVOS VOL. II"
+======================================================= */
+.dossier-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 0, 46, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.dossier-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(170, 137, 130, 0.3);
+  border-radius: 1.5rem;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dossier-btn-cerrar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(170, 137, 130, 0.3);
+  color: #f4d9ff;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.dossier-titulo {
+  color: #ffb4a2;
+  font-size: 1.3rem;
+}
+
+.dossier-visor {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(170, 137, 130, 0.3);
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dossier-pagina {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center 30%;
+  animation: kenBurnsScan 14s ease-in-out forwards;
+}
+
+.dossier-pagina.pausado {
+  animation-play-state: paused;
+}
+
+/* Fase 1: escaneo completo → Fase 2: zoom al texto → Fase 3: pan a la ilustración */
+@keyframes kenBurnsScan {
+  0%   { transform: scale(1) translate(0, 0); }
+  35%  { transform: scale(1.18) translate(-4%, -6%); }
+  70%  { transform: scale(1.3) translate(3%, 4%); }
+  100% { transform: scale(1.15) translate(2%, 8%); }
+}
+
+.dossier-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.dossier-nav {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(170, 137, 130, 0.3);
+  color: #f4d9ff;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.dossier-nav:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dossier-contador {
+  color: #e3beb6;
+  font-size: 0.85rem;
 }

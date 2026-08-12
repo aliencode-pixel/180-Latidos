@@ -3,8 +3,7 @@
 ============================================================ */
 .inicio-dia {
   width: 100%;
-  min-height: 100vh;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 0 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -20,146 +19,102 @@
 }
 
 /* ============================================================
-   TÍTULO
+   TÍTULO "VOL. II"
 ============================================================ */
 .inicio-dia-titulo {
-  font-size: 2rem;
-  font-family: "Playfair Display", serif;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-  color: #f56464;
+  font-family: "Bodoni Moda", serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #ffb4a2;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
 }
 
 /* ============================================================
-   TEXTO
+   SUBTEXTO
 ============================================================ */
-.inicio-dia-texto {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+.inicio-dia-subtexto {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  color: #e3beb6;
   opacity: 0.9;
-  font-family: "Playfair Display", serif;
-  color: #333;
+  margin-bottom: 1.6rem;
+  text-transform: lowercase;
 }
 
 /* ============================================================
-   TARJETA BASE
+   TARJETA DE CRISTAL (GLASSMORPHISM NOCTURNE CRIMSON)
 ============================================================ */
 .inicio-dia-tarjeta {
   width: 100%;
   max-width: 480px;
-  background: rgba(255, 255, 255, 0.65);
-  padding: 1.6rem 1.4rem;
-  border-radius: 1.2rem;
-  margin: 1rem 0;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
+  padding: 2.2rem 1.6rem;
+  border-radius: 1.8rem;
+  margin: 0.5rem 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   animation: fadeInInicio 0.8s ease forwards;
   text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .inicio-dia-tarjeta:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
 }
 
 .inicio-dia-tarjeta h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.4rem;
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 0.8rem;
-  color: #011ef8;
+  color: #f4d9ff;
 }
 
 .inicio-dia-tarjeta p {
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 1rem;
   opacity: 0.85;
-  color: #151515;
+  color: #e3beb6;
 }
 
 /* ============================================================
-   BOTONES PRINCIPALES
+   BOTONES
 ============================================================ */
 .inicio-dia-btn {
-  padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #ffffff, #f2f2f2);
-  color: #c55454;
-  border: none;
-  border-radius: 0.6rem;
-  font-size: 1.1rem;
+  padding: 0.85rem 2rem;
+  background: rgba(244, 217, 255, 0.08);
+  color: #f4d9ff;
+  border: 1px solid rgba(170, 137, 130, 0.3);
+  border-radius: 999px;
+  font-size: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
   cursor: pointer;
   margin: 0.5rem 0;
-  font-family: "Playfair Display", serif;
   transition: 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .inicio-dia-btn:hover {
-  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
+  background: rgba(244, 217, 255, 0.14);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
-/* ============================================================
-   BOTÓN WRAPPED FINAL
-============================================================ */
-.wrapped-btn-inicio {
-  margin-top: 1.5rem;
-  padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #f5d7a1, #ffd6bd);
-  color: #a8a6a6;
+/* Botón principal con gradiente Nocturne Crimson */
+.inicio-dia-btn-gradiente {
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
   border: none;
-  border-radius: 0.6rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  font-family: "Playfair Display", serif;
-  transition: 0.3s ease;
-  box-shadow: 0 4px 12px rgba(245,215,161,0.4);
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.35);
 }
 
-.wrapped-btn-inicio:hover {
-  background: linear-gradient(135deg, #ffe7c4, #ffd6bd);
+.inicio-dia-btn-gradiente:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(216, 27, 96, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255,231,196,0.6);
-}
-
-/* ============================================================
-   TARJETAS POR TEMA — AURA PASTEL
-============================================================ */
-
-/* ⭐ HORIZONTE ESTELAR */
-.tema-horizonte .inicio-dia-tarjeta {
-  border: 2px solid rgba(244, 244, 244, 0.6);
-  box-shadow: 0 0 12px rgba(122,151,255,0.4);
-  background: rgba(210, 225, 255, 0.55);
-}
-
-/* ⭐ FUEGO DEL OCASO */
-.tema-ocaso .inicio-dia-tarjeta {
-  border: 2px solid rgba(237, 232, 230, 0.6);
-  box-shadow: 0 0 12px rgba(255,150,90,0.4);
-  background: rgba(255, 210, 170, 0.55);
-}
-
-/* ⭐ ALBA SERENA */
-.tema-alba .inicio-dia-tarjeta {
-  border: 2px solid rgba(249, 246, 242, 0.6);
-  box-shadow: 0 0 12px rgba(255,200,120,0.4);
-  background: rgba(255, 235, 190, 0.55);
-}
-
-/* ⭐ CIELO ACUARELA */
-.tema-acuarela .inicio-dia-tarjeta {
-  border: 2px solid rgba(237, 243, 248, 0.6);
-  box-shadow: 0 0 12px rgba(120,190,255,0.4);
-  background: rgba(190, 230, 255, 0.55);
-}
-
-/* ⭐ ETÉREO LUMÍNICO */
-.tema-etereo .inicio-dia-tarjeta {
-  border: 2px solid rgba(245, 245, 248, 0.6);
-  box-shadow: 0 0 12px rgba(214, 207, 243, 0.681);
-  background: rgba(243, 235, 255, 0.612);
 }
 
 /* ============================================================
@@ -167,14 +122,10 @@
 ============================================================ */
 @media (max-width: 480px) {
   .inicio-dia-titulo {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
 
-  .inicio-dia-texto {
-    font-size: 1.1rem;
-  }
-
-  .inicio-dia-btn,.wrapped-btn-inicio {
+  .inicio-dia-btn {
     width: 100%;
   }
 }

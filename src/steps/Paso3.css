@@ -1,6 +1,5 @@
 /* ============================================================
-   FONDO ESPECIAL DEL DÍA 1 (PASO2–PASO3–PASO4)
-   Pastel animado distinto al global
+   FONDO DÍA 1 (PASO2–PASO3–PASO4) — NOCTURNE CRIMSON
 ============================================================ */
 .paso-dia1-fondo {
   width: 100%;
@@ -11,15 +10,13 @@
 
   background: linear-gradient(
     140deg,
-    #fff0f5,
-    #e8f3ff,
-    #f3ffe8,
-    #fff9e6
+    #220434,
+    #2f1241,
+    #3a1d4c,
+    #1c002e
   );
   background-size: 500% 500%;
   animation: dia1Flow 22s ease infinite;
-
-  backdrop-filter: blur(10px);
 }
 
 @keyframes dia1Flow {
@@ -49,17 +46,19 @@
 }
 
 /* ============================================================
-   TARJETA
+   TARJETA DE CRISTAL
 ============================================================ */
 .paso3 .tarjeta {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2.2rem 2rem;
   border-radius: 1.6rem;
   max-width: 460px;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
   animation: floatCard 6s ease-in-out infinite;
   position: relative;
   z-index: 2;
@@ -75,10 +74,11 @@
    TÍTULO
 ============================================================ */
 .paso3 .titulo {
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.6rem;
+  font-weight: 700;
   margin-bottom: 1.6rem;
-  color: #fb0370;
+  color: #ffb4a2;
 }
 
 /* ============================================================
@@ -92,10 +92,10 @@
 
 .paso3 .linea {
   font-size: 1.05rem;
-  color: #444;
+  color: #f4d9ff;
   margin-bottom: 1rem;
   line-height: 1.5;
-  font-family: "Nunito", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
 }
@@ -121,7 +121,7 @@
 ============================================================ */
 .paso3 .flecha {
   font-size: 1.4rem;
-  color: #666;
+  color: #e3beb6;
   margin-bottom: 1rem;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
@@ -129,7 +129,7 @@
 }
 
 /* ============================================================
-   BOTÓN FINAL
+   BOTÓN FINAL (GRADIENTE NOCTURNE CRIMSON)
 ============================================================ */
 .paso3 .paso3-btn {
   margin-top: 1.8rem;
@@ -137,14 +137,15 @@
   border: none;
   border-radius: 1rem;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.75);
-  color: #333;
-  backdrop-filter: blur(6px);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.35);
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* efecto táctil móvil */
 .paso3 .paso3-btn:active {
   transform: scale(0.96);
   opacity: 0.85;

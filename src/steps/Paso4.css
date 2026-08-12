@@ -1,6 +1,5 @@
 /* ============================================================
-   FONDO ESPECIAL DEL DÍA 1 (PASO2–PASO3–PASO4)
-   Pastel animado distinto al global
+   FONDO DÍA 1 (PASO2–PASO3–PASO4) — NOCTURNE CRIMSON
 ============================================================ */
 .paso-dia1-fondo {
   width: 100%;
@@ -12,10 +11,10 @@
 
   background: linear-gradient(
     140deg,
-    #fff0f5,
-    #e8f3ff,
-    #f3ffe8,
-    #fff9e6
+    #220434,
+    #2f1241,
+    #3a1d4c,
+    #1c002e
   );
   background-size: 500% 500%;
   animation: dia1Flow 22s ease infinite;
@@ -51,18 +50,19 @@
    TÍTULO Y SUBTÍTULO
 ============================================================ */
 .paso4 .titulo {
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.7rem;
+  font-weight: 700;
   margin-bottom: 0.8rem;
-  color: #fb0370;
+  color: #ffb4a2;
 }
 
 .paso4 .sub {
   font-size: 1rem;
-  color: #cf6464;
+  color: #e3beb6;
   margin-bottom: 2rem;
   line-height: 1.4;
-  font-family: "Nunito", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 /* ============================================================
@@ -76,34 +76,35 @@
 }
 
 /* ============================================================
-   TARJETAS DE TEMA
+   TARJETAS DE TEMA (CRISTAL)
 ============================================================ */
 .tema-card {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 1.2rem;
   padding: 1rem;
   text-align: center;
   cursor: pointer;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .tema-card p {
   margin-top: 0.6rem;
   font-size: 0.95rem;
-  color: #333;
-  font-family: "Nunito", sans-serif;
+  color: #f4d9ff;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-/* efecto táctil móvil */
 .tema-card:active {
   transform: scale(0.95);
   opacity: 0.85;
 }
 
 /* ============================================================
-   PREVIEWS DE COLOR (los mismos tonos que definimos en Paso4 original)
+   PREVIEWS DE COLOR DE CADA TEMA (se mantienen distintivos)
 ============================================================ */
 .preview {
   width: 100%;
@@ -111,27 +112,22 @@
   border-radius: 0.8rem;
 }
 
-/* ⭐ Horizonte Estelar */
 .preview.tema-horizonte {
   background: linear-gradient(135deg, #6f87ff, #b8c6ff);
 }
 
-/* ⭐ Fuego del Ocaso */
 .preview.tema-ocaso {
   background: linear-gradient(135deg, #ff8a4f, #ffd1b3);
 }
 
-/* ⭐ Alba Serena */
 .preview.tema-alba {
   background: linear-gradient(135deg, #ffd47a, #ffeab3);
 }
 
-/* ⭐ Cielo Acuarela */
 .preview.tema-acuarela {
   background: linear-gradient(135deg, #6bc9e0, #b7ecff);
 }
 
-/* ⭐ Etéreo Lumínico */
 .preview.tema-etereo {
   background: linear-gradient(135deg, #8f6bff, #d3c2ff);
 }

@@ -11,8 +11,7 @@
   box-sizing: border-box;
   animation: fadeIn 0.8s ease forwards;
   position: relative;
-  /* Aseguramos que el contenedor atrape los elementos absolutos */
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -23,7 +22,6 @@
 /* ============================================================
    CAPA DE LOS CORAZONES (EL "SANDWICH")
 ============================================================ */
-/* Forzamos a que el contenedor de FallingHearts se ponga detrás de la tarjeta */
 .paso6 > .falling-hearts-container,
 .paso6 > canvas,
 .paso6 > svg,
@@ -33,101 +31,100 @@
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Para que no bloqueen los clics */
-  z-index: 1; /* Nivel 1: Delante del fondo */
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ============================================================
-   TARJETA EMOCIÓN (ENCAPSULADA)
+   TARJETA EMOCIÓN (CRISTAL NOCTURNE CRIMSON)
 ============================================================ */
 .paso6 .tarjeta-emocion {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2.4rem 2rem;
   border-radius: 1.6rem;
   max-width: 520px;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(12px);
-  /* Arreglamos las "formas negras": Suavizamos la sombra para que se vea rosa/grisáceo */
-  box-shadow: 0 8px 32px rgba(251, 6, 112, 0.15); 
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(170, 137, 130, 0.25);
   transform: none;
-  
-  /* ESTO ES LA CLAVE */
+
   position: relative;
-  z-index: 10; /* Nivel 10: ¡Por encima de los corazones! */
+  z-index: 10;
 }
 
 /* ============================================================
    TÍTULO Y FECHA
 ============================================================ */
 .paso6 .titulo {
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.9rem;
-  color: #fb0670;
+  font-weight: 700;
+  color: #ffb4a2;
   margin-bottom: 0.4rem;
-  text-shadow: 0 1px 2px rgba(251, 6, 112, 0.1);
 }
 
 .paso6 .fecha {
   font-size: 1rem;
-  color: #b84a66;
+  color: #e3beb6;
   margin-bottom: 1.6rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 /* ============================================================
-   TEXTAREA (ENCAPSULADA)
+   TEXTAREA
 ============================================================ */
 .paso6 .textarea {
   width: 100%;
   min-height: 150px;
   padding: 1rem;
   border-radius: 1rem;
-  border: none;
+  border: 1px solid rgba(170, 137, 130, 0.25);
   resize: none;
   font-size: 1rem;
-  font-family: inherit;
-  /* Quitamos el negro oscuro del texto y ponemos un gris más suave */
-  color: #5a5a5a; 
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #f4d9ff;
 
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(6px);
-  /* Sombra suavizada sin negro intenso */
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
 
   outline: none;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .paso6 .textarea::placeholder {
-  color: #a0a0a0;
+  color: #e3beb6;
+  opacity: 0.7;
 }
 
 .paso6 .textarea:focus {
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.02), 0 0 0 2px rgba(251, 6, 112, 0.2);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 94, 54, 0.4);
 }
 
 /* ============================================================
-   BOTÓN GUARDAR — CAMBIO AUTOMÁTICO SEGÚN TEMA
+   BOTÓN GUARDAR — GRADIENTE SEGÚN TEMA EMOCIONAL
 ============================================================ */
 
 /* Calma */
 .tema-calma .paso6 .btn-guardar {
-  background: #dbe8ff !important;
-  color: #3a4a7a !important;
+  background: linear-gradient(135deg, #4b2d5c, #d56fc7) !important;
+  color: #ffffff !important;
 }
 
 /* Energía */
 .tema-energia .paso6 .btn-guardar {
-  background: #ffd6e5 !important;
-  color: #fb0670 !important;
+  background: linear-gradient(135deg, #FF5E36, #D81B60) !important;
+  color: #ffffff !important;
 }
 
 /* Nostalgia */
 .tema-nostalgia .paso6 .btn-guardar {
-  background: #ffe3c6 !important;
-  color: #b85a2a !important;
+  background: linear-gradient(135deg, #b42901, #ffb2bf) !important;
+  color: #621100 !important;
 }
 
 /* Estilo base */
@@ -137,26 +134,34 @@
   border: none;
   border-radius: 1rem;
   font-size: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   cursor: pointer;
 
-  backdrop-filter: blur(6px);
-  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.3);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .paso6 .btn-guardar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  filter: brightness(1.08);
+}
+
+.paso6 .btn-guardar:disabled {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
 }
 
 /* ============================================================
-   FLECHA HISTORIAL (ENCAPSULADA)
+   FLECHA HISTORIAL
 ============================================================ */
 .paso6 .flecha-historial {
   margin-top: 1.4rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #fb0670;
+  color: #ffb4a2;
+  font-family: "Plus Jakarta Sans", sans-serif;
   cursor: pointer;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }

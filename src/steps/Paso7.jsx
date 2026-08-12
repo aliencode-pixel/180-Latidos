@@ -23,7 +23,7 @@ export default function Paso7({ onVolver }) {
 
         <div className="contenido-historial">
           {historial.length === 0 && (
-            <p style={{ color: "#666", fontSize: "1rem" }}>
+            <p style={{ color: "#e3beb6", fontSize: "1rem" }}>
               Aún no has escrito ningún latido.
             </p>
           )}

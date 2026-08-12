@@ -24,11 +24,14 @@ import { TRACKS } from "./data/tracks";
 // 🧩 COMPONENTE DE PUZZLE (VOL. II)
 import PuzzleSemanas from "./components/PuzzleSemanas";
 
+// 🏛️ MURAL DE RECUERDOS
+import ModalMural from "./components/ModalMural";
+
 /* ============================================================
    CONFIGURACIÓN VOL. II (PUZZLE)
 ============================================================ */
-const TOTAL_SEMANAS_PUZZLE = 8; 
-const MODO_PRUEBA_PUZZLE = false; 
+const TOTAL_SEMANAS_PUZZLE = 8;
+const MODO_PRUEBA_PUZZLE = true;
 
 /* ============================================================
    CSS
@@ -62,6 +65,7 @@ export default function App() {
   const [mostrarCumple, setMostrarCumple] = useState(false);
   const [cumpleFinalizado, setCumpleFinalizado] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [mostrarMural, setMostrarMural] = useState(false);
   const instrumentalUltimoDiaRef = useRef(null);
 
   const tituloPagina = (MODO_PRUEBA_PUZZLE || diaActual >= 180) ? "180 latidos: Vol. II" : "180 latidos";
@@ -78,10 +82,10 @@ export default function App() {
   useEffect(() => {
     const chequearCumple = () => {
       const hoy = new Date();
-      const es18Abril = hoy.getMonth() === 3 && hoy.getDate() === 18; 
+      const es18Abril = hoy.getMonth() === 3 && hoy.getDate() === 18;
       const yaVioCumple = localStorage.getItem("cumple2026Visto") === "true";
 
-      if (es18Abril && !yaVioCumple && !cumpleFinalizado) { 
+      if (es18Abril && !yaVioCumple && !cumpleFinalizado) {
         setMostrarCumple(true);
       }
     };
@@ -150,7 +154,7 @@ export default function App() {
     }, 350);
   };
 
-  const esUltimoDia = false; 
+  const esUltimoDia = false;
 
   const handleMenuBienvenida = () => {
     setMenuAbierto(false);
@@ -171,6 +175,16 @@ export default function App() {
   const handleMenuCumple = () => {
     setMenuAbierto(false);
     setMostrarCumple(true);
+  };
+
+  const handleMenuMural = () => {
+    setMenuAbierto(false);
+    setMostrarMural(true);
+  };
+
+  const handleMenuWrapped = () => {
+    setMenuAbierto(false);
+    setPantallaDia("wrapped-final");
   };
 
   if (mostrarCumple) {
@@ -202,180 +216,203 @@ export default function App() {
 
   const diaEnVol2 = diaActual ? Math.max(1, diaActual - 179) : 1;
 
+  // Colección para el Mural de Recuerdos, derivada del progreso real del puzzle
+  const semanaActualMural = Math.min(TOTAL_SEMANAS_PUZZLE, Math.ceil((MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2) / 7));
+  const coleccionMural = Array.from({ length: TOTAL_SEMANAS_PUZZLE }).map((_, i) => ({
+    semana: i + 1,
+    desbloqueada: i < semanaActualMural,
+    url: "https://picsum.photos/600/400",
+    titulo: `Semana ${i + 1}`
+  }));
+
   return (
-    <div className={`app-contenedor min-h-screen bg-background font-body-md text-on-surface relative overflow-x-hidden ${temaElegido ? `tema-${temaElegido}` : ""}`}>
-      
-      {!mostrarIntroUltimoDia && pantallaDia !== "wrapped-final" && (
-        <>
-          {/* HEADER CON ESTILO NOCTURNE CRIMSON */}
-          <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-8 pointer-events-none">
-            <div className="pointer-events-auto w-full max-w-[1200px] flex items-center justify-between">
-              
-              {/* Etiqueta 180 Latidos */}
-              <div className="bg-[#5c163b] text-primary px-5 py-2 rounded-full text-xs font-label-md font-bold tracking-widest shadow-[0_0_15px_rgba(226,24,101,0.3)]">
-                {tituloPagina}
-              </div>
+    <div className="min-h-screen w-full bg-[#1c002e] bg-[radial-gradient(ellipse_at_center,_rgba(75,45,92,0.45)_0%,_#1c002e_70%)] flex justify-center items-start sm:items-center py-0 sm:py-10">
 
-              {/* Links Centrales Decorativos */}
-              <div className="hidden md:flex gap-8 text-primary font-label-md text-xs font-bold tracking-widest uppercase">
-                <span className="hover:text-white cursor-pointer transition-colors">Experience</span>
-                <span className="hover:text-white cursor-pointer transition-colors">Manifesto</span>
-                <span className="hover:text-white cursor-pointer transition-colors">Vault</span>
-              </div>
+      {/* ================= MARCO ESTILO SMARTPHONE ================= */}
+      <div
+        className={`app-contenedor relative w-full sm:max-w-[430px] sm:h-[880px] sm:rounded-[2.5rem] sm:border sm:border-[#aa8982]/25 sm:shadow-[0_25px_80px_rgba(0,0,0,0.55)] min-h-screen sm:min-h-0 overflow-y-auto overflow-x-hidden bg-background font-body-md text-on-surface ${temaElegido ? `tema-${temaElegido}` : ""}`}
+      >
 
-              {/* Iconos de la derecha */}
-              <div className="flex items-center gap-6">
-                <span className="material-symbols-outlined text-primary text-xl cursor-pointer hover:text-white transition-colors">search</span>
-                <button 
+        {!mostrarIntroUltimoDia && pantallaDia !== "wrapped-final" && (
+          <>
+            {/* HEADER MINIMALISTA */}
+            <header className="sticky top-0 left-0 right-0 z-50 flex justify-center pt-5 pb-3 px-5 pointer-events-none bg-gradient-to-b from-background via-background/90 to-transparent">
+              <div className="pointer-events-auto w-full flex items-center justify-between">
+
+                {/* Wordmark */}
+                <span className="font-headline-md text-lg text-primary tracking-wide">
+                  {tituloPagina}
+                </span>
+
+                {/* Botón hamburguesa */}
+                <button
                   onClick={() => setMenuAbierto(!menuAbierto)}
-                  className="bg-[#5c163b] text-primary w-9 h-9 rounded-full flex items-center justify-center hover:bg-secondary hover:text-white transition-colors z-50 relative shadow-[0_0_10px_rgba(226,24,101,0.2)]"
+                  aria-label="Abrir menú"
+                  className="bg-surface-container-high/80 text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary-container hover:text-on-primary transition-colors z-50 relative border border-outline-variant/40"
                 >
-                  <span className="material-symbols-outlined text-lg">
-                    {menuAbierto ? 'close' : 'person'}
+                  <span className="material-symbols-outlined text-xl">
+                    {menuAbierto ? 'close' : 'menu'}
                   </span>
                 </button>
               </div>
+            </header>
+
+            {/* MENÚ LATERAL "MEMORIAS" */}
+            <div className={`fixed inset-y-0 right-0 w-72 max-w-[85%] bg-surface-container/95 backdrop-blur-xl border-l border-outline-variant/40 shadow-2xl transform transition-transform duration-500 z-50 ${menuAbierto ? 'translate-x-0' : 'translate-x-full'}`}>
+              <div className="p-6 pt-24 flex flex-col gap-3 h-full overflow-y-auto">
+                <h3 className="font-headline-lg text-2xl text-primary mb-2 border-b border-outline-variant/40 pb-4">Memorias</h3>
+
+                <button onClick={handleMenuBienvenida} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">auto_awesome</span>
+                  Pantalla de Bienvenida
+                </button>
+
+                <button onClick={handleMenuHistorial} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">queue_music</span>
+                  Historial de Canciones
+                </button>
+
+                <button onClick={handleMenuMural} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">grid_view</span>
+                  Mural de Recuerdos
+                </button>
+
+                <button onClick={handleMenuWrapped} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">celebration</span>
+                  Wrapped Final
+                </button>
+
+                <button onClick={handleMenuCumple} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">cake</span>
+                  Especial de Cumpleaños
+                </button>
+              </div>
             </div>
-          </header>
 
-          {/* MENÚ LATERAL DESPLEGABLE */}
-          <div className={`fixed inset-y-0 right-0 w-80 bg-surface-container border-l border-outline-variant shadow-2xl transform transition-transform duration-500 z-50 ${menuAbierto ? 'translate-x-0' : 'translate-x-full'}`}>
-            <div className="p-8 pt-32 flex flex-col gap-4 h-full overflow-y-auto">
-              <h3 className="font-headline-lg text-2xl text-primary mb-4 border-b border-outline-variant pb-4">Memorias</h3>
-              
-              <button onClick={handleMenuBienvenida} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">auto_awesome</span>
-                Pantalla de Bienvenida
-              </button>
-              
-              <button onClick={handleMenuHistorial} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">queue_music</span>
-                Historial de Canciones
-              </button>
-              
-              <button onClick={handleMenuCumple} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">cake</span>
-                Especial de Cumpleaños
-              </button>
-            </div>
-          </div>
-          
-          {menuAbierto && (
-            <div 
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
-              onClick={() => setMenuAbierto(false)}
-            />
-          )}
-        </>
-      )}
-
-      {/* ================= CUERPO PRINCIPAL ================= */}
-      <main className={`relative z-10 pt-32 flex flex-col items-center pb-20 fade-container w-full ${transicionando ? "fade-out" : "fade-in"}`}>
-
-        {(paso === 2 || paso === 3) && diaActual === 1 && <FallingHearts />}
-
-        {esUltimoDia && mostrarIntroUltimoDia && (
-          <UltimoDiaCine onFinish={() => setMostrarIntroUltimoDia(false)} />
-        )}
-
-        {pantallaDia === "wrapped-final" && (
-          <WrappedFinal onVolver={() => setPantallaDia("final")} />
-        )}
-
-        {pantallaDia === "final" && !mostrarIntroUltimoDia && (
-          <UltimoDia
-            ultimaCancion={{
-              titulo: "I'm in Love With You — The 1975",
-              portada: "/covers/im-in-love-with-you.jpg",
-              url: "/audio/The-1975-Im-In-Love-With-You-_Official-Video_.mp3"
-            }}
-            instrumentalRef={instrumentalUltimoDiaRef}
-            onIrWrappedFinal={() => {
-              setTransicionAWrapped(false);
-              setPantallaDia("wrapped-final");
-            }}
-          />
-        )}
-
-        {/* CONTENEDOR PRINCIPAL DIARIO Y PUZZLE */}
-        {["inicio-dia", "escribir-latido", "completado"].includes(pantallaDia) && (
-          <div className="inicio-dia-wrapper w-full max-w-[1200px] px-5 flex flex-col gap-12">
-            
-            <InicioDia
-              diaActual={diaActual}
-              pantallaDia={pantallaDia}
-              titulo={tituloPagina}
-              onIrRuleta={() => {
-                const ultimaCancion = Number(localStorage.getItem("ultimaCancionDia"));
-                if (ultimaCancion === diaActual) {
-                  setPantallaDia(null);
-                  setPaso(6);
-                } else {
-                  setPantallaDia(null);
-                  setPaso(5);
-                }
-              }}
-              onIrLatido={() => {
-                setPantallaDia(null);
-                setPaso(6);
-              }}
-              onIrHistorial={() => {
-                setPantallaDia(null);
-                setPaso(7);
-              }}
-            />
-
-            {(MODO_PRUEBA_PUZZLE || diaActual >= 180) && (
-              <PuzzleSemanas
-                diaActual={MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2}
-                totalSemanas={TOTAL_SEMANAS_PUZZLE}
-                imagenFinal="https://picsum.photos/600/400"
+            {menuAbierto && (
+              <div
+                className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+                onClick={() => setMenuAbierto(false)}
               />
             )}
 
-          </div>
+            {/* MURAL DE RECUERDOS */}
+            <ModalMural
+              isOpen={mostrarMural}
+              onClose={() => setMostrarMural(false)}
+              coleccionImagenes={coleccionMural}
+            />
+          </>
         )}
 
-        {diaActual === 1 && paso === 2 && <Paso2 onNext={avanzar} />}
-        {diaActual === 1 && paso === 3 && <Paso3 onNext={avanzar} />}
-        {diaActual === 1 && paso === 4 && <Paso4 onNext={avanzar} />}
+        {/* ================= CUERPO PRINCIPAL ================= */}
+        <main className={`relative z-10 px-4 pb-16 flex flex-col items-center fade-container w-full ${transicionando ? "fade-out" : "fade-in"}`}>
 
-        {paso === 5 && (
-          <Paso5
-            diaActual={diaActual}
-            onWrite={(track) => {
-              setCancionSeleccionada(track);
-              localStorage.setItem("ultimaCancionDia", diaActual);
-              setPaso(5.5);
-            }}
-          />
-        )}
+          {(paso === 2 || paso === 3) && diaActual === 1 && <FallingHearts />}
 
-        {paso === 5.5 && (
-          <Paso5_5
-            cancion={cancionSeleccionada}
-            onContinuar={() => setPaso(6)}
-          />
-        )}
+          {esUltimoDia && mostrarIntroUltimoDia && (
+            <UltimoDiaCine onFinish={() => setMostrarIntroUltimoDia(false)} />
+          )}
 
-        {paso === 6 && (
-          <Paso6
-            cancion={cancionSeleccionada}
-            diaActual={diaActual}
-            onSave={() => {
-              localStorage.setItem("ultimoLatidoDia", diaActual);
-              avanzar();
-            }}
-            onHistorial={irHistorial}
-          />
-        )}
+          {pantallaDia === "wrapped-final" && (
+            <WrappedFinal onVolver={() => setPantallaDia("final")} />
+          )}
 
-        {paso === 7 && (
-          <Paso7
-            onVolver={() => setPaso(6)}
-          />
-        )}
-      </main>
+          {pantallaDia === "final" && !mostrarIntroUltimoDia && (
+            <UltimoDia
+              ultimaCancion={{
+                titulo: "I'm in Love With You — The 1975",
+                portada: "/covers/im-in-love-with-you.jpg",
+                url: "/audio/The-1975-Im-In-Love-With-You-_Official-Video_.mp3"
+              }}
+              instrumentalRef={instrumentalUltimoDiaRef}
+              onIrWrappedFinal={() => {
+                setTransicionAWrapped(false);
+                setPantallaDia("wrapped-final");
+              }}
+            />
+          )}
+
+          {/* CONTENEDOR PRINCIPAL DIARIO Y PUZZLE */}
+          {["inicio-dia", "escribir-latido", "completado"].includes(pantallaDia) && (
+            <div className="inicio-dia-wrapper w-full flex flex-col gap-8">
+
+              <InicioDia
+                diaActual={diaActual}
+                pantallaDia={pantallaDia}
+                titulo={tituloPagina}
+                onIrRuleta={() => {
+                  const ultimaCancion = Number(localStorage.getItem("ultimaCancionDia"));
+                  if (ultimaCancion === diaActual) {
+                    setPantallaDia(null);
+                    setPaso(6);
+                  } else {
+                    setPantallaDia(null);
+                    setPaso(5);
+                  }
+                }}
+                onIrLatido={() => {
+                  setPantallaDia(null);
+                  setPaso(6);
+                }}
+                onIrHistorial={() => {
+                  setPantallaDia(null);
+                  setPaso(7);
+                }}
+              />
+
+              {(MODO_PRUEBA_PUZZLE || diaActual >= 180) && (
+                <PuzzleSemanas
+                  diaActual={MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2}
+                  totalSemanas={TOTAL_SEMANAS_PUZZLE}
+                  imagenFinal="https://picsum.photos/600/400"
+                />
+              )}
+
+            </div>
+          )}
+
+          {diaActual === 1 && paso === 2 && <Paso2 onNext={avanzar} />}
+          {diaActual === 1 && paso === 3 && <Paso3 onNext={avanzar} />}
+          {diaActual === 1 && paso === 4 && <Paso4 onNext={avanzar} />}
+
+          {paso === 5 && (
+            <Paso5
+              diaActual={diaActual}
+              onWrite={(track) => {
+                setCancionSeleccionada(track);
+                localStorage.setItem("ultimaCancionDia", diaActual);
+                setPaso(5.5);
+              }}
+            />
+          )}
+
+          {paso === 5.5 && (
+            <Paso5_5
+              cancion={cancionSeleccionada}
+              onContinuar={() => setPaso(6)}
+            />
+          )}
+
+          {paso === 6 && (
+            <Paso6
+              cancion={cancionSeleccionada}
+              diaActual={diaActual}
+              onSave={() => {
+                localStorage.setItem("ultimoLatidoDia", diaActual);
+                avanzar();
+              }}
+              onHistorial={irHistorial}
+            />
+          )}
+
+          {paso === 7 && (
+            <Paso7
+              onVolver={() => setPaso(6)}
+            />
+          )}
+        </main>
+      </div>
     </div>
   );
 }

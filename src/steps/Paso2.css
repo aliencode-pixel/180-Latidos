@@ -1,6 +1,5 @@
 /* ============================================================
-   FONDO ESPECIAL DEL DÍA 1 (PASO2–PASO3–PASO4)
-   Pastel animado distinto al global
+   FONDO DÍA 1 (PASO2–PASO3–PASO4) — NOCTURNE CRIMSON
 ============================================================ */
 .paso-dia1-fondo {
   width: 100%;
@@ -11,15 +10,13 @@
 
   background: linear-gradient(
     140deg,
-    #fff0f5,
-    #e8f3ff,
-    #f3ffe8,
-    #fff9e6
+    #220434,
+    #2f1241,
+    #3a1d4c,
+    #1c002e
   );
   background-size: 500% 500%;
   animation: dia1Flow 22s ease infinite;
-
-  backdrop-filter: blur(10px);
 }
 
 @keyframes dia1Flow {
@@ -50,17 +47,19 @@
 }
 
 /* ============================================================
-   TARJETA (ENCAPSULADA)
+   TARJETA DE CRISTAL
 ============================================================ */
 .paso2 .tarjeta {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
   padding: 2.2rem 2rem;
   border-radius: 1.6rem;
   max-width: 420px;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
   animation: floatCard 6s ease-in-out infinite;
   z-index: 2;
 }
@@ -76,20 +75,20 @@
 ============================================================ */
 .paso2 .frase-inicio {
   font-size: 1.15rem;
-  color: #333;
+  color: #f4d9ff;
   margin-bottom: 1.2rem;
   line-height: 1.5;
-  font-family: "Nunito", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
 }
 
 .paso2 .frase-suave {
   font-size: 1rem;
-  color: #555;
+  color: #e3beb6;
   margin-bottom: 2rem;
   line-height: 1.5;
-  font-family: "Nunito", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
   animation-delay: 0.4s;
@@ -107,21 +106,20 @@
 }
 
 /* ============================================================
-   BOTÓN FLECHA
+   BOTÓN FLECHA (GRADIENTE NOCTURNE CRIMSON)
 ============================================================ */
 .paso2 .flecha {
-  background: rgba(255, 255, 255, 0.75);
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
   border: none;
   padding: 0.8rem 1.4rem;
   border-radius: 1rem;
   font-size: 1.4rem;
   cursor: pointer;
-  color: #333;
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease, background 0.3s ease;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(255, 94, 54, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* efecto táctil para móvil */
 .paso2 .flecha:active {
   transform: scale(0.96);
   opacity: 0.85;
