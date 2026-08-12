@@ -28,7 +28,7 @@ import PuzzleSemanas from "./components/PuzzleSemanas";
    CONFIGURACIÓN VOL. II (PUZZLE)
 ============================================================ */
 const TOTAL_SEMANAS_PUZZLE = 8; 
-const MODO_PRUEBA_PUZZLE = true; 
+const MODO_PRUEBA_PUZZLE = false; 
 
 /* ============================================================
    CSS
@@ -56,7 +56,7 @@ export default function App() {
   const [pantallaDia, setPantallaDia] = useState(null);
   const [diaActual, setDiaActual] = useState(null);
 
-  const [mostrarIntroUltimoDia, setMostrarIntroUltimoDia] = useState(true);
+  const [mostrarIntroUltimoDia, setMostrarIntroUltimoDia] = useState(false);
   const [transicionAWrapped, setTransicionAWrapped] = useState(false);
 
   const [mostrarCumple, setMostrarCumple] = useState(false);
@@ -291,7 +291,7 @@ export default function App() {
             }}
             instrumentalRef={instrumentalUltimoDiaRef}
             onIrWrappedFinal={() => {
-              setTransicionAWrapped(true);
+              setTransicionAWrapped(false);
               setPantallaDia("wrapped-final");
             }}
           />
