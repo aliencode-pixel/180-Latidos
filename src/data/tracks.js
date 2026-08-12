@@ -1159,25 +1159,45 @@ export const TRACKS = [
   vibe: "pop"
 },
 {
-  nombre: "when it's time",
-  artista: "Green Day",
-  portada: "https://i.scdn.co/image/ab67616d0000b2737e547333cf087b8cfc535444",
-  link: "https://open.spotify.com/intl-es/track/5nGCVIpxp0u4AYpVpK0pv4?si=3e5be6205bac40fb",
-  vibe: "soft"
-},
-{
   nombre: "Beautiful Feeling",
   artista: "Day6",
   portada: "https://i.scdn.co/image/ab67616d0000b27396da280c4170ab42775d614b",
   link: "https://open.spotify.com/intl-es/track/2hVdTfoa7BiJd4AfRgQYix?si=ce5799bcaf9e4fc8",
   vibe: "soft"
 },
-
 {
-  nombre: "Let Me Love You",
-  artista: "Day6",
-  portada: "https://i.scdn.co/image/ab67616d0000b2731e20be5a6bdfd2780516320a",
-  link: "https://open.spotify.com/intl-es/track/43ILn2F6PEK1MOZ2WDUGJE?si=cd9a2875b21442a4",
+  nombre: "Show Your Love",
+  artista: "BTOB",
+  portada: "https://i.scdn.co/image/ab67616d0000b2730a7e99d67f8c36b1f2b24b0b",
+  link: "https://open.spotify.com/intl-es/track/1VG2YcjPA6XQtiJOoCx9zu?si=762829f1d1744c36",
+  vibe: "soft"
+},
+{
+  nombre: "Til Kingdom Come",
+  artista: "Coldplay",
+  portada: "https://i.scdn.co/image/ab67616d0000b2734e0362c225863f6ae2432651",
+  link: "https://open.spotify.com/intl-es/track/1wQXj5bgxyZQ2XmE2X9s6n?si=32e8f1cb54e84102",
+  vibe: "soft"
+},
+{
+  nombre: "Fall in Love with You.",
+  artista: "Montell Fish",
+  portada: "https://i.scdn.co/image/ab67616d0000b273831a86ddaa3cf150c8a0f122",
+  link: "https://open.spotify.com/intl-es/track/3NTkDaR9hw7VbU3ziBnNVz?si=86d39524d9134216",
+  vibe: "pop"
+},
+{
+  nombre: "Coastline",
+  artista: "Hollow Coves",
+  portada: "https://i.scdn.co/image/ab67616d0000b2732735fa941859fad0e5cc7460",
+  link: "https://open.spotify.com/intl-es/track/4sDbdBjuYQVdNNB4PiHUPo?si=67f7f6e4aef3476d",
+  vibe: "soft"
+},
+{
+  nombre: "Maybe",
+  artista: "James Arthur",
+  portada: "https://i.scdn.co/image/ab67616d0000b273f740f5f279648d0a1147e6a6",
+  link: "https://open.spotify.com/intl-es/track/3bMEc0K6zJNhTQeoyxox8j?si=28630ab192914c1c",
   vibe: "soft"
 },
 {
@@ -1187,6 +1207,21 @@ export const TRACKS = [
   link: "https://open.spotify.com/intl-es/track/0h7QMc9ZRzA9QJrbEHytn2?si=a25f7f2ba28e45e2",
   vibe: "soft"
 },
+{
+  nombre: "Bloom (Eros)",
+  artista: "Sleeping at Last",
+  portada: "https://i.scdn.co/image/ab67616d0000b273a3549d686814985210da00f3",
+  link: "https://open.spotify.com/intl-es/track/2cKkthxFdzFEmZeMThj2Sn?si=485176bfb85d4d17",
+  vibe: "pop"
+},
+{
+  nombre: "Let Me Love You",
+  artista: "Day6",
+  portada: "https://i.scdn.co/image/ab67616d0000b2731e20be5a6bdfd2780516320a",
+  link: "https://open.spotify.com/intl-es/track/43ILn2F6PEK1MOZ2WDUGJE?si=cd9a2875b21442a4",
+  vibe: "soft"
+},
+
 {
   nombre: "Look After You",
   artista: "The Fray",
@@ -1199,6 +1234,20 @@ export const TRACKS = [
   artista: "Goo Goo Dolls",
   portada: "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
   link: "https://open.spotify.com/intl-es/track/6Qyc6fS4DsZjB2mRW9DsQs?si=9299f26fba9140b1",
+  vibe: "soft"
+},
+{
+  nombre: "SOMEONE LIKE ME",
+  artista: "TWICE",
+  portada: "https://i.scdn.co/image/ab67616d0000b2736fcf4d00261921e0363bf983",
+  link: "https://open.spotify.com/intl-es/track/5IbmSg5zVmZOa5JveGi3Pc?si=6447afa175724425",
+  vibe: "soft"
+},
+{
+  nombre: "when it's time",
+  artista: "Green Day",
+  portada: "https://i.scdn.co/image/ab67616d0000b2737e547333cf087b8cfc535444",
+  link: "https://open.spotify.com/intl-es/track/5nGCVIpxp0u4AYpVpK0pv4?si=3e5be6205bac40fb",
   vibe: "soft"
 },
 {
