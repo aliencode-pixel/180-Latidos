@@ -38,6 +38,10 @@
 
 /* ============================================================
    TEMAS DE FONDO (SELECCIONABLES DESDE BIENVENIDA)
+   Por defecto usan la paleta pastel ORIGINAL de Vol. I.
+   Solo se reinterpretan en oscuro cuando el contenedor tiene
+   la clase .vol2-activo (es decir, tras completar la transición
+   a "180 latidos: Vol. II").
 ============================================================ */
 @keyframes temaFlow {
   0% { background-position: 0% 50%; }
@@ -45,40 +49,52 @@
   100% { background-position: 0% 50%; }
 }
 
+/* 🌅 Horizonte — Vol. I */
 .tema-horizonte {
+  background: linear-gradient(135deg, #ffe8d6, #ffd4e2, #e8e0ff);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+/* 🌇 Ocaso — Vol. I */
+.tema-ocaso {
+  background: linear-gradient(135deg, #ffb3a0, #ff8fb8, #c7a4ff);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+/* 🌊 Acuarela — Vol. I */
+.tema-acuarela {
+  background: linear-gradient(135deg, #d4f1ff, #e8d9ff, #ffe8f2);
+  background-size: 300% 300%;
+  animation: temaFlow 18s ease infinite;
+  will-change: background-position;
+}
+
+/* ---------- Vol. II: mismos nombres de tema, reinterpretados ---------- */
+.vol2-activo.tema-horizonte {
   background: linear-gradient(135deg, #3a1d4c, #4b2d5c, #2b0d3c);
   background-size: 300% 300%;
   animation: temaFlow 18s ease infinite;
   will-change: background-position;
 }
 
-.tema-ocaso {
+.vol2-activo.tema-ocaso {
   background: linear-gradient(135deg, #5b1000, #660028, #2b0d3c);
   background-size: 300% 300%;
   animation: temaFlow 18s ease infinite;
   will-change: background-position;
 }
 
-.tema-acuarela {
+.vol2-activo.tema-acuarela {
   background: linear-gradient(135deg, #2f1241, #3a1d4c, #220434);
   background-size: 300% 300%;
   animation: temaFlow 18s ease infinite;
   will-change: background-position;
 }
 
-.tema-alba {
-  background: linear-gradient(135deg, #462858, #2f1241, #1c002e);
-  background-size: 300% 300%;
-  animation: temaFlow 18s ease infinite;
-  will-change: background-position;
-}
-
-.tema-etereo {
-  background: linear-gradient(135deg, #4b2d5c, #2b0d3c, #220434);
-  background-size: 300% 300%;
-  animation: temaFlow 18s ease infinite;
-  will-change: background-position;
-}
 
 /* ============================================================
    AJUSTES GENERALES PARA PASOS INTERNOS

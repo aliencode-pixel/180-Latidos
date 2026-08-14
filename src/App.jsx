@@ -85,7 +85,14 @@ export default function App() {
   const [tourVol2Pendiente, setTourVol2Pendiente] = useState(false);
   const instrumentalUltimoDiaRef = useRef(null);
 
-  const tituloPagina = (MODO_PRUEBA_PUZZLE || diaActual >= 180) ? "180 latidos: Vol. II" : "180 latidos";
+  const tituloPagina = vol2TransicionCompletada ? "180 latidos: Vol. II" : "180 latidos";
+
+  // Fuente de verdad ÚNICA para la "modalidad" visual de la app:
+  // antes de completar la transición cinemática, todo se ve y siente
+  // como Vol. I (paleta pastel original). Después, cambia a Vol. II.
+  // MODO_PRUEBA_PUZZLE solo sirve para poder disparar/probar la
+  // transición sin esperar al día 180 real — no afecta la estética.
+  const estaEnVol2 = vol2TransicionCompletada;
 
   useEffect(() => {
     document.title = tituloPagina;
@@ -262,6 +269,33 @@ export default function App() {
     );
   }
 
+  // PASO 5.5 — "La canción del día" (Vol. I).
+  // Se renderiza como pantalla COMPLETA e independiente del marco oscuro
+  // de Vol. II (sin header ni hamburguesa), para conservar intacta la
+  // paleta, tipografías y estilos originales de "180 Latidos (Vol. I)"
+  // hasta el instante exacto en que se pulsa "Continuar".
+  if (paso === 5.5) {
+    return (
+      <Paso5_5
+        cancion={cancionSeleccionada}
+        onContinuar={() => {
+          // La transición a Vol. II se dispara únicamente desde aquí:
+          // al terminar de ver la canción del día, si aún no se
+          // completó (o si el modo de prueba está activo).
+          const debeTransicionarAVol2 =
+            (MODO_PRUEBA_PUZZLE || (diaActual && diaActual >= 180)) &&
+            !vol2TransicionCompletada;
+
+          if (debeTransicionarAVol2) {
+            setMostrarTransicionVol2(true);
+          } else {
+            setPaso(6);
+          }
+        }}
+      />
+    );
+  }
+
   // Transición cinemática hacia "180 latidos: Vol. II".
   // Se dispara EXCLUSIVAMENTE desde el botón "Continuar" del Paso 5_5
   // (ver más abajo) — nunca automáticamente al cargar la app.
@@ -314,11 +348,17 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-[#1c002e] bg-[radial-gradient(ellipse_at_center,_rgba(75,45,92,0.45)_0%,_#1c002e_70%)] flex justify-center items-start sm:items-center py-0 sm:py-10">
+    <div
+      className={
+        estaEnVol2
+          ? "min-h-screen w-full bg-[#1c002e] bg-[radial-gradient(ellipse_at_center,_rgba(75,45,92,0.45)_0%,_#1c002e_70%)] flex justify-center items-start sm:items-center py-0 sm:py-10"
+          : "min-h-screen w-full bg-[#fff6f2] bg-[radial-gradient(ellipse_at_center,_rgba(255,211,178,0.35)_0%,_#fff6f2_70%)] flex justify-center items-start sm:items-center py-0 sm:py-10"
+      }
+    >
 
       {/* ================= MARCO ESTILO SMARTPHONE ================= */}
       <div
-        className={`app-contenedor relative w-full sm:max-w-[430px] sm:h-[880px] sm:rounded-[2.5rem] sm:border sm:border-[#aa8982]/25 sm:shadow-[0_25px_80px_rgba(0,0,0,0.55)] min-h-screen sm:min-h-0 overflow-y-auto overflow-x-hidden bg-background font-body-md text-on-surface ${temaElegido ? `tema-${temaElegido}` : ""}`}
+        className={`app-contenedor relative w-full sm:max-w-[430px] sm:h-[880px] sm:rounded-[2.5rem] sm:border sm:border-[#aa8982]/25 sm:shadow-[0_25px_80px_rgba(0,0,0,0.55)] min-h-screen sm:min-h-0 overflow-y-auto overflow-x-hidden bg-background font-body-md text-on-surface ${temaElegido ? `tema-${temaElegido}` : ""} ${estaEnVol2 ? "vol2-activo" : ""}`}
       >
 
         {!mostrarIntroUltimoDia && pantallaDia !== "wrapped-final" && (
@@ -453,7 +493,7 @@ export default function App() {
                 }}
               />
 
-              {(MODO_PRUEBA_PUZZLE || diaActual >= 180) && (
+              {estaEnVol2 && (
                 <div data-tour="zombie-constructor" className="w-full">
                   <PuzzleSemanas
                     diaActual={MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2}
@@ -477,26 +517,6 @@ export default function App() {
                 setCancionSeleccionada(track);
                 localStorage.setItem("ultimaCancionDia", diaActual);
                 setPaso(5.5);
-              }}
-            />
-          )}
-
-          {paso === 5.5 && (
-            <Paso5_5
-              cancion={cancionSeleccionada}
-              onContinuar={() => {
-                // La transición a Vol. II se dispara únicamente desde aquí:
-                // al terminar de ver la canción del día, si aún no se
-                // completó (o si el modo de prueba está activo).
-                const debeTransicionarAVol2 =
-                  (MODO_PRUEBA_PUZZLE || (diaActual && diaActual >= 180)) &&
-                  !vol2TransicionCompletada;
-
-                if (debeTransicionarAVol2) {
-                  setMostrarTransicionVol2(true);
-                } else {
-                  setPaso(6);
-                }
               }}
             />
           )}
