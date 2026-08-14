@@ -439,7 +439,7 @@ export default function MultiverseTransition({ onFinalizar }) {
                   className="mv-boton mv-boton-neon"
                   onClick={recalibrarSenal}
                 >
-                  ⚡ RECALIBRAR SEÑAL
+                   RECALIBRAR SEÑAL
                 </button>
               </div>
             )}
@@ -490,7 +490,7 @@ export default function MultiverseTransition({ onFinalizar }) {
                   className="mv-boton mv-boton-neon"
                   onClick={revelarCoordenadas}
                 >
-                   REVELAR COORDENADAS
+                  🪐 REVELAR COORDENADAS
                 </button>
               </div>
             )}
@@ -506,7 +506,7 @@ export default function MultiverseTransition({ onFinalizar }) {
                   className="mv-boton mv-boton-final"
                   onClick={entrarAlTablero}
                 >
-                   ENTRAR AL TABLERO PRINCIPAL
+                  ✨ ENTRAR AL TABLERO PRINCIPAL
                 </button>
               </div>
             )}

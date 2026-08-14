@@ -71,6 +71,7 @@ export default function PuzzleSemanas({ diaActual, totalSemanas, imagenFinal }) 
 
           <button
             className="zombie-btn-toggle font-label-md"
+            data-tour="puzzle-boton"
             onClick={() => setMostrarPuzzle(!mostrarPuzzle)}
           >
             {mostrarPuzzle ? "Ocultar progreso ▲" : "Ver progreso del puzzle 🧩"}

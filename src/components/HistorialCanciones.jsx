@@ -13,13 +13,20 @@ export default function HistorialCanciones({ onVolver }) {
   }, []);
 
   // Solo canciones (portada, título, artista, enlace) — nunca los textos de latidos.
-  // Si cada entrada trae `dia`, se usa para ubicarla en Vol. I / Vol. II con
-  // precisión; si no, se asume el orden cronológico del propio arreglo.
+  // `historial` se guarda en Paso6.jsx como [nuevoLatido, ...anteriores], es decir
+  // el MÁS RECIENTE primero. Si la entrada trae `dia` (guardado desde esta versión
+  // de Paso6.jsx) se usa tal cual para ubicarla en Vol. I / Vol. II con precisión.
+  // Para entradas antiguas sin `dia`, se reconstruye su posición cronológica
+  // invirtiendo el índice (ya que el array está en orden descendente).
   const { volumen1, volumen2 } = useMemo(() => {
+    const total = historial.length;
     const conDia = historial
       .map((item, indice) => ({
         ...item,
-        __dia: typeof item.dia === "number" ? item.dia : indice + 1
+        __dia:
+          typeof item.dia === "number" && item.dia > 0
+            ? item.dia
+            : total - indice
       }))
       .filter((item) => item.cancion && (item.cancion.nombre || item.cancion.titulo));
 

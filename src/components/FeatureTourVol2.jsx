@@ -11,7 +11,7 @@ const PASOS_TOUR = [
   {
     // "Zombie Constructor": el widget de progreso semanal (PuzzleSemanas)
     selectores: ['[data-tour="zombie-constructor"]'],
-    titulo: "¡El viaje sigue!",
+    titulo: "El viaje sigue",
     texto: "Ahora mediremos nuestro progreso semanal."
   },
   {

@@ -51,7 +51,8 @@ export default function Paso6({ cancion, diaActual, onSave, onHistorial }) {
     const latido = {
       texto: emocion,
       fecha,
-      cancion
+      cancion,
+      dia: diaActual ? Number(diaActual) : null
     };
 
     const historial = JSON.parse(localStorage.getItem("historial") || "[]");
