@@ -1,0 +1,474 @@
+/* ============================================================
+   MULTIVERSE TRANSITION — Estilos y animaciones
+============================================================ */
+
+.mv-root {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #05000a;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #f4d9ff;
+  z-index: 1000;
+}
+
+.mv-step {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.mv-step-negro {
+  background: #000000;
+}
+
+/* ---------- FASE 1: texto tenue ---------- */
+.mv-texto-tenue {
+  max-width: 320px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #8a7a91;
+  letter-spacing: 0.02em;
+}
+
+.mv-fade-in {
+  animation: mvFadeInSoft 1.6s ease forwards;
+}
+
+/* Fundido más largo y pausado, para las fases de tensión (steps 1-3) */
+.mv-fade-in-lento {
+  opacity: 0;
+  animation: mvFadeInSoft 3.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes mvFadeInSoft {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- FASE 1: glitch de ruptura ---------- */
+.mv-glitch-activo {
+  animation: mvShake 0.18s linear infinite;
+}
+
+@keyframes mvShake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(1px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.mv-crt-noise {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 90, 0.06) 0px,
+    rgba(120, 0, 255, 0.05) 2px,
+    transparent 3px,
+    transparent 5px
+  );
+  mix-blend-mode: screen;
+  animation: mvNoiseFlicker 0.12s steps(2) infinite;
+  pointer-events: none;
+}
+
+@keyframes mvNoiseFlicker {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.mv-glitch-barra {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  mix-blend-mode: screen;
+}
+
+.mv-glitch-barra-1 {
+  top: 30%;
+  background: rgba(255, 0, 110, 0.35);
+  animation: mvBarraDesliza 0.35s infinite alternate;
+}
+
+.mv-glitch-barra-2 {
+  top: 62%;
+  background: rgba(130, 0, 255, 0.3);
+  animation: mvBarraDesliza 0.4s infinite alternate-reverse;
+}
+
+@keyframes mvBarraDesliza {
+  0% { transform: translateX(-6%); opacity: 0.8; }
+  100% { transform: translateX(6%); opacity: 0.3; }
+}
+
+.mv-error-texto {
+  position: relative;
+  max-width: 300px;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: #ff5e78;
+  text-shadow: 0 0 12px rgba(255, 94, 120, 0.65);
+}
+
+.mv-error-texto::before,
+.mv-error-texto::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+}
+
+.mv-error-texto::before {
+  color: #7a5cff;
+  transform: translate(-2px, 0);
+  animation: mvGlitchTexto 0.6s infinite linear alternate-reverse;
+}
+
+.mv-error-texto::after {
+  color: #ff5e78;
+  transform: translate(2px, 0);
+  animation: mvGlitchTexto 0.5s infinite linear alternate;
+}
+
+@keyframes mvGlitchTexto {
+  0% { clip-path: inset(0 0 80% 0); }
+  25% { clip-path: inset(20% 0 40% 0); }
+  50% { clip-path: inset(60% 0 10% 0); }
+  75% { clip-path: inset(10% 0 70% 0); }
+  100% { clip-path: inset(40% 0 30% 0); }
+}
+
+/* ---------- FASES 3–9: espacio y estrellas ---------- */
+.mv-espacio {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #1c002e 0%, #0a0017 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mv-estrellas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mv-estrella {
+  position: absolute;
+  border-radius: 50%;
+  background: #f4d9ff;
+  opacity: 0.7;
+  animation-name: mvTwinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes mvTwinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.mv-polvo-cosmico {
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(circle at 30% 40%, rgba(213, 111, 199, 0.18), transparent 55%),
+    radial-gradient(circle at 70% 65%, rgba(122, 92, 255, 0.16), transparent 55%);
+  filter: blur(6px);
+  pointer-events: none;
+  animation: mvPolvoFlota 12s ease-in-out infinite alternate;
+}
+
+@keyframes mvPolvoFlota {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(2%, -2%) scale(1.05); }
+}
+
+.mv-contenido {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 340px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  text-align: center;
+}
+
+.mv-centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.mv-centro-abajo {
+  margin-top: auto;
+  padding-bottom: 3rem;
+}
+
+/* ---------- HUD (step 3) ---------- */
+.mv-hud {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mv-hud-linea {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffb2bf;
+  opacity: 0;
+  animation: mvFadeInSoft 0.8s ease forwards;
+}
+
+.mv-hud-linea-b {
+  animation-delay: 0.6s;
+}
+
+.mv-hud-contador {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.8rem;
+  font-variant-numeric: tabular-nums;
+  color: #ffb4a2;
+  text-shadow: 0 0 18px rgba(255, 180, 162, 0.6);
+  margin: 0.4rem 0 0.8rem;
+}
+
+/* ---------- Alerta neón (step 4) ---------- */
+.mv-alerta-neon {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.05rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(255, 180, 162, 0.7);
+  border-radius: 1rem;
+  box-shadow: 0 0 14px rgba(255, 180, 162, 0.45), inset 0 0 12px rgba(255, 180, 162, 0.15);
+  animation: mvNeonPulso 2.2s ease-in-out infinite;
+}
+
+@keyframes mvNeonPulso {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 180, 162, 0.35), inset 0 0 8px rgba(255, 180, 162, 0.1); }
+  50% { box-shadow: 0 0 22px rgba(255, 180, 162, 0.7), inset 0 0 16px rgba(255, 180, 162, 0.25); }
+}
+
+/* ---------- Texto Bodoni (step 5) ---------- */
+.mv-texto-bodoni {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #f4d9ff;
+}
+
+.mv-subtitulo-sistema {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e3beb6;
+  opacity: 0.85;
+}
+
+.mv-barra-carga {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(244, 217, 255, 0.12);
+  overflow: hidden;
+  margin-top: 0.4rem;
+}
+
+.mv-barra-carga-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d56fc7, #ffb4a2);
+  box-shadow: 0 0 10px rgba(255, 180, 162, 0.6);
+  transition: width 0.1s linear;
+}
+
+.mv-barra-carga-pct {
+  font-family: "Bodoni Moda", serif;
+  font-size: 0.95rem;
+  color: #ffb4a2;
+}
+
+/* ---------- Nebulosa (step 6+) ---------- */
+.mv-nebulosa {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 214, 130, 0.55), transparent 45%),
+    radial-gradient(circle at 60% 55%, rgba(213, 111, 199, 0.65), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(122, 92, 255, 0.55), transparent 65%);
+  filter: blur(4px);
+  box-shadow: 0 0 60px rgba(213, 111, 199, 0.5), 0 0 120px rgba(122, 92, 255, 0.35);
+  animation: mvNebulosaPulso 5s ease-in-out infinite;
+  z-index: 1;
+  transition: transform 1.8s cubic-bezier(0.7, 0, 0.85, 1), opacity 1.8s ease;
+}
+
+@keyframes mvNebulosaPulso {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.08) rotate(4deg); }
+}
+
+.mv-nebulosa-warp {
+  animation: none;
+  transform: scale(5);
+  opacity: 0.15;
+}
+
+.mv-nebulosa-lejana {
+  width: 120px;
+  height: 120px;
+  opacity: 0.55;
+  top: 12%;
+}
+
+/* ---------- Warp (step 7) ---------- */
+.mv-lineas-warp {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mv-linea-warp {
+  position: absolute;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(244, 217, 255, 0.9));
+  transform-origin: left center;
+  opacity: 0;
+  animation: mvLineaVuela 0.9s ease-in forwards;
+}
+
+@keyframes mvLineaVuela {
+  0% { opacity: 0; transform: scaleX(0.1) rotate(var(--r, 0deg)); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: scaleX(1.6) rotate(var(--r, 0deg)); }
+}
+
+.mv-flash-blanco {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  z-index: 6;
+  animation: mvFlash 2.4s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes mvFlash {
+  0%, 60% { opacity: 0; }
+  85% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* ---------- Texto revelado (step 8) ---------- */
+.mv-texto-revelado {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.2rem;
+  color: #f4d9ff;
+  text-shadow: 0 0 16px rgba(244, 217, 255, 0.4);
+}
+
+/* ---------- Título final (step 9) ---------- */
+.mv-titulo-final {
+  font-family: "Bodoni Moda", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffb4a2;
+  text-shadow: 0 0 20px rgba(255, 180, 162, 0.7), 0 0 40px rgba(213, 111, 199, 0.4);
+  animation: mvTituloGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes mvTituloGlow {
+  0%, 100% { text-shadow: 0 0 16px rgba(255, 180, 162, 0.55), 0 0 32px rgba(213, 111, 199, 0.3); }
+  50% { text-shadow: 0 0 26px rgba(255, 180, 162, 0.85), 0 0 52px rgba(213, 111, 199, 0.55); }
+}
+
+/* ---------- Botones ---------- */
+.mv-boton {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  color: #220434;
+  background: #ffb4a2;
+  box-shadow: 0 0 16px rgba(255, 180, 162, 0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mv-boton:active {
+  transform: scale(0.95);
+}
+
+/* Botón de diagnóstico diferido: aparece recién cuando el conteo concluye,
+   reforzando la espera tensa del step 3 */
+.mv-boton-oculto {
+  opacity: 0;
+  transform: translateY(6px) scale(0.97);
+  pointer-events: none;
+  box-shadow: none;
+  animation: none;
+}
+
+.mv-boton-revelado {
+  animation: mvBotonAparece 0.6s ease forwards, mvBotonPulso 2.4s ease-in-out 0.6s infinite;
+}
+
+@keyframes mvBotonAparece {
+  0% { opacity: 0; transform: translateY(6px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mv-boton-neon {
+  background: linear-gradient(120deg, #ffb4a2, #d56fc7);
+  animation: mvBotonPulso 2.4s ease-in-out infinite;
+}
+
+@keyframes mvBotonPulso {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 180, 162, 0.45); }
+  50% { box-shadow: 0 0 24px rgba(213, 111, 199, 0.65); }
+}
+
+.mv-boton-final {
+  background: linear-gradient(120deg, #ffd68a, #ffb4a2, #d56fc7);
+  font-size: 0.95rem;
+  padding: 1rem 1.9rem;
+}
+
+/* ---------- Responsive ajuste para pantallas más anchas ---------- */
+@media (min-width: 480px) {
+  .mv-contenido {
+    max-width: 400px;
+  }
+}

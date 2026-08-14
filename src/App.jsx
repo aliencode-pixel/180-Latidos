@@ -27,6 +27,15 @@ import PuzzleSemanas from "./components/PuzzleSemanas";
 // 🏛️ MURAL DE RECUERDOS
 import ModalMural from "./components/ModalMural";
 
+// 🎵 HISTORIAL DE CANCIONES (Archivo I / Archivo II)
+import HistorialCanciones from "./components/HistorialCanciones";
+
+// 🌌 TRANSICIÓN CINEMÁTICA A VOL. II
+import MultiverseTransition from "./components/MultiverseTransition";
+
+// 🗺️ FEATURE TOUR DE NOVEDADES (VOL. II)
+import FeatureTourVol2 from "./components/FeatureTourVol2";
+
 /* ============================================================
    CONFIGURACIÓN VOL. II (PUZZLE)
 ============================================================ */
@@ -66,6 +75,14 @@ export default function App() {
   const [cumpleFinalizado, setCumpleFinalizado] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [mostrarMural, setMostrarMural] = useState(false);
+  const [mostrarBienvenidaOriginal, setMostrarBienvenidaOriginal] = useState(false);
+  const [vol2TransicionCompletada, setVol2TransicionCompletada] = useState(
+    () => localStorage.getItem("vol2_transicion_completada") === "true"
+  );
+  const [mostrarTransicionVol2, setMostrarTransicionVol2] = useState(false);
+  const [mostrarHistorialCanciones, setMostrarHistorialCanciones] = useState(false);
+  const [mostrarTourVol2, setMostrarTourVol2] = useState(false);
+  const [tourVol2Pendiente, setTourVol2Pendiente] = useState(false);
   const instrumentalUltimoDiaRef = useRef(null);
 
   const tituloPagina = (MODO_PRUEBA_PUZZLE || diaActual >= 180) ? "180 latidos: Vol. II" : "180 latidos";
@@ -138,6 +155,18 @@ export default function App() {
     calcularDia();
   }, [paso, pantallaDia]);
 
+  // Dispara el Feature Tour en cuanto el tablero principal (donde vive
+  // el widget semanal) esté realmente montado en pantalla.
+  useEffect(() => {
+    if (
+      tourVol2Pendiente &&
+      ["inicio-dia", "escribir-latido", "completado"].includes(pantallaDia)
+    ) {
+      setMostrarTourVol2(true);
+      setTourVol2Pendiente(false);
+    }
+  }, [tourVol2Pendiente, pantallaDia]);
+
   const avanzar = () => {
     setTransicionando(true);
     setTimeout(() => {
@@ -172,6 +201,11 @@ export default function App() {
     irHistorial();
   };
 
+  const handleMenuHistorialCanciones = () => {
+    setMenuAbierto(false);
+    setMostrarHistorialCanciones(true);
+  };
+
   const handleMenuCumple = () => {
     setMenuAbierto(false);
     setMostrarCumple(true);
@@ -182,9 +216,15 @@ export default function App() {
     setMostrarMural(true);
   };
 
-  const handleMenuWrapped = () => {
-    setMenuAbierto(false);
-    setPantallaDia("wrapped-final");
+  // Abre las experiencias agrupadas dentro del Mural de Recuerdos
+  // (Especial de Cumpleaños / Bienvenida Original)
+  const handleAbrirEspecialMural = (item) => {
+    setMostrarMural(false);
+    if (item.tipo === "cumpleanos") {
+      setMostrarCumple(true);
+    } else if (item.tipo === "bienvenida") {
+      setMostrarBienvenidaOriginal(true);
+    }
   };
 
   if (mostrarCumple) {
@@ -214,16 +254,64 @@ export default function App() {
     return <Bienvenida onComenzar={() => setPaso(2)} />;
   }
 
+  // "Bienvenida Original" agrupada dentro del Mural de Recuerdos:
+  // la misma vista del primer día, ahora accesible como recuerdo.
+  if (mostrarBienvenidaOriginal) {
+    return (
+      <Bienvenida onComenzar={() => setMostrarBienvenidaOriginal(false)} />
+    );
+  }
+
+  // Transición cinemática hacia "180 latidos: Vol. II".
+  // Se dispara EXCLUSIVAMENTE desde el botón "Continuar" del Paso 5_5
+  // (ver más abajo) — nunca automáticamente al cargar la app.
+  if (mostrarTransicionVol2) {
+    return (
+      <MultiverseTransition
+        onFinalizar={() => {
+          localStorage.setItem("vol2_transicion_completada", "true");
+          setVol2TransicionCompletada(true);
+          setMostrarTransicionVol2(false);
+
+          // Continúa el flujo normal del día (escribir el latido)
+          setPaso(6);
+
+          // Deja pendiente el Feature Tour: se activará en cuanto el
+          // tablero principal (con el widget semanal) esté realmente
+          // en pantalla, para que el spotlight tenga dónde apuntar.
+          if (localStorage.getItem("vol2_tour_completado") !== "true") {
+            setTourVol2Pendiente(true);
+          }
+        }}
+      />
+    );
+  }
+
   const diaEnVol2 = diaActual ? Math.max(1, diaActual - 179) : 1;
 
   // Colección para el Mural de Recuerdos, derivada del progreso real del puzzle
   const semanaActualMural = Math.min(TOTAL_SEMANAS_PUZZLE, Math.ceil((MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2) / 7));
-  const coleccionMural = Array.from({ length: TOTAL_SEMANAS_PUZZLE }).map((_, i) => ({
-    semana: i + 1,
-    desbloqueada: i < semanaActualMural,
-    url: "https://picsum.photos/600/400",
-    titulo: `Semana ${i + 1}`
-  }));
+  const coleccionMural = [
+    {
+      tipo: "cumpleanos",
+      titulo: "Especial de Cumpleaños",
+      desbloqueada: true,
+      icono: "cake"
+    },
+    {
+      tipo: "bienvenida",
+      titulo: "Bienvenida Original",
+      desbloqueada: true,
+      icono: "auto_awesome"
+    },
+    ...Array.from({ length: TOTAL_SEMANAS_PUZZLE }).map((_, i) => ({
+      tipo: "semana",
+      semana: i + 1,
+      desbloqueada: i < semanaActualMural,
+      url: "https://picsum.photos/600/400",
+      titulo: `Semana ${i + 1}`
+    }))
+  ];
 
   return (
     <div className="min-h-screen w-full bg-[#1c002e] bg-[radial-gradient(ellipse_at_center,_rgba(75,45,92,0.45)_0%,_#1c002e_70%)] flex justify-center items-start sm:items-center py-0 sm:py-10">
@@ -248,6 +336,7 @@ export default function App() {
                 <button
                   onClick={() => setMenuAbierto(!menuAbierto)}
                   aria-label="Abrir menú"
+                  data-tour="menu-memorias"
                   className="bg-surface-container-high/80 text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary-container hover:text-on-primary transition-colors z-50 relative border border-outline-variant/40"
                 >
                   <span className="material-symbols-outlined text-xl">
@@ -263,28 +352,23 @@ export default function App() {
                 <h3 className="font-headline-lg text-2xl text-primary mb-2 border-b border-outline-variant/40 pb-4">Memorias</h3>
 
                 <button onClick={handleMenuBienvenida} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">auto_awesome</span>
-                  Pantalla de Bienvenida
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">home</span>
+                  Inicio
+                </button>
+
+                <button onClick={handleMenuHistorialCanciones} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">queue_music</span>
+                  Historial de Canciones
                 </button>
 
                 <button onClick={handleMenuHistorial} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">queue_music</span>
-                  Historial de Canciones
+                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">favorite</span>
+                  Historial de Latidos
                 </button>
 
                 <button onClick={handleMenuMural} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
                   <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">grid_view</span>
                   Mural de Recuerdos
-                </button>
-
-                <button onClick={handleMenuWrapped} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">celebration</span>
-                  Wrapped Final
-                </button>
-
-                <button onClick={handleMenuCumple} className="flex items-center gap-3 text-left w-full p-3 rounded-xl hover:bg-surface-container-high transition-colors text-on-surface font-label-md group">
-                  <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">cake</span>
-                  Especial de Cumpleaños
                 </button>
               </div>
             </div>
@@ -301,7 +385,15 @@ export default function App() {
               isOpen={mostrarMural}
               onClose={() => setMostrarMural(false)}
               coleccionImagenes={coleccionMural}
+              onAbrirEspecial={handleAbrirEspecialMural}
             />
+
+            {/* HISTORIAL DE CANCIONES (solo canciones — Archivo I / Archivo II) */}
+            {mostrarHistorialCanciones && (
+              <HistorialCanciones
+                onVolver={() => setMostrarHistorialCanciones(false)}
+              />
+            )}
           </>
         )}
 
@@ -362,11 +454,13 @@ export default function App() {
               />
 
               {(MODO_PRUEBA_PUZZLE || diaActual >= 180) && (
-                <PuzzleSemanas
-                  diaActual={MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2}
-                  totalSemanas={TOTAL_SEMANAS_PUZZLE}
-                  imagenFinal="https://picsum.photos/600/400"
-                />
+                <div data-tour="zombie-constructor" className="w-full">
+                  <PuzzleSemanas
+                    diaActual={MODO_PRUEBA_PUZZLE ? 15 : diaEnVol2}
+                    totalSemanas={TOTAL_SEMANAS_PUZZLE}
+                    imagenFinal="https://picsum.photos/600/400"
+                  />
+                </div>
               )}
 
             </div>
@@ -390,7 +484,20 @@ export default function App() {
           {paso === 5.5 && (
             <Paso5_5
               cancion={cancionSeleccionada}
-              onContinuar={() => setPaso(6)}
+              onContinuar={() => {
+                // La transición a Vol. II se dispara únicamente desde aquí:
+                // al terminar de ver la canción del día, si aún no se
+                // completó (o si el modo de prueba está activo).
+                const debeTransicionarAVol2 =
+                  (MODO_PRUEBA_PUZZLE || (diaActual && diaActual >= 180)) &&
+                  !vol2TransicionCompletada;
+
+                if (debeTransicionarAVol2) {
+                  setMostrarTransicionVol2(true);
+                } else {
+                  setPaso(6);
+                }
+              }}
             />
           )}
 
@@ -412,6 +519,12 @@ export default function App() {
             />
           )}
         </main>
+
+        {/* FEATURE TOUR — novedades de Vol. II (única vez, tras la transición) */}
+        <FeatureTourVol2
+          activo={mostrarTourVol2}
+          onFinalizar={() => setMostrarTourVol2(false)}
+        />
       </div>
     </div>
   );

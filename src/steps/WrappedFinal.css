@@ -14,11 +14,11 @@
 .wrapped-final-wrapper {
   position: fixed;
   inset: 0;
-  background: #000;
+  background: #1c002e;
   overflow-y: auto;
   overflow-x: hidden;
-  color: white;
-  font-family: "Poppins", sans-serif;
+  color: #f4d9ff;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 /* Cinematic entrance */
@@ -38,14 +38,14 @@
 }
 
 /* ============================================================
-   PARTICLES DORADAS
+   PARTICLES
 ============================================================ */
 .particles {
   position: absolute;
   inset: 0;
   background-image: url("/effects/particles-gold.png");
   background-size: cover;
-  opacity: 0.25;
+  opacity: 0.22;
   animation: particlesMove 20s linear infinite;
   z-index: 1;
 }
@@ -63,7 +63,7 @@
   inset: 0;
   background-image: url("/effects/bokeh.png");
   background-size: cover;
-  opacity: 0.18;
+  opacity: 0.16;
   mix-blend-mode: screen;
   z-index: 1;
 }
@@ -99,6 +99,7 @@
   object-fit: cover;
   opacity: 0.15;
   filter: blur(2px);
+  border-radius: 12px;
   animation: ghostFloat 12s infinite ease-in-out alternate;
 }
 
@@ -122,19 +123,21 @@
 .ghost-11 { top: 25%; left: 40%; }
 
 /* ============================================================
-   FULLSCREEN BUTTON
+   FULLSCREEN BUTTON (GRADIENTE NOCTURNE CRIMSON)
 ============================================================ */
 .fullscreen-btn {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: rgba(255, 215, 0, 0.8);
-  color: black;
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
   padding: 0.6rem 1rem;
   border-radius: 8px;
   border: none;
   font-weight: bold;
+  font-family: "Plus Jakarta Sans", sans-serif;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 94, 54, 0.4);
   z-index: 99999;
 }
 
@@ -159,7 +162,9 @@
 
 .intro-line {
   opacity: 0;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.6rem;
+  color: #ffb4a2;
   text-align: center;
   animation: fadeInUp 1.8s forwards ease-out;
 }
@@ -179,8 +184,11 @@
    SECCIONES
 ============================================================ */
 .section-title {
+  font-family: "Bodoni Moda", serif;
   font-size: 1.8rem;
+  font-weight: 700;
   margin-bottom: 1rem;
+  color: #ffb4a2;
   text-align: center;
 }
 
@@ -195,7 +203,7 @@
 }
 
 /* ============================================================
-   ESTADÍSTICAS
+   ESTADÍSTICAS (CRISTAL NOCTURNE CRIMSON)
 ============================================================ */
 .stats-grid {
   display: grid;
@@ -204,10 +212,23 @@
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   padding: 1rem;
   border-radius: 12px;
-  backdrop-filter: blur(6px);
+  border: 1px solid rgba(170, 137, 130, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #f4d9ff;
+}
+
+.stat-card h3 {
+  font-family: "Bodoni Moda", serif;
+  color: #ffb4a2;
+  margin-bottom: 0.4rem;
+}
+
+.stat-card p {
+  color: #e3beb6;
 }
 
 /* ============================================================
@@ -220,11 +241,13 @@
 }
 
 .song-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   padding: 0.6rem;
   border-radius: 10px;
+  border: 1px solid rgba(170, 137, 130, 0.2);
   text-align: center;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .song-cover {
@@ -237,33 +260,45 @@
 .song-title {
   font-size: 0.9rem;
   margin-top: 0.4rem;
+  color: #f4d9ff;
+  font-weight: 600;
 }
 
 .song-artist {
   font-size: 0.8rem;
-  opacity: 0.8;
+  color: #e3beb6;
+  opacity: 0.9;
 }
 
 .song-link {
   display: inline-block;
   margin-top: 0.4rem;
   font-size: 0.8rem;
-  color: gold;
+  color: #ffb4a2;
+  font-weight: 600;
 }
 
 /* ============================================================
-   BOTÓN VOLVER
+   BOTÓN VOLVER (GRADIENTE NOCTURNE CRIMSON)
 ============================================================ */
 .volver-btn {
   margin: 2rem auto;
   display: block;
   padding: 0.8rem 1.4rem;
-  background: rgba(255, 215, 0, 0.8);
-  color: black;
+  background: linear-gradient(135deg, #FF5E36, #D81B60);
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   font-weight: bold;
+  font-family: "Plus Jakarta Sans", sans-serif;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 94, 54, 0.4);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.volver-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
 }
 
 /* ============================================================
@@ -272,7 +307,7 @@
 .fade-black {
   position: fixed;
   inset: 0;
-  background: black;
+  background: #1c002e;
   z-index: 999999;
   animation: fadeBlack 2s forwards;
 }
@@ -292,7 +327,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #f4d9ff;
+  font-family: "Bodoni Moda", serif;
   font-size: 1.6rem;
   text-align: center;
   z-index: 9999999;
@@ -325,7 +361,7 @@
   .stat-card,
   .song-card {
     backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .parallax-card {

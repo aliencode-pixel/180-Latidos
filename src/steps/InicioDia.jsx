@@ -16,7 +16,7 @@ export default function InicioDia({
       {pantallaDia === "inicio-dia" && (
         <div className="inicio-dia-tarjeta">
           <h2 className="inicio-dia-titulo">Vol. II</h2>
-          <p className="inicio-dia-subtexto">descubre la canción del día</p>
+          <p className="inicio-dia-subtexto">Descubre la canción del día</p>
 
           <button className="inicio-dia-btn inicio-dia-btn-gradiente" onClick={onIrRuleta}>
             Ir a la ruleta

@@ -1,0 +1,93 @@
+.ft-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+/* El propio spotlight bloquea clics del resto de la pantalla mediante
+   un box-shadow gigante que oscurece todo salvo el recorte central. */
+.ft-spotlight {
+  position: fixed;
+  border-radius: 1.1rem;
+  box-shadow: 0 0 0 9999px rgba(5, 0, 10, 0.78);
+  border: 2px solid rgba(255, 180, 162, 0.85);
+  transition: top 0.35s ease, left 0.35s ease, width 0.35s ease, height 0.35s ease;
+  animation: ftSpotlightPulso 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ftSpotlightPulso {
+  0%, 100% { box-shadow: 0 0 0 9999px rgba(5, 0, 10, 0.78), 0 0 0 0 rgba(255, 180, 162, 0.35); }
+  50% { box-shadow: 0 0 0 9999px rgba(5, 0, 10, 0.78), 0 0 24px 6px rgba(255, 180, 162, 0.45); }
+}
+
+.ft-tooltip {
+  position: fixed;
+  pointer-events: auto;
+  background: #23063a;
+  border: 1px solid rgba(244, 217, 255, 0.18);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  color: #f4d9ff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  animation: ftTooltipAparece 0.3s ease forwards;
+}
+
+@keyframes ftTooltipAparece {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.ft-progreso {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffb4a2;
+  margin-bottom: 0.3rem;
+}
+
+.ft-titulo {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+  color: #ffb4a2;
+}
+
+.ft-texto {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #e7d7ee;
+  margin-bottom: 0.9rem;
+}
+
+.ft-acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ft-saltar {
+  background: none;
+  border: none;
+  color: #cbb3d6;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+}
+
+.ft-siguiente {
+  background: linear-gradient(120deg, #ffb4a2, #d56fc7);
+  color: #220434;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.ft-siguiente:active {
+  transform: scale(0.96);
+}

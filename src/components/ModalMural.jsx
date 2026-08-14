@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ModalMural.css";
 
-export default function ModalMural({ isOpen, onClose, coleccionImagenes = [] }) {
+export default function ModalMural({ isOpen, onClose, coleccionImagenes = [], onAbrirEspecial }) {
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
 
   if (!isOpen) return null;
@@ -25,19 +25,42 @@ export default function ModalMural({ isOpen, onClose, coleccionImagenes = [] }) 
         <div className="mural-grid">
           {coleccionImagenes.map((item, index) => {
             const esDesbloqueada = item.desbloqueada;
+            const esEspecial = item.tipo && item.tipo !== "semana";
+
+            const handleClick = () => {
+              if (!esDesbloqueada) return;
+              if (esEspecial && onAbrirEspecial) {
+                onAbrirEspecial(item);
+              } else if (!esEspecial) {
+                setImagenSeleccionada(item);
+              }
+            };
 
             return (
               <div
                 key={index}
-                className={`mural-card ${esDesbloqueada ? "desbloqueada" : "bloqueada"}`}
-                onClick={() => esDesbloqueada && setImagenSeleccionada(item)}
+                className={`mural-card ${esDesbloqueada ? "desbloqueada" : "bloqueada"} ${esEspecial ? "mural-card-especial" : ""}`}
+                onClick={handleClick}
               >
-                <div
-                  className="mural-card-bg"
-                  style={{
-                    backgroundImage: esDesbloqueada ? `url(${item.url})` : "none"
-                  }}
-                />
+                {esEspecial ? (
+                  <div
+                    className="mural-card-especial-icono flex items-center justify-center w-full h-full"
+                    style={{
+                      background: "linear-gradient(135deg, #4b2d5c, #2b0d3c)"
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-4xl text-[#ffb4a2]">
+                      {item.icono || "auto_awesome"}
+                    </span>
+                  </div>
+                ) : (
+                  <div
+                    className="mural-card-bg"
+                    style={{
+                      backgroundImage: esDesbloqueada ? `url(${item.url})` : "none"
+                    }}
+                  />
+                )}
 
                 {!esDesbloqueada ? (
                   <div className="mural-candado-box">
